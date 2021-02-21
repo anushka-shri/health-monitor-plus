@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 
 const userRouter = require('./Router/userRoute');
 
@@ -11,6 +12,10 @@ const app = express();
 app.use(express.json({ limit: "10kb" }));
 //cookie parser
 app.use(cookieParser());
+app.use(cors({
+  origin:["http://localhost:3000"],
+  credentials:true,
+}));
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   console.log(req.cookies);

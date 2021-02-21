@@ -136,15 +136,15 @@ exports.isLoggedIn = async (req, res, next) => {
       res.locals.user = currentUser;
       req.user = currentUser;
       console.log(req.user);
-      
-      return next();
+      res.json(false);
+      //return next();
     }
     
   } catch (err) {
-    return next();
+    res.json(false);
   }
   
-  next();
+  //next();
 };
 
 //AUTHERIZATION
