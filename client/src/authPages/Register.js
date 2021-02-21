@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
+import './Register.css'
 
 const axios = require('axios').default;
 
@@ -30,7 +31,9 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+
 	paper: {
+		
 		margin: theme.spacing(8, 4),
 		display: 'flex',
 		flexDirection: 'column',
@@ -76,14 +79,14 @@ export default function SignUp() {
 	}
 
 	return (
-		<Container component='main' maxWidth='xs'>
+		<Container component='main' maxWidth='xs' className='root'>
 			<CssBaseline />
 			<div className={classes.paper}>
 				<Avatar className={classes.avatar}>{/* <LockOutlinedIcon /> */}</Avatar>
 				<Typography component='h1' variant='h5'>
-					Sign up
+					Register
 				</Typography>
-				<form className={classes.form} noValidate>
+				<form className={classes.form} Validate>
 					<Grid container spacing={2}>
 						<Grid item xs={12} sm={6}>
 							<TextField
@@ -120,6 +123,7 @@ export default function SignUp() {
 								id='email'
 								label='Email Address'
 								name='email'
+								type='email'
 								autoComplete='email'
 								onChange={(e) => setEmail(e.target.value)}
 								value={email}
@@ -167,7 +171,7 @@ export default function SignUp() {
 						color='primary'
 						className={classes.submit}
 						onSubmit={handleSubmit}>
-						Sign Up
+						Register
 					</Button>
 					<Grid container justify='flex-end'>
 						<Grid item>

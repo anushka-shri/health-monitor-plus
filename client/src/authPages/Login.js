@@ -32,7 +32,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: '100vh',
-		backgroundColor: 'black',
+		backgroundColor: 'rgba(224, 214, 214, 0.562)',
 	},
 	image: {
 		backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
+		
 	},
 	avatar: {
 		margin: theme.spacing(1),
@@ -58,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
 	form: {
 		width: '100%', // Fix IE 11 issue.
 		marginTop: theme.spacing(1),
+		
 	},
 	submit: {
 		margin: theme.spacing(3, 0, 2),
@@ -97,7 +99,7 @@ export default function SignInSide() {
 					<Typography component='h1' variant='h5'>
 						Login Here
 					</Typography>
-					<form className={classes.form} noValidate>
+					<form className={classes.form} Validate>
 						<TextField
 							variant='outlined'
 							margin='normal'
@@ -107,6 +109,7 @@ export default function SignInSide() {
 							label='Email Address'
 							name='email'
 							autoComplete='email'
+							type='email'
 							autoFocus
 							onChange={(e) => setEmail(e.target.value)}
 							value={email}
