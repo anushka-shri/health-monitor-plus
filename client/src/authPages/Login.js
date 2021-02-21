@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 // import LockOutlinedIcon from '@material-ui/
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+
+const axios = require('axios').default;
 
 function Copyright() {
 	return (
@@ -29,6 +32,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: '100vh',
+		backgroundColor: 'black',
 	},
 	image: {
 		backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -41,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundPosition: 'center',
 	},
 	paper: {
+		// background: 'black',
 		margin: theme.spacing(8, 4),
 		display: 'flex',
 		flexDirection: 'column',
@@ -61,6 +66,24 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
 	const classes = useStyles();
+	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState('');
+
+	async function handleSubmit(e) {
+		e.preventDefault();
+
+		try {
+			const registerData = {
+				password,
+
+				email,
+			};
+
+			await axios.post('http://http://localhost:3000/register', registerData);
+		} catch (error) {
+			console.error(error);
+		}
+	}
 
 	return (
 		<Grid container component='main' className={classes.root}>
@@ -72,7 +95,7 @@ export default function SignInSide() {
 						{/* <LockOutlinedIcon /> */}
 					</Avatar>
 					<Typography component='h1' variant='h5'>
-						Sign in
+						Login Here
 					</Typography>
 					<form className={classes.form} noValidate>
 						<TextField
@@ -85,6 +108,8 @@ export default function SignInSide() {
 							name='email'
 							autoComplete='email'
 							autoFocus
+							onChange={(e) => setEmail(e.target.value)}
+							value={email}
 						/>
 						<TextField
 							variant='outlined'
@@ -96,18 +121,17 @@ export default function SignInSide() {
 							type='password'
 							id='password'
 							autoComplete='current-password'
+							onChange={(e) => setPassword(e.target.value)}
+							value={password}
 						/>
 
-						{/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
 						<Button
 							type='submit'
 							fullWidth
 							variant='contained'
 							color='primary'
-							className={classes.submit}>
+							className={classes.submit}
+							onSubmit={handleSubmit}>
 							Sign In
 						</Button>
 						<Grid container>
@@ -117,8 +141,8 @@ export default function SignInSide() {
 								</Link>
 							</Grid>
 							<Grid item>
-								<Link href='./Signup.js' variant='body2'>
-									Don't have an account? Sign Up
+								<Link to='/register' variant='body2'>
+									Don't have an account? Register Now
 								</Link>
 							</Grid>
 						</Grid>

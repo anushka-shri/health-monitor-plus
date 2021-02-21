@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import SignIn from './Signin/Signin'
-import SignUp from './Signin/Signup'
+import Router from './authPages/authRouter'
 
 function App() {
   return (
     <div className="App">
-     <SignUp />
+     <Router />
     </div>
   );
 }
