@@ -60,6 +60,7 @@ export default function SignUp() {
 	const [passwordConfirm, setPasswordConfirm] = useState('');
 	const [email, setEmail] = useState('');
     console.log(firstName);
+	console.log('here');
 	async function handleSubmit(e) {
 		e.preventDefault();
 
@@ -97,7 +98,7 @@ export default function SignUp() {
 						<Grid item xs={12} sm={6}>
 							<TextField
 								autoComplete='fname'
-								name='firstName'
+								name='firstName' 
 								variant='outlined'
 								required
 								fullWidth
