@@ -34,10 +34,11 @@ const sendToken = (user, statusCode, res) => {
 exports.signup = catchError(async (req, res, next) => {
   
   const newUser = await User.create({
-    name: req.body.name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
-    confirmPassword: req.body.confirmPassword,
+    confirmPassword: req.body.passwordConfirm,
     
   });
   

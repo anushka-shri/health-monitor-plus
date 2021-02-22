@@ -81,7 +81,7 @@ export default function SignInSide() {
 				email,
 			};
 
-			await axios.post('http://http://localhost:3000/register', registerData);
+			await axios.post('http://localhost:3005/api/v1/users/login', registerData);
 		} catch (error) {
 			console.error(error);
 		}

@@ -64,15 +64,21 @@ export default function SignUp() {
 		e.preventDefault();
 
 		try {
-			const registerData = {
+			// const registerData = {
+			// 	firstName,
+			// 	lastName,
+			// 	password,
+			// 	passwordConfirm,
+			// 	email,
+			// };
+
+			await axios.post('http://localhost:3005/api/v1/users/signup', {
 				firstName,
 				lastName,
 				password,
 				passwordConfirm,
 				email,
-			};
-
-			await axios.post('http://http://localhost:3000/register', registerData);
+			});
 		} catch (error) {
 			console.error(error);
 		}
