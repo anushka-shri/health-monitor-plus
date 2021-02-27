@@ -68,24 +68,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
 	const classes = useStyles();
-	const [password, setPassword] = useState('');
-	const [email, setEmail] = useState('');
 
-	async function handleSubmit(e) {
-		e.preventDefault();
-
-		try {
-			const registerData = {
-				password,
-
-				email,
-			};
-
-			await axios.post('http://localhost:3005/api/v1/users/login', registerData);
-		} catch (error) {
-			console.error(error);
-		}
-	}
 
 	return (
 		<Grid container component='main' className={classes.root}>
@@ -111,8 +94,7 @@ export default function SignInSide() {
 							autoComplete='email'
 							type='email'
 							autoFocus
-							onChange={(e) => setEmail(e.target.value)}
-							value={email}
+							
 						/>
 						<TextField
 							variant='outlined'
@@ -124,8 +106,7 @@ export default function SignInSide() {
 							type='password'
 							id='password'
 							autoComplete='current-password'
-							onChange={(e) => setPassword(e.target.value)}
-							value={password}
+							
 						/>
 
 						<Button
@@ -134,7 +115,7 @@ export default function SignInSide() {
 							variant='contained'
 							color='primary'
 							className={classes.submit}
-							onSubmit={handleSubmit}>
+							>
 							Sign In
 						</Button>
 						<Grid container>
