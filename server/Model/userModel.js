@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const Doctor = require('./Doctor');
 
 
 
@@ -44,6 +45,12 @@ const userSchema = new mongoose.Schema({
       message: 'Password confirmation wrong!',
     },
   },
+  doctor: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Doctor',
+    },
+  ],
   
 });
 
