@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const doctorSchema = new mongoose.Schema({
     Name : {
-        type: type,
+        type: String,
         required: [ true ,"A doctor name must be provided"],
     },
     Specialization: {

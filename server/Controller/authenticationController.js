@@ -18,17 +18,10 @@ const sendToken = (user, statusCode, res) => {
   user.password = undefined;
 
   //Putting the token on the cookie
-<<<<<<< HEAD
-  res.cookie('JWT', token, {
-    expires : new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
-    httpOnly : true
-  });
-=======
   //res.cookie('JWT', token, {
    //expires : new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
     //httpOnly : true
   //});
->>>>>>> 0c8189795fcf0b73b8d2e4bc3223854e2ff56fe0
 
   res.status(statusCode).json({
     status: 'success',
@@ -39,19 +32,14 @@ const sendToken = (user, statusCode, res) => {
   });
 };
 exports.signup = catchError(async (req, res, next) => {
-<<<<<<< HEAD
-  
-=======
-  console.log("here");
->>>>>>> 0c8189795fcf0b73b8d2e4bc3223854e2ff56fe0
+  console.log(req.body);
   const newUser = await User.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    firstName: req.body.fname,
+    lastName: req.body.lname,
     email: req.body.email,
     password: req.body.password,
-    confirmPassword: req.body.passwordConfirm,
-    
-  });
+    confirmPassword: req.body.confirmpassword,
+    });
   
   sendToken(newUser, 201, res);
 });

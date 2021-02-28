@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 import './Register.css'
+import axios from "axios";
 
 
 
@@ -54,19 +55,37 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
 	
-    
+    const [fname,setFirstname] = useState("");
+	const [lname,setLastname] = useState("");
+	const [email,setEmail] = useState("");
+	const [password,setPassword] = useState("");
+	const [confirmpassword,setConfpass] = useState("");
 	
+	const registerHandler =async(e) => {
+		e.preventDefault();
+		try{
+			await axios.post("http://localhost:3005/api/v1/users/signup", {
+				fname,
+				lname,
+				email,
+				password,
+				confirmpassword
+			});
 
+		}catch{
+
+		}
+	}
 
 	return (
 		<Container component='main' maxWidth='xs' className='root'>
 			<CssBaseline />
-			<div className={classes.paper}>
-				<Avatar className={classes.avatar}>{/* <LockOutlinedIcon /> */}</Avatar>
+			<div /*className={classes.paper}*/>
+				<Avatar /*className={classes.avatar}*/>{/* <LockOutlinedIcon /> */}</Avatar>
 				<Typography component='h1' variant='h5'>
 					Register
 				</Typography>
-				<form className={classes.form} Validate>
+				<form onSubmit={registerHandler} /*className={classes.form}*/ Validate>
 					<Grid container spacing={2}>
 						<Grid item xs={12} sm={6}>
 							<TextField
@@ -78,6 +97,8 @@ export default function SignUp() {
 								id='firstName'
 								label='First Name'
 								autoFocus
+								value={fname}
+								onChange={(e) => setFirstname(e.target.value)}
 								
 							/>
 						</Grid>
@@ -90,6 +111,8 @@ export default function SignUp() {
 								label='Last Name'
 								name='lastName'
 								autoComplete='lname'
+								value={lname}
+								onChange={(e) => setLastname(e.target.value)}
 								/>
 						</Grid>
 						<Grid item xs={12}>
@@ -102,6 +125,8 @@ export default function SignUp() {
 								name='email'
 								type='email'
 								autoComplete='email'
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
 								
 							/>
 						</Grid>
@@ -115,6 +140,8 @@ export default function SignUp() {
 								type='password'
 								id='password'
 								autoComplete='current-password'
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
 							
 							/>
 						</Grid>
@@ -128,6 +155,8 @@ export default function SignUp() {
 								type='password'
 								id='confirm-password'
 								autoComplete='current-password'
+								value={confirmpassword}
+								onChange={(e) => setConfpass(e.target.value)}
 								
 							/>
 						</Grid>
@@ -143,7 +172,7 @@ export default function SignUp() {
 						fullWidth
 						variant='contained'
 						color='primary'
-						className={classes.submit}
+						/*className={classes.submit}*/
 						>
 						Register
 					</Button>
