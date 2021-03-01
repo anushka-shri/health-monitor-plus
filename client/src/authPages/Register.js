@@ -32,25 +32,23 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
-
-	paper: {
-		
-		margin: theme.spacing(8, 4),
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-	},
-	avatar: {
-		margin: theme.spacing(1),
-		backgroundColor: theme.palette.secondary.main,
-	},
-	form: {
-		width: '100%', // Fix IE 11 issue.
-		marginTop: theme.spacing(1),
-	},
-	submit: {
-		margin: theme.spacing(3, 0, 2),
-	},
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
 export default function SignUp() {
@@ -77,15 +75,17 @@ export default function SignUp() {
 		}
 	}
 
+	 const classes = useStyles();
+
 	return (
 		<Container component='main' maxWidth='xs' className='root'>
 			<CssBaseline />
-			<div /*className={classes.paper}*/>
-				<Avatar /*className={classes.avatar}*/>{/* <LockOutlinedIcon /> */}</Avatar>
+			 <div className={classes.paper}> 
+				<Avatar className={classes.avatar}>{/* <LockOutlinedIcon /> */}</Avatar>
 				<Typography component='h1' variant='h5'>
 					Register
 				</Typography>
-				<form onSubmit={registerHandler} /*className={classes.form}*/ Validate>
+				<form onSubmit={registerHandler} className={classes.form} Validate>
 					<Grid container spacing={2}>
 						<Grid item xs={12} sm={6}>
 							<TextField
@@ -136,11 +136,11 @@ export default function SignUp() {
 								required
 								fullWidth
 								name='password'
-								label='Password'
+								 label='Password'
 								type='password'
 								id='password'
 								autoComplete='current-password'
-								value={password}
+								 value={password}
 								onChange={(e) => setPassword(e.target.value)}
 							
 							/>
@@ -172,7 +172,7 @@ export default function SignUp() {
 						fullWidth
 						variant='contained'
 						color='primary'
-						/*className={classes.submit}*/
+						 className={classes.submit}
 						>
 						Register
 					</Button>
