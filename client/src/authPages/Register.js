@@ -62,13 +62,17 @@ export default function SignUp() {
 	const registerHandler =async(e) => {
 		e.preventDefault();
 		try{
-			await axios.post("http://localhost:3005/api/v1/users/signup", {
+			const res = await axios.post("http://localhost:3005/api/v1/users/signup", {
 				fname,
 				lname,
 				email,
 				password,
 				confirmpassword
 			});
+			if(res.data.status === "success"){
+             // This checks if res is success which means token is set and user is created now she can be redirected to home page  
+			// redirection
+			}
 
 		}catch{
 

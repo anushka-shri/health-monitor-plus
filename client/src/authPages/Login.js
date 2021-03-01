@@ -13,8 +13,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
-const axios = require('axios').default;
+
 
 function Copyright() {
 	return (
@@ -67,6 +68,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignInSide() {
+	
+	const [email,setEmail] = useState("");
+	const [password,setPassword] = useState("");
+
+	const loginHandler =async(e) => {
+		e.preventDefault();
+		try{
+			const res = await axios.post("http://localhost:3005/api/v1/users/login", {
+				email,
+				password,
+				
+			});
+			// we get res from the server that token is set so now we can redirect to our home page.
+			if(res.data.status === "success"){
+               console.log(res.status);
+			   //Redirection will happen here
+			}
+
+		}catch{
+
+		}
+	}
+
+
+
 	const classes = useStyles();
 
 
@@ -82,7 +108,7 @@ export default function SignInSide() {
 					<Typography component='h1' variant='h5'>
 						Login Here
 					</Typography>
-					<form className={classes.form} Validate>
+					<form onSubmit={loginHandler} className={classes.form} Validate>
 						<TextField
 							variant='outlined'
 							margin='normal'
@@ -94,6 +120,8 @@ export default function SignInSide() {
 							autoComplete='email'
 							type='email'
 							autoFocus
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
 							
 						/>
 						<TextField
@@ -106,6 +134,8 @@ export default function SignInSide() {
 							type='password'
 							id='password'
 							autoComplete='current-password'
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
 							
 						/>
 
