@@ -4,7 +4,7 @@ import { Navbar, Sidebar, Footer } from './Components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import LoginRouter from './authPages/authRouter'
 import {
-	DashBoard,
+	Dashboard,
 	Doctors,
 	NewDoctors,
 	NewPrescription,
@@ -18,11 +18,12 @@ import axios from 'axios';
 function App() {
 	return (
 		<Router>
-			<Navbar />
 			<Sidebar />
+			<Navbar />
+			
 			<Switch>
 				<Route exact path='/'>
-					<DashBoard />
+					<Dashboard />
 				</Route>
 				<Route exact path='/doctors'>
 					<Doctors />
