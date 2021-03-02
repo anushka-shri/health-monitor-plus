@@ -8,9 +8,9 @@ function Sidebar() {
     return (
         <div className="Sidebar_container">
             {SidebarData.map((item,index) => {
-                return <Submenu item={item} key={index}>
+                return <Submenu item={item} key={index}/>
 
-                </Submenu>
+               
         })}
             
         </div>
