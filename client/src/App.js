@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Navbar, Sidebar, Footer } from './Components';
+import { Navbar, Sidebar } from './Components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import LoginRouter from './authPages/authRouter'
 import {
@@ -41,7 +41,7 @@ function App() {
 					<Error />
 				</Route>
 			</Switch>
-			<Footer />
+			
 		</Router>
 	);
 }
