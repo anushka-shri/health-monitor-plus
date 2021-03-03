@@ -1,9 +1,10 @@
 import React from 'react'
+import './trial.css'
 
 function Dashboard() {
     return (
         <div>
-            <h2>Dashboard</h2>
+            <h2 className="heading">Dashboard</h2>
         </div>
     )
 }

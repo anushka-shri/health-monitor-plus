@@ -1,9 +1,10 @@
 import React from 'react'
+import './trial.css'
 
 function NewPrescription() {
     return (
         <div>
-            <h2>NewPrescription</h2>
+            <h2 className="heading">NewPrescription</h2>
         </div>
     )
 }

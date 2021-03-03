@@ -1,5 +1,42 @@
+*{
+    margin: 0;
+}
+
 .Sidebar_container {
-    background-color: #383e56;
+    background-color: #282c3d;
     width: 20vw;
-    height: 100vh;
+    height: 200vh;
+    position: absolute;
+    margin-top:0px;
+}
+
+.separator{
+    margin-top:20px;
+    background-color:rgb(7, 0, 34);
+    height:3vh;
+   border:rgb(7, 0, 34);
+}
+
+.profile_icon{
+    font-size:2.7rem;
+    color:white;
+    margin-top:40px;
+    margin-left: 100px;
+}
+
+.icon_text{
+    /* display:flex;
+    justify-content: space-between; */
+    margin-top:20px;
+    font-size:1.2rem;
+    margin-right: 40px;
+}
+
+.icon_texts{
+    /* display:flex;
+    justify-content: space-between; */
+    margin-top:20px;
+    font-size:1.2rem;
+    margin-left: 30px;
+    margin-right: 20px;
 }

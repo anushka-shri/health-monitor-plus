@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Navbar, Sidebar } from './Components';
+import { Sidebar } from './Components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import LoginRouter from './authPages/authRouter'
 import {
@@ -19,7 +19,7 @@ function App() {
 	return (
 		<Router>
 			<Sidebar />
-			<Navbar />
+			
 			
 			<Switch>
 				<Route exact path='/'>
