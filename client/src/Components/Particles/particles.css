@@ -1,0 +1,11 @@
+
+.particles{
+    background-color: rgba(243, 239, 239, 0.308);
+    position: fixed;
+    size: cover;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+  }
