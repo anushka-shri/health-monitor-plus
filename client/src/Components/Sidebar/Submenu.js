@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import '../Css/Submenu.css'
 
 const SidebarLink = styled(Link)`
   display: flex;
@@ -14,7 +15,7 @@ const SidebarLink = styled(Link)`
   font-size: 18px;
   &:hover {
     background: #252831;
-    border-left: 4px solid #632ce4;
+    border-left: 4px solid #ffffff;
     cursor: pointer;
   }
 `;
