@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: 'rgba(224, 214, 214, 0.562)',
 	},
 	image: {
-		backgroundImage: 'url(./medical-service-678)',
+		backgroundImage: 'url(../../public/medical-service-678)',
 		backgroundRepeat: 'no-repeat',
 		backgroundColor:
 			theme.palette.type === 'light'

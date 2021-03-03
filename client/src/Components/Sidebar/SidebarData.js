@@ -1,7 +1,7 @@
 import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
+// import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
 import * as GiIcons from 'react-icons/gi';
 import * as BiIcons from 'react-icons/bi';
@@ -14,56 +14,56 @@ export const SidebarData = [
 	},
 	{
 		title: 'Medications',
-		path: '/medicines',
+		path: '/medications',
 		icon: <GiIcons.GiMedicines />,
 	},
 	{
 		title: 'Personal Monitoring',
-		path: '/medicines',
+		path: '/',
 		icon: <BiIcons.BiTachometer />,
 		iconClosed: <AiIcons.AiOutlinePlus />,
 		iconOpened: <AiIcons.AiOutlineMinus />,
 		subNav: [
 			{
 				title: 'Blood Pressure',
-				path: '/record-bp',
+				path: '/blood-pressure',
 				icon: <AiIcons.AiOutlineRight />,
 			},
 			{
 				title: 'Blood Glucose',
-				path: '/stats-bp',
+				path: '/blood-glucose',
 				icon: <AiIcons.AiOutlineRight />,
 			},
 			{
 				title: 'Oxygen Saturation',
-				path: '/stats-bp',
+				path: '/oxygen',
 				icon: <AiIcons.AiOutlineRight />,
 			},
 			{
 				title: 'Allergies',
-				path: '/stats-bp',
+				path: '/allergies',
 				icon: <AiIcons.AiOutlineRight />,
 			},
 			{
 				title: 'Vaccinations',
-				path: '/stats-bp',
+				path: '/vaccinations',
 				icon: <AiIcons.AiOutlineRight />,
 			},
 			{
 				title: 'Family History',
-				path: '/stats-bp',
+				path: '/family-history',
 				icon: <AiIcons.AiOutlineRight />,
 			},
 			{
 				title: 'Height & Weight',
-				path: '/stats-bp',
+				path: '/height-weight',
 				icon: <AiIcons.AiOutlineRight />,
 			},
 		],
 	},
 	{
 		title: 'Prescriptions',
-		path: '/presciptions',
+		path: '/',
 		icon: <FaIcons.FaPrescriptionBottleAlt />,
 		iconClosed: <AiIcons.AiOutlinePlus />,
 		iconOpened: <AiIcons.AiOutlineMinus />,
@@ -75,20 +75,20 @@ export const SidebarData = [
 			},
 			{
 				title: 'Prescriptions',
-				path: '/presciptions',
+				path: '/prescriptions',
 				icon: <AiIcons.AiOutlineRight />,
 			},
 		],
 	},
 	{
 		title: 'Lab Reports',
-		path: '/presciptions',
+		path: '/lab-reports',
 		icon: <BiIcons.BiTestTube />,
 	},
 
 	{
 		title: 'Doctors',
-		path: '/doctors',
+		path: '/',
 		icon: <FaIcons.FaUserNurse />,
 		iconClosed: <AiIcons.AiOutlinePlus />,
 		iconOpened: <AiIcons.AiOutlineMinus />,
