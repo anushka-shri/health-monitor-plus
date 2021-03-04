@@ -1,0 +1,7 @@
+.NPrescription_container{
+    transform: translate(90%, 30%);
+    height:60vh;
+    width:40vw;
+    background-color: rgba(255, 255, 255, 0.747);
+    border: 2px solid black;
+}
