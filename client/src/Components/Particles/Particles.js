@@ -10,13 +10,13 @@ function Particles2() {
 				params={{
 					particles: {
 						number: {
-							value: 80,
+							value: 90,
 						},
 						size: {
 							value: 4,
 						},
 						color: {
-							value: '#808080',
+							value: '#383e56',
 						},
 
 						opacity: {
@@ -24,7 +24,7 @@ function Particles2() {
 						},
 
 						line_linked: {
-							color: '#808080',
+							color: '#383e56',
 							opacity: '1',
 						},
 						move: {
