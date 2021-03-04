@@ -8,9 +8,10 @@
 .Sidebar_container {
     background-color: #282c3d;
     width: 20vw;
-    height: 200vh;
+    height: 100vh;
     position: absolute;
     margin-top:0px;
+    overflow:scroll;
 }
 
 .separator{
