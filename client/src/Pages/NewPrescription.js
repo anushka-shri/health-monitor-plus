@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default async function  SignUp() {
+export default  function  NewPresciption() {
 
 	const [doctors, setDoctor] = useState('');
 
