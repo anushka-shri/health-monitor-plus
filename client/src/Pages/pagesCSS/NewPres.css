@@ -1,38 +1,10 @@
-.NPrescription_container{
-    /* transform: translate(90%, 30%); */
-    height:60vh;
-    width:40vw;
-    background-color: rgba(255, 255, 255, 0.829);
-    border: 2px solid black;
-    margin-top:20vh;
-    margin-left: 40vw;
-    position: absolute;
-    
-}
-
-.InputLabel{
-    font-size:1.1rem !important;
-    font-weight:bold !important;
-    color:black !important;
-}
-.NP_form{
- 
-    margin-top:7vh;
-    padding: auto;
-    
-}
-.Form_items{
-    margin-left: 0px;
-    margin-right: 18vw !important;
-}
-
-.select_file{
-
-    margin-top: 4vh;
-    font-size:1.1rem !important;
-    
-    color:black !important;
-    border-bottom: 1px solid black;
-    margin-bottom: 2vh;
-    font-weight: 600;
+.NPrescription_container {
+	/* transform: translate(90%, 30%); */
+	height: 80vh;
+	width: 40vw;
+	background-color: rgba(255, 255, 255, 0.801) !important;
+	border: 2px solid rgb(255, 255, 255);
+	margin-top: 10vh;
+	margin-left: 40vw;
+	position: absolute;
 }
