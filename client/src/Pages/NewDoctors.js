@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Container from '@material-ui/core/Container';
+import Particles from '../Components/Particles/Particles2.js';
 
 import './pagesCSS/NewDocs.css';
 
@@ -35,7 +36,9 @@ const useStyles = makeStyles((theme) => ({
  function NewDoctors() {
 	const classes = useStyles();
 
-	return (
+     return (
+        <>
+             <Particles />
 		<div className='NPDocs_container'>
 			<Container component='main' maxWidth='xs' className='root'>
 				<CssBaseline />
@@ -137,7 +140,8 @@ const useStyles = makeStyles((theme) => ({
 					</form>
 				</div>
 			</Container>
-		</div>
+             </div>
+             </>
 	);
 }
 

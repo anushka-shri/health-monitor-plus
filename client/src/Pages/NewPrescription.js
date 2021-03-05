@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Container from '@material-ui/core/Container';
+import Particles from '../Components/Particles/Particles.js';
 
 import './pagesCSS/NewPres.css';
 
@@ -36,6 +37,8 @@ export default function SignUp() {
 	const classes = useStyles();
 
 	return (
+		 <>
+             <Particles />
 		<div className='NPrescription_container'>
 			<Container component='main' maxWidth='xs' className='root'>
 				<CssBaseline />
@@ -163,6 +166,7 @@ export default function SignUp() {
 					</form>
 				</div>
 			</Container>
-		</div>
+			</div>
+			</>
 	);
 }
