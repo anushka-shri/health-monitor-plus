@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Container from '@material-ui/core/Container';
+
 import './pagesCSS/NewPres.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
 	submit: {
 		margin: theme.spacing(3, 0, 2),
 	},
+	  input: {
+    display: 'none',
+  },
 }));
 
 export default function SignUp() {
@@ -102,6 +106,38 @@ export default function SignUp() {
 								<Button variant='contained' color='primary' sm={6}>
 									Add Medicine +
 								</Button>
+							</Grid>
+                            
+							<Grid item xs={12}>
+							
+							<label htmlFor='contained-button-file'>
+									<Button variant='contained'
+										color='primary'
+										component='span'
+									>
+									Upload Prescriptions
+								</Button>
+								</label>
+								<input
+								accept='image/*'
+								className={classes.input}
+								id='contained-button-file'
+								multiple
+								type='file'
+							/>
+							</Grid>
+							
+								<Grid item xs={12}>
+								<TextField
+									autoComplete='notes'
+									name='notes'
+									variant='outlined'
+									required
+									fullWidth
+									id='title'
+									label='Add Notes Here'
+									autoFocus
+								/>
 							</Grid>
 							<Grid item xs={12} sm={6}>
 								<Button
