@@ -5,7 +5,7 @@ const userRouter = require('./Router/userRoute');
 const monitorRoute = require('./Router/monitorRoute');
 const prescriptionRoute = require('./Router/prescriptionRoute');
 const doctorRoute = require('./Router/doctorRoute');
-const doctorController = require('./Controller/doctorController');
+
 
 
 
@@ -32,7 +32,7 @@ app.use(cors({
 app.use("/api/v1/users",userRouter);
 //app.use("/api/v1/monitor",monitorRoute);
 //app.use("api/v1/prescription", prescriptionRoute);
-app.use("/api/v1/doctors",doctorController.createDoc);
+app.use("/api/v1/doctors",doctorRoute);
 
 
 

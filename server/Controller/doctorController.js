@@ -18,13 +18,15 @@ exports.getAllDoc = catchError(async(req,res,next) => {
 exports.getADoc = (req,res,next) => {
 
 }
-exports.createDoc = catchError( async(req,res,next) => {
+exports.createDoc = async(req,res,next) => {
     console.log(req.body);
-    //const sameDoc = await Doctor.find({Name: req.body.doctor});
-    //if(sameDoc) {
-      //  const err = new AppError('Same name doctor already exists!', 400);
-        //return next(err);
-   // }
+    const sameDoc = await Doctor.find({Name: req.body.doctor});
+    if(sameDoc.length  !== 0) {
+        res.status(200).json({
+            status: 'failed',
+            requestTime: req.requestTime,
+        });
+    }else{
     const newDoc = await Doctor.create({
       Name: req.body.doctor,
       Hospital: req.body.hospital,
@@ -35,11 +37,11 @@ exports.createDoc = catchError( async(req,res,next) => {
         status: 'success',
         requestTime: req.requestTime,
     });
-
-});
+ }
+};
 exports.getUserDoc = catchError(async(req,res,next) => {
 
- const userDoctors = await Doctor.find({User: req.user._id});
+ const userDoctors = await Doctor.find();
  res.status(200).json({
     status: 'success',
     requestTime: req.requestTime,

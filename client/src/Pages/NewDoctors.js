@@ -53,7 +53,7 @@ function NewDoctors() {
 	console.log(doctor);
     try {
       const res = await axios.post(
-        "http://localhost:3005/api/v1/doctors",
+        "http://localhost:3005/api/v1/doctors/addNew",
         {
           doctor,
           hospital,
@@ -61,9 +61,16 @@ function NewDoctors() {
           notes,
         }
       );
+	 
       if (res.data.status === "success") {
         window.alert("Doctor added!");
-      }
+      }else if(res.data.status === "failed"){
+		  window.alert("Same name doctor already exists!");
+		  setDoctor('');
+		  setHospital('');
+		  setSpecialization('');
+		  setNotes('');
+	  }
     } catch {}
   };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Container from '@material-ui/core/Container';
 import Particles from '../Components/Particles/Particles.js';
+import axios from 'axios';
 
 import './pagesCSS/NewPres.css';
 
@@ -33,9 +34,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
-	const classes = useStyles();
+export default async function  SignUp() {
 
+	const [doctors, setDoctor] = useState('');
+
+	const getDoctors = async() => {
+		try {
+			const res = await axios.get(
+			  "http://localhost:3005/api/v1/doctors/getUserDoctor");
+			setDoctor(res.data);
+			console.log(doctors);
+		   }
+		   catch {}
+	}
+	
+
+	useEffect(() => {
+		getDoctors();
+	},[])
+	const classes = useStyles();
+     
 	return (
     <>
       <Particles />
