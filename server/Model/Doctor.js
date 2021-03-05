@@ -5,12 +5,12 @@ const doctorSchema = new mongoose.Schema({
         type: String,
         required: [ true ,"A doctor name must be provided"],
     },
+    Hospital: {
+        type : String,
+    },
     Specialization: {
         type: String,
         required: [true,"A specialization must be provided"],
-    },
-    Hospital: {
-        type : String,
     },
     Notes : {
         type: String,

@@ -9,13 +9,10 @@ import {
 	NewPrescription,
 	Prescriptions,
 	Error,
-	Allergies,
-	BloodPressure,
+	DailyMonitoring,
 	FamilyHistory,
-	Glucose,
 	HeightWeight,
-	Oxygen,
-    Vaccinations,
+   Vaccinations,
     Medications,
     LabReports
 } from './Pages/index.js';
@@ -41,24 +38,18 @@ const AllRoutes = () => {
 				<Route exact path='/new-prescription'>
 					<NewPrescription />
 				</Route>
-				<Route exact path='/allergies'>
-					<Allergies />
-				</Route>
-				<Route exact path='/blood-pressure'>
-					<BloodPressure />
+				
+				<Route exact path='/daily-monitoring'>
+					<DailyMonitoring />
 				</Route>
 				<Route exact path='/family-history'>
 					<FamilyHistory />
 				</Route>
-				<Route exact path='/blood-glucose'>
-					<Glucose />
-				</Route>
+				
 				<Route exact path='/height-weight'>
 					<HeightWeight />
 				</Route>
-				<Route exact path='/oxygen'>
-					<Oxygen />
-				</Route>
+				
 				<Route exact path='/vaccinations'>
 					<Vaccinations />
 				</Route>

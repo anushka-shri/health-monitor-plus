@@ -59,6 +59,7 @@ exports.createPrescription = catchError ( async(req,res,next) => {
     }else{
       const newPrescreption = await Prescription.create({
       Title: req.body.Title,
+      Precription:req.body.Prescription,
       Doctor: req.body. Doctor,
       Hospital: req.body.Hospital,
       Notes: req.body.Notes,

@@ -1,7 +1,6 @@
 import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-// import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
 import * as GiIcons from 'react-icons/gi';
 import * as BiIcons from 'react-icons/bi';
@@ -25,23 +24,8 @@ export const SidebarData = [
 		iconOpened: <AiIcons.AiOutlineMinus />,
 		subNav: [
 			{
-				title: 'Blood Pressure',
-				path: '/blood-pressure',
-				icon: <AiIcons.AiOutlineRight />,
-			},
-			{
-				title: 'Blood Glucose',
-				path: '/blood-glucose',
-				icon: <AiIcons.AiOutlineRight />,
-			},
-			{
-				title: 'Oxygen Saturation',
-				path: '/oxygen',
-				icon: <AiIcons.AiOutlineRight />,
-			},
-			{
-				title: 'Allergies',
-				path: '/allergies',
+				title: 'Daily Monitoring',
+				path: '/daily-monitoring',
 				icon: <AiIcons.AiOutlineRight />,
 			},
 			{

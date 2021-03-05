@@ -1,3 +1,4 @@
+/*const express = require('express');
 const authenticationController = require('./../Controller/authenticationController');
 const prescriptionController = require('./../Controller/prescriptionController');
 
@@ -10,3 +11,4 @@ prescriptionController.uploadImages,
 prescriptionController.resizeImages,
 prescriptionController.createPrescription,
 );
+*/

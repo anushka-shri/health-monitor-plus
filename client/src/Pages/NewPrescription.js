@@ -37,136 +37,141 @@ export default function SignUp() {
 	const classes = useStyles();
 
 	return (
-		 <>
-             <Particles />
-		<div className='NPrescription_container'>
-			<Container component='main' maxWidth='xs' className='root'>
-				<CssBaseline />
-				<div className={classes.paper}>
-					<Typography component='h1' variant='h5'>
-						Add Prescription Here
-					</Typography>
-					<form className={classes.form} Validate>
-						<Grid container spacing={2}>
-							<Grid item xs={12}>
-								<TextField
-									autoComplete='title'
-									name='title'
-									variant='outlined'
-									required
-									fullWidth
-									id='title'
-									label='Prescription Title'
-									autoFocus
-								/>
-							</Grid>
+    <>
+      <Particles />
+      <div className="NPrescription_container">
+        <Container component="main" maxWidth="xs" className="root">
+          <CssBaseline />
+          <div className={classes.paper}>
+            <Typography component="h1" variant="h5">
+              Add Prescription Here
+            </Typography>
+            <form className={classes.form} Validate>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    autoComplete="title"
+                    name="title"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="title"
+                    label="Prescription Title"
+                    autoFocus
+                  />
+                </Grid>
 
-							<Grid item xs={12} sm={8}>
-								<TextField
-									variant='outlined'
-									required
-									fullWidth
-									id='newdoctor'
-									label='Add Doctor'
-									name='newdoc'
-									autoComplete='newdoctor'
-								/>
-							</Grid>
-							<Grid item xs={12} sm={4}>
-								<InputLabel id='demo-simple-select-label'>Doctors</InputLabel>
-								<Select value='Add Doctor'>
-									<MenuItem>AAAAa</MenuItem>
-									<MenuItem>AAggga</MenuItem>
-									<MenuItem>erereAa</MenuItem>
-								</Select>
-							</Grid>
-							<Grid item xs={12}>
-								<Button variant='contained' color='primary' sm={6}>
-									Add Doctor +
-								</Button>
-							</Grid>
+                <Grid item xs={12} sm={8}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="newdoctor"
+                    label="Add Doctor"
+                    name="newdoc"
+                    autoComplete="newdoctor"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <InputLabel id="demo-simple-select-label">Doctors</InputLabel>
+                  <Select value="Add Doctor">
+                    <MenuItem>AAAAa</MenuItem>
+                    <MenuItem>AAggga</MenuItem>
+                    <MenuItem>erereAa</MenuItem>
+                  </Select>
+                </Grid>
+                <Grid item xs={12}>
+                  <Button variant="contained" color="primary" sm={6}>
+                    Add Doctor +
+                  </Button>
+                </Grid>
 
-							<Grid item xs={12} sm={8}>
-								<TextField
-									variant='outlined'
-									required
-									fullWidth
-									id='newmeds'
-									label='Add Medicine'
-									name='newmed'
-									autoComplete='newmed'
-								/>
-							</Grid>
-							<Grid item xs={12} sm={4}>
-								<InputLabel id='demo-simple-select-label'>Medicines</InputLabel>
-								<Select>
-									<MenuItem>AAAAa</MenuItem>
-									<MenuItem>AAggga</MenuItem>
-									<MenuItem>erereAa</MenuItem>
-								</Select>
-							</Grid>
-							<Grid item xs={12}>
-								<Button variant='contained' color='primary' sm={6}>
-									Add Medicine +
-								</Button>
-							</Grid>
-                            
-							<Grid item xs={12}>
-							
-							<label htmlFor='contained-button-file'>
-									<Button variant='contained'
-										color='primary'
-										component='span'
-									>
-									Upload Prescriptions
-								</Button>
-								</label>
-								<input
-								accept='image/*'
-								className={classes.input}
-								id='contained-button-file'
-								multiple
-								type='file'
-							/>
-							</Grid>
-							
-								<Grid item xs={12}>
-								<TextField
-									autoComplete='notes'
-									name='notes'
-									variant='outlined'
-									required
-									fullWidth
-									id='title'
-									label='Add Notes Here'
-									autoFocus
-								/>
-							</Grid>
-							<Grid item xs={12} sm={6}>
-								<Button
-									type='submit'
-									fullWidth
-									variant='contained'
-									color='primary'
-									className={classes.submit}>
-									Save
-								</Button>
-							</Grid>
-							<Grid item xs={12} sm={6}>
-								<Button
-									type='submit'
-									fullWidth
-									variant='contained'
-									color='primary'
-									className={classes.submit}>
-									Reset
-								</Button>
-							</Grid>
-						</Grid>
-					</form>
-				</div>
-			</Container>
-			</div>
-			</>
-	);
+                <Grid item xs={12} sm={8}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="newmeds"
+                    label="Add Medicine"
+                    name="newmed"
+                    autoComplete="newmed"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <InputLabel id="demo-simple-select-label">
+                    Medicines
+                  </InputLabel>
+                  <Select>
+                    <MenuItem>AAAAa</MenuItem>
+                    <MenuItem>AAggga</MenuItem>
+                    <MenuItem>erereAa</MenuItem>
+                  </Select>
+                </Grid>
+                <Grid item xs={12}>
+                  <Button variant="contained" color="primary" sm={6}>
+                    Add Medicine +
+                  </Button>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <label htmlFor="contained-button-file">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      component="span"
+                    >
+                      Upload Prescriptions
+                    </Button>
+                  </label>
+                  <input
+                    accept="image/*"
+                    className={classes.input}
+                    id="contained-button-file"
+                    multiple
+                    type="file"
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <TextField
+                    autoComplete="notes"
+                    name="notes"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="title"
+                    label="Add Notes Here"
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}
+                  >
+                    Save
+                  </Button>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}
+                    
+                  >
+                    Reset
+                  </Button>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+        </Container>
+      </div>
+    </>
+  );
 }

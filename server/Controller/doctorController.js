@@ -19,18 +19,22 @@ exports.getADoc = (req,res,next) => {
 
 }
 exports.createDoc = catchError( async(req,res,next) => {
-
-    const sameDoc = await Doctor.find({Name: req.body.Name});
-    if(sameDoc) {
-        const err = new AppError('Same name doctor already exists!', 400);
-        return next(err);
-    }
+    console.log(req.body);
+    //const sameDoc = await Doctor.find({Name: req.body.doctor});
+    //if(sameDoc) {
+      //  const err = new AppError('Same name doctor already exists!', 400);
+        //return next(err);
+   // }
     const newDoc = await Doctor.create({
-      Name: req.body.name,
-      Specialization: req.body.lname,
-      Hospital: req.body.email,
+      Name: req.body.doctor,
+      Hospital: req.body.hospital,
+      Specialization: req.body.specialization,
       Notes : req.body.notes
       });
+      res.status(200).json({
+        status: 'success',
+        requestTime: req.requestTime,
+    });
 
 });
 exports.getUserDoc = catchError(async(req,res,next) => {
@@ -39,9 +43,8 @@ exports.getUserDoc = catchError(async(req,res,next) => {
  res.status(200).json({
     status: 'success',
     requestTime: req.requestTime,
-    data: {
-      data: userDoctors,
-    },
+    data: userDoctors,
+    
   });
 
 })
