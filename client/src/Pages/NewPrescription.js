@@ -74,7 +74,7 @@ export default function SignUp() {
 								</Select>
 							</Grid>
 							<Grid item xs={12}>
-								<Button variant='contained' color='primary' sm={6}>
+								<Button variant='contained' color='secondary' sm={6}>
 									Add Doctor +
 								</Button>
 							</Grid>
@@ -99,7 +99,7 @@ export default function SignUp() {
 								</Select>
 							</Grid>
 							<Grid item xs={12}>
-								<Button variant='contained' color='primary' sm={6}>
+								<Button variant='contained' color='secondary' sm={6}>
 									Add Medicine +
 								</Button>
 							</Grid>
@@ -108,7 +108,7 @@ export default function SignUp() {
 									type='submit'
 									fullWidth
 									variant='contained'
-									color='primary'
+									color='secondary'
 									className={classes.submit}>
 									Save
 								</Button>
@@ -118,7 +118,7 @@ export default function SignUp() {
 									type='submit'
 									fullWidth
 									variant='contained'
-									color='primary'
+									color='secondary'
 									className={classes.submit}>
 									Reset
 								</Button>

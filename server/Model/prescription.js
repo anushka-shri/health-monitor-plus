@@ -1,9 +1,21 @@
 const mongoose = require('mongoose');
+const User = require('./userModel');
+const Doctor = require('./Doctor');
 
 const presiptionSchema = new mongoose.Schema({
-    DocName : {
-        type: String,
-        required: [ true ,"A document name is required"],
+    Title:{
+      type : String,
+      required: [true, "A title  is required "]
+    },
+    Prescription : [String],
+    Doctor : {
+        type : mongoose.Schema.ObjectId,
+        ref : "Doctor",
+        required: [true, "A doctor name is required "]
+    },
+    Hospital : {
+        type : String,
+        required: [true, "A Hospital name is required "]
     },
     Notes: {
         type: String,
@@ -14,13 +26,10 @@ const presiptionSchema = new mongoose.Schema({
     DateOfRec : {
         type: Date,
     },
-    TimeOfRec : {
-        type : Date,
-    },
     User : {
         type : mongoose.Schema.ObjectId,
         ref : "User",
-        required : [true, "Blood pressure must belong to some user"]
+        required : [true, "Prescription must belong to some user"]
     }
 
 });
