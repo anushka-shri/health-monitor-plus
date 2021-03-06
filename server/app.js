@@ -31,7 +31,7 @@ app.use(cors({
 //Mounting our new routers to app on a specified route
 app.use("/api/v1/users",userRouter);
 //app.use("/api/v1/monitor",monitorRoute);
-//app.use("api/v1/prescription", prescriptionRoute);
+app.use("/api/v1/prescription", prescriptionRoute);
 app.use("/api/v1/doctors",doctorRoute);
 
 

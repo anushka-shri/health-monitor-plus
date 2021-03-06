@@ -7,15 +7,17 @@ const presiptionSchema = new mongoose.Schema({
       type : String,
       required: [true, "A title  is required "]
     },
-    Prescription : [String],
+    Prescription : [{
+    type: String
+    }],
     Doctor : {
         type : mongoose.Schema.ObjectId,
         ref : "Doctor",
         required: [true, "A doctor name is required "]
     },
-    Hospital : {
+    Medicine : {
         type : String,
-        required: [true, "A Hospital name is required "]
+        required: [true, "A medicine name is required "]
     },
     Notes: {
         type: String,
@@ -26,11 +28,11 @@ const presiptionSchema = new mongoose.Schema({
     DateOfRec : {
         type: Date,
     },
-    User : {
+    /*User : {
         type : mongoose.Schema.ObjectId,
         ref : "User",
         required : [true, "Prescription must belong to some user"]
-    }
+    }*/
 
 });
 

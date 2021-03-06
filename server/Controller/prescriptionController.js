@@ -28,13 +28,14 @@ const upload = multer({
 exports.uploadImages = upload.array('Prescription',10);
 
   exports.resizeImages = catchError(async (req, res, next) => {
-    if (!req.files.Prescriptions) return next();
-
+      console.log(req.files);
+    if (!req.files) return next();
+    
   req.body.prescriptions = [];
 
   await Promise.all(
-    req.files.Prescription.map(async (file, i) => {
-      const prescriptionFilename = `prescription-${req.user._id}-${Date.now()}-${
+    req.files.map(async (file, i) => {
+      const prescriptionFilename = `prescription-${Date.now()}-${
         i + 1
       }.jpeg`;
 
@@ -43,28 +44,37 @@ exports.uploadImages = upload.array('Prescription',10);
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .withMetadata()
-        .toFile(``);
+        .toFile(`public/images/prescriptions/${prescriptionFilename}`);
 
-      req.body.Prescription.push(prescriptionFilename);
+      req.body.prescriptions.push(prescriptionFilename);
+      
     })
-  );
+   );
+   
 next();
 });
 
 exports.createPrescription = catchError ( async(req,res,next) => {
-    const doctor = await Doctor.find({Name: req.body.Doctor});
+    const doctor = await Doctor.findOne({Name: req.body.doctor});
+    console.log(doctor);
     if(!doctor){
         const err = new AppError('Doctor not found! Create a new doctor. ', 400);
         return next(err);
     }else{
+        
       const newPrescreption = await Prescription.create({
       Title: req.body.Title,
-      Precription:req.body.Prescription,
-      Doctor: req.body. Doctor,
-      Hospital: req.body.Hospital,
-      Notes: req.body.Notes,
-      DateOfRec: req.body.Date
+      Prescription:req.body.prescriptions,
+      Doctor: doctor._id,
+      Medicine: req.body.medicine,
+      Notes: req.body.notes,
+      DateOfRec: Date.now()
       
       });
+
     }
+    res.status(200).json({
+        status: 'success',
+        requestTime: req.requestTime,
+       });
 });

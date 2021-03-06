@@ -35,23 +35,73 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default  function  NewPresciption() {
-
-	const [doctors, setDoctor] = useState('');
+ 
+	const [doctors, setDoctors] = useState([]);
+	const [Title, setTitle] = useState('');
+	const [doctor, setDoctor] = useState('');
+	const [medicine, setMedicine] = useState('');
+	const [notes, setNote] = useState('');
+	const [fileSelected,setFiles] = useState([]);
+	
 
 	const getDoctors = async() => {
 		try {
 			const res = await axios.get(
 			  "http://localhost:3005/api/v1/doctors/getUserDoctor");
-			setDoctor(res.data);
-			console.log(doctors);
+			  //console.log(res.data.data);
+			setDoctors(res.data.data);
+			//.log(doctors);
 		   }
 		   catch {}
 	}
-	
+	const renderDoctors = () => {
+		return doctors.map((doctor,i) => {
+			return <MenuItem key={i}>{doctor.Name}</MenuItem>
+		});
+	}
 
 	useEffect(() => {
 		getDoctors();
 	},[])
+
+
+	const imageHandler =  (e) => {
+	 if(e.target.files){
+		 //console.log(e.target.files);
+			const fileArray = Array.from(e.target.files);
+			fileArray.forEach((file) => {
+				fileSelected.push(file);
+			});
+			
+		}
+	}
+	
+    const newPrescriptionHandler = async (e) => {
+		e.preventDefault();
+		const form = new FormData();
+    	form.append('Title',Title);
+    	form.append('doctor',doctor);
+    	form.append('medicine',medicine);
+		form.append('notes',notes);
+		
+		fileSelected.forEach(file=>{form.append("Prescription", file)});
+
+		  try {
+			const res = await axios.post("http://localhost:3005/api/v1/prescription/addNew",form);
+			if (res.data.status === "success") {
+				window.alert("Prescription added!");
+				setDoctor('');
+		        setTitle('');
+		        setMedicine('');
+				setNote('');
+				fileSelected = [];
+			  }
+		   }
+		   catch {}
+		
+
+	}
+
 	const classes = useStyles();
      
 	return (
@@ -64,7 +114,7 @@ export default  function  NewPresciption() {
             <Typography component="h1" variant="h5">
               Add Prescription Here
             </Typography>
-            <form className={classes.form} Validate>
+            <form onSubmit={newPrescriptionHandler} className={classes.form} Validate>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
@@ -76,6 +126,8 @@ export default  function  NewPresciption() {
                     id="title"
                     label="Prescription Title"
                     autoFocus
+					value={Title}
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                 </Grid>
 
@@ -88,14 +140,14 @@ export default  function  NewPresciption() {
                     label="Add Doctor"
                     name="newdoc"
                     autoComplete="newdoctor"
+					value={doctor}
+                    onChange={(e) => setDoctor(e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12} sm={4}>
                   <InputLabel id="demo-simple-select-label">Doctors</InputLabel>
                   <Select value="Add Doctor">
-                    <MenuItem>AAAAa</MenuItem>
-                    <MenuItem>AAggga</MenuItem>
-                    <MenuItem>erereAa</MenuItem>
+                    {renderDoctors()}
                   </Select>
                 </Grid>
                 <Grid item xs={12}>
@@ -113,6 +165,8 @@ export default  function  NewPresciption() {
                     label="Add Medicine"
                     name="newmed"
                     autoComplete="newmed"
+					value={medicine}
+                    onChange={(e) => setMedicine(e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -147,6 +201,7 @@ export default  function  NewPresciption() {
                     id="contained-button-file"
                     multiple
                     type="file"
+					onChange={imageHandler}
                   />
                 </Grid>
 
@@ -160,6 +215,8 @@ export default  function  NewPresciption() {
                     id="title"
                     label="Add Notes Here"
                     autoFocus
+					value={notes}
+                    onChange={(e) => setNote(e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
