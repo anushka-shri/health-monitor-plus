@@ -54,13 +54,19 @@ function DailyMonitoring() {
 	const [result, setResult] = useState('');
 	const [pulseOxygen, setPulseOxygen] = useState('');
 	const [sugar, setSugar] = useState('');
-	
+	const [selectedDate, setSelectedDate] = useState(
+			new Date('2014-08-18T21:11:54'),
+		);
 
 	const handleChange = (e) => {
 
 		
 		setValue(e.target.value);
 	}
+
+	const handleDateChange = (date) => {
+		setSelectedDate(date);
+	};
 
 	const bpHandler = async(e) => {
 		e.preventDefault();
