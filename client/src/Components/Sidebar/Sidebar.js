@@ -10,28 +10,28 @@ import Logo from '../../Applogo.png'
 function Sidebar() {
 	return (
 		<>
-			
-		<div className='Sidebar_container'>
-			<div className='header'>
-				<img className='Logo' src={Logo} alt='logo' />
-				<div className='Sidebar_buttons'>
-					<button className='icon_texts'>
-						<GrUserSettings />
-						profile
-					</button>
-					<button className='icon_text'>
-						<FiLogIn />
-						Login
-					</button>
+			<div className='Navbar_container'>
+				<div className='header'>
+					<img className='Logo' src={Logo} alt='logo' />
+					<div className='Sidebar_buttons'>
+						<button className='icon_texts'>
+							<GrUserSettings />
+							profile
+						</button>
+						<button className='icon_text'>
+							<FiLogIn />
+							Login
+						</button>
+					</div>
 				</div>
 			</div>
-
-			<hr className='separator' />
-			{SidebarData.map((item, index) => {
-				return <Submenu item={item} key={index} />;
-			})}
+			<div className='Sidebar_container'>
+				<hr className='separator' />
+				{SidebarData.map((item, index) => {
+					return <Submenu item={item} key={index} />;
+				})}
 			</div>
-			</>
+		</>
 	);
 }
 

@@ -51,7 +51,7 @@ function Doctors() {
             <Particles />
         <div>
             <h2 className="heading">Doctors</h2>
-            
+				<ul>{renderDoctors()}</ul>
             </div>
             </>
     )
