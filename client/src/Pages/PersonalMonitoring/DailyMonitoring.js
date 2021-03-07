@@ -3,11 +3,13 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Radio from '@material-ui/core/Radio';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import Container from '@material-ui/core/Container';
 import Particles from '../../Components/Particles/Particles';
 import axios from 'axios';
@@ -16,7 +18,7 @@ import '../pagesCSS/DailyMonitoring.css';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
-		marginTop: theme.spacing(0),
+		marginTop: theme.spacing(2),
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
@@ -35,7 +37,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DailyMonitoring() {
+
+	const [value, setValue] = useState('')
 	
+
+	const handleChange = (e) => {
+
+		
+		setValue(e.target.value);
+	}
 
 
 	const classes = useStyles();
@@ -46,52 +56,63 @@ function DailyMonitoring() {
 			<div className='DM_container'>
 				<Container component='main' maxWidth='xs' className='root'>
 					<CssBaseline />
+					<Typography component='h1' variant='h'>
+						Daily Monitoring
+					</Typography>
 					<div className={classes.paper}>
-						<Typography component='h1' variant='h'>
-							Daily Monitoring
-						</Typography>
 						<form className={classes.form} Validate>
+							<Typography component='h1' variant='h6'>
+								Add Blood Pressure
+							</Typography>
 							<Grid container spacing={2}>
-								<Typography component='h1' variant='h5'>
-									Add Blood Pressure
-								</Typography>
+								<Grid item xs={12} sm={4}>
+									<TextField
+										id='outlined-number'
+										label='Systolic'
+										type='number'
+										InputLabelProps={{
+											shrink: true,
+										}}
+										variant='outlined'
+									/>
+								</Grid>
+
+								<Grid item xs={12} sm={4}>
+									<TextField
+										id='outlined-number'
+										label='Diastolic'
+										type='number'
+										InputLabelProps={{
+											shrink: true,
+										}}
+										variant='outlined'
+									/>
+								</Grid>
+
+								<Grid item xs={12} sm={4}>
+									<TextField
+										id='outlined-number'
+										label='Pulse'
+										type='number'
+										InputLabelProps={{
+											shrink: true,
+										}}
+										variant='outlined'
+									/>
+								</Grid>
+
+								<Grid item xs={12} sm={12}>
+									<Button variant='contained' color='primary'>
+										Add BP
+									</Button>
+								</Grid>
+
+								<Grid item xs={12} sm={12}>
+									<Typography component='h1' variant='h6'>
+										Add Oxygen Saturation
+									</Typography>
+								</Grid>
 								<Grid item xs={12} sm={6}>
-									<TextField
-										variant='outlined'
-										required
-										fullWidth
-										id='BP'
-										label='Add Systolic'
-										name='BP'
-										autoComplete='BP'
-									/>
-								</Grid>
-
-								<Grid item xs={12} sm={6}>
-									<TextField
-										variant='outlined'
-										required
-										fullWidth
-										id='BP'
-										label='Add Diastolic'
-										name='BP'
-										autoComplete='BP'
-									/>
-								</Grid>
-
-								<Grid item xs={12} sm={8}>
-									<TextField
-										variant='outlined'
-										required
-										fullWidth
-										id='Sugar'
-										label='Add Sugar Levels'
-										name='Sugar'
-										autoComplete='Sugar'
-									/>
-								</Grid>
-
-								<Grid item xs={12} sm={8}>
 									<TextField
 										autoComplete='oxygen'
 										name='oxygen'
@@ -104,37 +125,65 @@ function DailyMonitoring() {
 									/>
 								</Grid>
 
-								<Grid item xs={12} sm={8}>
+								<Grid item xs={12} sm={6}>
 									<TextField
-										autoComplete='weight'
-										name='weight'
+										id='outlined-number'
+										label='Pulse'
+										type='number'
+										InputLabelProps={{
+											shrink: true,
+										}}
+										variant='outlined'
+									/>
+								</Grid>
+
+								<Grid item xs={12} sm={12}>
+									<Button variant='contained' color='primary'>
+										Add Oxygen
+									</Button>
+								</Grid>
+								<Grid item xs={12} sm={6}>
+									<TextField
+										autoComplete='Sugar'
+										name='Sugar'
 										variant='outlined'
 										required
 										fullWidth
-										id='weight'
-										label='Add weight'
+										id='Sugar'
+										label='Add Sugar'
 										autoFocus
 									/>
 								</Grid>
 
 								<Grid item xs={12} sm={6}>
-									<Button
-										type='submit'
-										fullWidth
-										variant='contained'
-										color='primary'
-										className={classes.submit}>
-										Save
-									</Button>
+									<FormControl component='fieldset'>
+										<FormLabel component='legend'>Sugar Type</FormLabel>
+										<RadioGroup
+											aria-label='fasting'
+											name='fasting'
+											value={value}
+											onChange={handleChange}>
+											<FormControlLabel
+												value='fasting'
+												control={<Radio />}
+												label='Fasting'
+											/>
+											<FormControlLabel
+												value='Postprandial'
+												control={<Radio />}
+												label='Postprandial'
+											/>
+											<FormControlLabel
+												value='Random'
+												control={<Radio />}
+												label='Random'
+											/>
+										</RadioGroup>
+									</FormControl>
 								</Grid>
-								<Grid item xs={12} sm={6}>
-									<Button
-										type='submit'
-										fullWidth
-										variant='contained'
-										color='primary'
-										className={classes.submit}>
-										Reset
+								<Grid item xs={12} sm={12}>
+									<Button variant='contained' color='primary'>
+										Add Sugar
 									</Button>
 								</Grid>
 							</Grid>

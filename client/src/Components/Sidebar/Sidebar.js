@@ -6,12 +6,15 @@ import Submenu from './Submenu';
 import { CgProfile } from 'react-icons/cg';
 import { FiLogIn } from 'react-icons/fi';
 import { GrUserSettings } from 'react-icons/gr';
+import Logo from '../../Applogo.png'
 
 function Sidebar() {
 	return (
+		<>
+			
 		<div className='Sidebar_container'>
 			<div className='header'>
-				<CgProfile className='profile_icon' />
+				<img src={Logo} alt='logo' />
 				<div className='Sidebar_buttons'>
 					<button className='icon_texts'>
 						<GrUserSettings />
@@ -28,7 +31,8 @@ function Sidebar() {
 			{SidebarData.map((item, index) => {
 				return <Submenu item={item} key={index} />;
 			})}
-		</div>
+			</div>
+			</>
 	);
 }
 
