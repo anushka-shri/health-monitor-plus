@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {Fragment, useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -10,6 +10,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Container from '@material-ui/core/Container';
 import Particles from '../Components/Particles/Particles.js';
+import { TimePicker } from '@material-ui/pickers';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+	MuiPickersUtilsProvider,
+	KeyboardDatePicker,
+} from '@material-ui/pickers';
 import axios from 'axios';
 
 import './pagesCSS/NewPres.css';
@@ -40,6 +47,14 @@ export default function NewPresciption() {
 	const [doctor, setDoctor] = useState('');
 	const [notes, setNote] = useState('');
 	const [fileSelected, setFiles] = useState([]);
+
+	const [selectedDate, setSelectedDate] = useState(
+		new Date('2014-08-18T21:11:54'),
+	);
+
+	const handleDateChange = (date) => {
+		setSelectedDate(date);
+	};
 
 	const getDoctors = async () => {
 		try {
@@ -186,6 +201,34 @@ export default function NewPresciption() {
 										onChange={(e) => setNote(e.target.value)}
 									/>
 								</Grid>
+
+								<MuiPickersUtilsProvider utils={DateFnsUtils}>
+									<Grid item xs={12} sm={6}>
+										<KeyboardDatePicker
+											disableToolbar
+											variant='inline'
+											format='MM/dd/yyyy'
+											margin='normal'
+											id='date-picker-inline'
+											label='Add Date'
+											value={selectedDate}
+											onChange={handleDateChange}
+											KeyboardButtonProps={{
+												'aria-label': 'change date',
+											}}
+										/>
+									</Grid>
+									<Grid item xs={12} sm={6}>
+										<Fragment>
+											<TimePicker
+												autoOk
+												label='Add Time'
+												value={selectedDate}
+												onChange={handleDateChange}
+											/>
+										</Fragment>
+									</Grid>
+								</MuiPickersUtilsProvider>
 
 								<Grid item xs={12} sm={6}>
 									<Button

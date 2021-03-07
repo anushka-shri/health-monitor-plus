@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {Fragment, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -12,6 +12,15 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Container from '@material-ui/core/Container';
 import Particles from '../../Components/Particles/Particles';
+
+
+import { TimePicker } from '@material-ui/pickers';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+	MuiPickersUtilsProvider,
+	KeyboardDatePicker,
+} from '@material-ui/pickers';
 import axios from 'axios';
 
 import '../pagesCSS/DailyMonitoring.css';
@@ -39,6 +48,13 @@ const useStyles = makeStyles((theme) => ({
 function DailyMonitoring() {
 
 	const [value, setValue] = useState('')
+	const [selectedDate, setSelectedDate] = useState(
+		new Date('2014-08-18T21:11:54'),
+	);
+
+	const handleDateChange = (date) => {
+		setSelectedDate(date);
+	};
 	
 
 	const handleChange = (e) => {
@@ -101,6 +117,34 @@ function DailyMonitoring() {
 									/>
 								</Grid>
 
+								<MuiPickersUtilsProvider utils={DateFnsUtils}>
+									<Grid item xs={12} sm={6}>
+										<KeyboardDatePicker
+											disableToolbar
+											variant='inline'
+											format='MM/dd/yyyy'
+											margin='normal'
+											id='date-picker-inline'
+											label='Add Date'
+											value={selectedDate}
+											onChange={handleDateChange}
+											KeyboardButtonProps={{
+												'aria-label': 'change date',
+											}}
+										/>
+									</Grid>
+									<Grid item xs={12} sm={6}>
+										<Fragment>
+											<TimePicker
+												autoOk
+												label='Add Time'
+												value={selectedDate}
+												onChange={handleDateChange}
+											/>
+										</Fragment>
+									</Grid>
+								</MuiPickersUtilsProvider>
+
 								<Grid item xs={12} sm={12}>
 									<Button variant='contained' color='primary'>
 										Add BP
@@ -136,6 +180,34 @@ function DailyMonitoring() {
 										variant='outlined'
 									/>
 								</Grid>
+
+								<MuiPickersUtilsProvider utils={DateFnsUtils}>
+									<Grid item xs={12} sm={6}>
+										<KeyboardDatePicker
+											disableToolbar
+											variant='inline'
+											format='MM/dd/yyyy'
+											margin='normal'
+											id='date-picker-inline'
+											label='Add Date'
+											value={selectedDate}
+											onChange={handleDateChange}
+											KeyboardButtonProps={{
+												'aria-label': 'change date',
+											}}
+										/>
+									</Grid>
+									<Grid item xs={12} sm={6}>
+										<Fragment>
+											<TimePicker
+												autoOk
+												label='Add Time'
+												value={selectedDate}
+												onChange={handleDateChange}
+											/>
+										</Fragment>
+									</Grid>
+								</MuiPickersUtilsProvider>
 
 								<Grid item xs={12} sm={12}>
 									<Button variant='contained' color='primary'>
@@ -186,6 +258,34 @@ function DailyMonitoring() {
 										</RadioGroup>
 									</FormControl>
 								</Grid>
+
+								<MuiPickersUtilsProvider utils={DateFnsUtils}>
+									<Grid item xs={12} sm={6}>
+										<KeyboardDatePicker
+											disableToolbar
+											variant='inline'
+											format='MM/dd/yyyy'
+											margin='normal'
+											id='date-picker-inline'
+											label='Add Date'
+											value={selectedDate}
+											onChange={handleDateChange}
+											KeyboardButtonProps={{
+												'aria-label': 'change date',
+											}}
+										/>
+									</Grid>
+									<Grid item xs={12} sm={6}>
+										<Fragment>
+											<TimePicker
+												autoOk
+												label='Add Time'
+												value={selectedDate}
+												onChange={handleDateChange}
+											/>
+										</Fragment>
+									</Grid>
+								</MuiPickersUtilsProvider>
 								<Grid item xs={12} sm={12}>
 									<Button variant='contained' color='primary'>
 										Add Sugar

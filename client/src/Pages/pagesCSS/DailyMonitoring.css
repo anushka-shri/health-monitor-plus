@@ -1,11 +1,11 @@
 .DM_container {
 	/* transform: translate(90%, 30%); */
-	height: 92vh;
+	height: 130vh;
 	width: 45vw;
-	background-color: rgba(255, 255, 255, 0.801) !important;
+	background-color: rgba(255, 255, 255, 0.884) !important;
 	border: 2px solid rgb(255, 255, 255);
 	margin-top: 5vh;
-	margin-bottom: 1vh;
+	margin-bottom: 10vh;
 	margin-left: 40vw;
 	margin-right: 10vw;
 	position: absolute;
