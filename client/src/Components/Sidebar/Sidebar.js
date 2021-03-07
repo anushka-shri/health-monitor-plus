@@ -3,7 +3,6 @@ import './Sidebar.css';
 // import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import Submenu from './Submenu';
-import { CgProfile } from 'react-icons/cg';
 import { FiLogIn } from 'react-icons/fi';
 import { GrUserSettings } from 'react-icons/gr';
 import Logo from '../../Applogo.png'

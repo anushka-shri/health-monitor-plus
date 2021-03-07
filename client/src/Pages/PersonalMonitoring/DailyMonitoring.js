@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {Fragment, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -12,6 +12,15 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Container from '@material-ui/core/Container';
 import Particles from '../../Components/Particles/Particles';
+
+
+import { TimePicker } from '@material-ui/pickers';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+	MuiPickersUtilsProvider,
+	KeyboardDatePicker,
+} from '@material-ui/pickers';
 import axios from 'axios';
 
 import '../pagesCSS/DailyMonitoring.css';
@@ -173,6 +182,34 @@ function DailyMonitoring() {
 									/>
 								</Grid>
 
+								<MuiPickersUtilsProvider utils={DateFnsUtils}>
+									<Grid item xs={12} sm={6}>
+										<KeyboardDatePicker
+											disableToolbar
+											variant='inline'
+											format='MM/dd/yyyy'
+											margin='normal'
+											id='date-picker-inline'
+											label='Add Date'
+											value={selectedDate}
+											onChange={handleDateChange}
+											KeyboardButtonProps={{
+												'aria-label': 'change date',
+											}}
+										/>
+									</Grid>
+									<Grid item xs={12} sm={6}>
+										<Fragment>
+											<TimePicker
+												autoOk
+												label='Add Time'
+												value={selectedDate}
+												onChange={handleDateChange}
+											/>
+										</Fragment>
+									</Grid>
+								</MuiPickersUtilsProvider>
+
 								<Grid item xs={12} sm={12}>
 									<Button onClick={bpHandler} variant='contained' color='primary' type='submit'>
 										Add BP
@@ -212,6 +249,34 @@ function DailyMonitoring() {
                     					onChange={(e) => setPulseOxygen(e.target.value)}
 									/>
 								</Grid>
+
+								<MuiPickersUtilsProvider utils={DateFnsUtils}>
+									<Grid item xs={12} sm={6}>
+										<KeyboardDatePicker
+											disableToolbar
+											variant='inline'
+											format='MM/dd/yyyy'
+											margin='normal'
+											id='date-picker-inline'
+											label='Add Date'
+											value={selectedDate}
+											onChange={handleDateChange}
+											KeyboardButtonProps={{
+												'aria-label': 'change date',
+											}}
+										/>
+									</Grid>
+									<Grid item xs={12} sm={6}>
+										<Fragment>
+											<TimePicker
+												autoOk
+												label='Add Time'
+												value={selectedDate}
+												onChange={handleDateChange}
+											/>
+										</Fragment>
+									</Grid>
+								</MuiPickersUtilsProvider>
 
 								<Grid item xs={12} sm={12}>
 									<Button onClick={oxygenHandler} variant='contained' color='primary'>
@@ -264,6 +329,34 @@ function DailyMonitoring() {
 										</RadioGroup>
 									</FormControl>
 								</Grid>
+
+								<MuiPickersUtilsProvider utils={DateFnsUtils}>
+									<Grid item xs={12} sm={6}>
+										<KeyboardDatePicker
+											disableToolbar
+											variant='inline'
+											format='MM/dd/yyyy'
+											margin='normal'
+											id='date-picker-inline'
+											label='Add Date'
+											value={selectedDate}
+											onChange={handleDateChange}
+											KeyboardButtonProps={{
+												'aria-label': 'change date',
+											}}
+										/>
+									</Grid>
+									<Grid item xs={12} sm={6}>
+										<Fragment>
+											<TimePicker
+												autoOk
+												label='Add Time'
+												value={selectedDate}
+												onChange={handleDateChange}
+											/>
+										</Fragment>
+									</Grid>
+								</MuiPickersUtilsProvider>
 								<Grid item xs={12} sm={12}>
 									<Button onClick={sugarHandler} variant='contained' color='primary'>
 										Add Sugar
