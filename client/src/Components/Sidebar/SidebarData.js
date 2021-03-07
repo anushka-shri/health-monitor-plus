@@ -38,11 +38,6 @@ export const SidebarData = [
 				path: '/family-history',
 				icon: <AiIcons.AiOutlineRight />,
 			},
-			{
-				title: 'Height & Weight',
-				path: '/height-weight',
-				icon: <AiIcons.AiOutlineRight />,
-			},
 		],
 	},
 	{

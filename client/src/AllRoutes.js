@@ -11,7 +11,6 @@ import {
 	Error,
 	DailyMonitoring,
 	FamilyHistory,
-	HeightWeight,
    Vaccinations,
     Medications,
     LabReports
@@ -44,10 +43,6 @@ const AllRoutes = () => {
 				</Route>
 				<Route exact path='/family-history'>
 					<FamilyHistory />
-				</Route>
-				
-				<Route exact path='/height-weight'>
-					<HeightWeight />
 				</Route>
 				
 				<Route exact path='/vaccinations'>

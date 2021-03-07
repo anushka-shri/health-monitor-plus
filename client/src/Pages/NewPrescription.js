@@ -39,7 +39,6 @@ export default  function  NewPresciption() {
 	const [doctors, setDoctors] = useState([]);
 	const [Title, setTitle] = useState('');
 	const [doctor, setDoctor] = useState('');
-	const [medicine, setMedicine] = useState('');
 	const [notes, setNote] = useState('');
 	const [fileSelected,setFiles] = useState([]);
 	
@@ -81,7 +80,7 @@ export default  function  NewPresciption() {
 		const form = new FormData();
     	form.append('Title',Title);
     	form.append('doctor',doctor);
-    	form.append('medicine',medicine);
+    	
 		form.append('notes',notes);
 		
 		fileSelected.forEach(file=>{form.append("Prescription", file)});
@@ -92,7 +91,7 @@ export default  function  NewPresciption() {
 				window.alert("Prescription added!");
 				setDoctor('');
 		        setTitle('');
-		        setMedicine('');
+		        
 				setNote('');
 				fileSelected = [];
 			  }
@@ -157,34 +156,6 @@ export default  function  NewPresciption() {
 									</Button>
 								</Grid>
 
-								<Grid item xs={12} sm={8}>
-									<TextField
-										variant='outlined'
-										required
-										fullWidth
-										id='newmeds'
-										label='Add Medicine'
-										name='newmed'
-										autoComplete='newmed'
-										value={medicine}
-										onChange={(e) => setMedicine(e.target.value)}
-									/>
-								</Grid>
-								<Grid item xs={12} sm={4}>
-									<InputLabel id='demo-simple-select-label'>
-										Medicines
-									</InputLabel>
-									<Select>
-										<MenuItem>AAAAa</MenuItem>
-										<MenuItem>AAggga</MenuItem>
-										<MenuItem>erereAa</MenuItem>
-									</Select>
-								</Grid>
-								<Grid item xs={12}>
-									<Button variant='contained' color='primary' sm={6}>
-										Add Medicine +
-									</Button>
-								</Grid>
 
 								<Grid item xs={12}>
 									<label htmlFor='contained-button-file'>

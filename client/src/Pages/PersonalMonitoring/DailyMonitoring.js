@@ -99,7 +99,20 @@ function DailyMonitoring() {
 										required
 										fullWidth
 										id='oxygen'
-										label='Add Oxygen Lvels'
+										label='Add Oxygen Levels'
+										autoFocus
+									/>
+								</Grid>
+
+								<Grid item xs={12} sm={8}>
+									<TextField
+										autoComplete='weight'
+										name='weight'
+										variant='outlined'
+										required
+										fullWidth
+										id='weight'
+										label='Add weight'
 										autoFocus
 									/>
 								</Grid>
