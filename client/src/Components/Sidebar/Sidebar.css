@@ -5,6 +5,14 @@
 .header{
     display:flex;
 }
+
+.Logo{
+
+    background:white;
+    height:15vh;
+    width:12vw;
+    border-radius:50%;
+}
 .Sidebar_container {
     background-color: #282c3d;
     width: 20vw;

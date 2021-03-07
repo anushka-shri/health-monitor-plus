@@ -14,7 +14,7 @@ function Sidebar() {
 			
 		<div className='Sidebar_container'>
 			<div className='header'>
-				<img src={Logo} alt='logo' />
+				<img className='Logo' src={Logo} alt='logo' />
 				<div className='Sidebar_buttons'>
 					<button className='icon_texts'>
 						<GrUserSettings />
