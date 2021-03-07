@@ -3,11 +3,13 @@
 }
 
 .Navbar_container {
-	height: 13vh;
+    margin-top: 0 !important;
+	height: 13vh !important;
 	background-color: #282c3df8;
 	width: 100%;
-	position: fixed;
-	z-index: 10;
+	position: fixed !important;
+	z-index: 10 !important;
+    box-shadow: 0px 10px 8px -8px rgba(0,0,0,0.62);
 }
 .header {
 	display: flex;

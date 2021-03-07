@@ -1,0 +1,24 @@
+.Doctors_container {
+	border: 2px solid rgba(0, 0, 0, 0.288);
+    transform: translate(170%, 150%);
+	position: relative;
+	z-index: 5 !important;
+}
+
+td,
+th {
+	width: 6vw;
+	height: 7vh;
+	background-color: rgb(255, 255, 255) !important;
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+.heading {
+	background-color: rgb(255, 255, 255) !important;
+	border: 2px solid rgb(255, 255, 255);
+	height: 7vh;
+	width: 20vw;
+	transform: translate(250%, 250%);
+}

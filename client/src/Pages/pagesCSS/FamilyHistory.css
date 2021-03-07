@@ -1,6 +1,6 @@
-.NPDocs_container {
+.FH_container {
 	/* transform: translate(90%, 30%); */
-	height: 85vh;
+	height: 55vh;
 	width: 40vw;
 	background-color: rgba(255, 255, 255, 0.801) !important;
 	border: 2px solid rgb(255, 255, 255);
