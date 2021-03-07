@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const GlucoseSchema = new mongoose.Schema({
     Type : {
         type: String,
-        enum: ['Fasting', 'Postprandial', 'Random'],
+        enum: ['fasting', 'Postprandial', 'Random'],
         required: [ true ,"A type for sugar is required"],
     },
     Result: {
@@ -13,19 +13,12 @@ const GlucoseSchema = new mongoose.Schema({
     DateOfRec: {
         type: Date,
     },
-    TimeOfRec : {
-        type : Date,
-    },
-    Notes : {
-        type: String,
-        minlength: 1,
-        maxlength: 30,
-    },
-    User : {
+    
+    /*User : {
         type : mongoose.Schema.ObjectId,
         ref : "User",
         required : [true, "Blood pressure must belong to some user"]
-    }
+    }*/
 
 });
 

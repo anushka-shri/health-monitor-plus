@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	form: {
-		width: '100%', // Fix IE 11 issue.
+		width: '120%', // Fix IE 11 issue.
 		marginTop: theme.spacing(3),
 	},
 	submit: {
@@ -38,7 +38,13 @@ const useStyles = makeStyles((theme) => ({
 
 function DailyMonitoring() {
 
-	const [value, setValue] = useState('')
+	const [value, setValue] = useState('');
+	const [systolic, setSystolic] = useState('');
+	const [diastolic, setDiastolic] = useState('');
+	const [pulse, setPulse] = useState('');
+	const [result, setResult] = useState('');
+	const [pulseOxygen, setPulseOxygen] = useState('');
+	const [sugar, setSugar] = useState('');
 	
 
 	const handleChange = (e) => {
@@ -46,6 +52,66 @@ function DailyMonitoring() {
 		
 		setValue(e.target.value);
 	}
+
+	const bpHandler = async(e) => {
+		e.preventDefault();
+		try {
+			const res = await axios.post(
+			  "http://localhost:3005/api/v1/monitor/bloodPressure",
+			  {
+				Systolic: systolic,
+				Diastolic: diastolic,
+				Pulse:pulse,
+				DateOfRec:Date.now()
+				
+			  }
+			);
+		   
+			if (res.data.status === "success") {
+			  window.alert("Blood Pressure recorded!");
+			}
+		  } catch {}
+	}
+
+	const oxygenHandler = async(e) => {
+		e.preventDefault();
+		try {
+			const res = await axios.post(
+			  "http://localhost:3005/api/v1/monitor/oxygenSaturation",
+			  {
+				Result: result,
+				Pulse: pulseOxygen,
+				DateOfRec:Date.now()
+				
+			  }
+			);
+		   
+			if (res.data.status === "success") {
+			  window.alert("Oxygen Saturation recorded!");
+			}
+		  } catch {}
+	}
+
+    const sugarHandler = async(e) => {
+		e.preventDefault();
+		try {
+			const res = await axios.post(
+			  "http://localhost:3005/api/v1/monitor/bloodGlucose",
+			  {
+				Type: value,
+				Result: sugar,
+				DateOfRec:Date.now()
+				
+			  }
+			);
+		   
+			if (res.data.status === "success") {
+			  window.alert("Blood sugar recorded!");
+			}
+		  } catch {}
+	}
+
+
 
 
 	const classes = useStyles();
@@ -74,6 +140,8 @@ function DailyMonitoring() {
 											shrink: true,
 										}}
 										variant='outlined'
+										value={systolic}
+                    					onChange={(e) => setSystolic(e.target.value)}
 									/>
 								</Grid>
 
@@ -86,6 +154,8 @@ function DailyMonitoring() {
 											shrink: true,
 										}}
 										variant='outlined'
+										value={diastolic}
+                    					onChange={(e) => setDiastolic(e.target.value)}
 									/>
 								</Grid>
 
@@ -98,11 +168,13 @@ function DailyMonitoring() {
 											shrink: true,
 										}}
 										variant='outlined'
+										value={pulse}
+                    					onChange={(e) => setPulse(e.target.value)}
 									/>
 								</Grid>
 
 								<Grid item xs={12} sm={12}>
-									<Button variant='contained' color='primary'>
+									<Button onClick={bpHandler} variant='contained' color='primary' type='submit'>
 										Add BP
 									</Button>
 								</Grid>
@@ -122,6 +194,8 @@ function DailyMonitoring() {
 										id='oxygen'
 										label='Add Oxygen Levels'
 										autoFocus
+										value={result}
+                    					onChange={(e) => setResult(e.target.value)}
 									/>
 								</Grid>
 
@@ -134,13 +208,20 @@ function DailyMonitoring() {
 											shrink: true,
 										}}
 										variant='outlined'
+										value={pulseOxygen}
+                    					onChange={(e) => setPulseOxygen(e.target.value)}
 									/>
 								</Grid>
 
 								<Grid item xs={12} sm={12}>
-									<Button variant='contained' color='primary'>
+									<Button onClick={oxygenHandler} variant='contained' color='primary'>
 										Add Oxygen
 									</Button>
+								</Grid>
+								<Grid item xs={12} sm={12}>
+									<Typography component='h1' variant='h6'>
+										Add Sugar
+									</Typography>
 								</Grid>
 								<Grid item xs={12} sm={6}>
 									<TextField
@@ -152,6 +233,8 @@ function DailyMonitoring() {
 										id='Sugar'
 										label='Add Sugar'
 										autoFocus
+										value={sugar}
+                    					onChange={(e) => setSugar(e.target.value)}
 									/>
 								</Grid>
 
@@ -182,7 +265,7 @@ function DailyMonitoring() {
 									</FormControl>
 								</Grid>
 								<Grid item xs={12} sm={12}>
-									<Button variant='contained' color='primary'>
+									<Button onClick={sugarHandler} variant='contained' color='primary'>
 										Add Sugar
 									</Button>
 								</Grid>

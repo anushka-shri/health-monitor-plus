@@ -11,22 +11,19 @@ const BPSchema = new mongoose.Schema({
         type: Number,
         required: [true,"A diastolic blood pressure is required"],
     },
+    Pulse : {
+        type: Number,
+        required: [true,"A pulse is required"],
+    },
     DateOfRec : {
         type: Date,
     },
-    TimeOfRec : {
-        type : Date,
-    },
-    Notes : {
-        type: String,
-        minlength: 1,
-        maxlength: 30,
-    },
-    User : {
+    
+    /*User : {
         type : mongoose.Schema.ObjectId,
         ref : "User",
         required : [true, "Blood pressure must belong to some user"]
-    }
+    }*/
 
 });
 

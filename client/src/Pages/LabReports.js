@@ -71,7 +71,7 @@ export default function NewPresciption() {
 		}
 	};
 
-	const newPrescriptionHandler = async (e) => {
+	const newReportHandler = async (e) => {
 		e.preventDefault();
 		const form = new FormData();
 		form.append('Title', Title);
@@ -80,16 +80,16 @@ export default function NewPresciption() {
 		form.append('notes', notes);
 
 		fileSelected.forEach((file) => {
-			form.append('Prescription', file);
+			form.append('LabReport', file);
 		});
 
 		try {
 			const res = await axios.post(
-				'http://localhost:3005/api/v1/prescription/addNew',
+				'http://localhost:3005/api/v1/lapReports/addNew',
 				form,
 			);
 			if (res.data.status === 'success') {
-				window.alert('Prescription added!');
+				window.alert('lab report added!');
 				setDoctor('');
                 setTitle('');
                 setNote('');
@@ -111,7 +111,7 @@ export default function NewPresciption() {
 							Add Lab Reports
 						</Typography>
 						<form
-							onSubmit={newPrescriptionHandler}
+							onSubmit={newReportHandler}
 							className={classes.form}
 							Validate>
 							<Grid container spacing={2}>

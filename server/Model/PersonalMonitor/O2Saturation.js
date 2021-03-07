@@ -12,19 +12,15 @@ const saturationSchema = new mongoose.Schema({
     DateOfRec: {
         type: Date,
     },
-    TimeOfRec : {
-        type : Date,
-    },
-    Notes : {
-        type: String,
-        minlength: 1,
-        maxlength: 30,
-    },
-    User : {
+    //TimeOfRec : {
+      //  type : Date,
+   // },
+    
+    /*User : {
         type : mongoose.Schema.ObjectId,
         ref : "User",
         required : [true, "Blood pressure must belong to some user"]
-    }
+    }*/
 
 });
 

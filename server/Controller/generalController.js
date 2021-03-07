@@ -9,9 +9,7 @@ catchError(async (req, res, next) => {
     const newDoc = await Model.create(req.body);
     res.status(201).json({
       status: 'success',
-      data: {
-        doc: newDoc,
-      },
+      
     });
 });
 
