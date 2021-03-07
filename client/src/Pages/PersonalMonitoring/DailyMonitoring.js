@@ -142,6 +142,11 @@ function DailyMonitoring() {
 										Add Oxygen
 									</Button>
 								</Grid>
+								<Grid item xs={12} sm={12}>
+									<Typography component='h1' variant='h6'>
+										Add Sugar
+									</Typography>
+								</Grid>
 								<Grid item xs={12} sm={6}>
 									<TextField
 										autoComplete='Sugar'
