@@ -55,7 +55,7 @@ function DailyMonitoring() {
 	const [pulseOxygen, setPulseOxygen] = useState('');
 	const [sugar, setSugar] = useState('');
 	const [selectedDate, setSelectedDate] = useState(
-			new Date('2014-08-18T21:11:54'),
+			new Date(),
 		);
 
 	const handleChange = (e) => {
@@ -156,7 +156,7 @@ function DailyMonitoring() {
 										}}
 										variant='outlined'
 										value={systolic}
-                    					onChange={(e) => setSystolic(e.target.value)}
+										onChange={(e) => setSystolic(e.target.value)}
 									/>
 								</Grid>
 
@@ -170,7 +170,7 @@ function DailyMonitoring() {
 										}}
 										variant='outlined'
 										value={diastolic}
-                    					onChange={(e) => setDiastolic(e.target.value)}
+										onChange={(e) => setDiastolic(e.target.value)}
 									/>
 								</Grid>
 
@@ -184,7 +184,7 @@ function DailyMonitoring() {
 										}}
 										variant='outlined'
 										value={pulse}
-                    					onChange={(e) => setPulse(e.target.value)}
+										onChange={(e) => setPulse(e.target.value)}
 									/>
 								</Grid>
 
@@ -193,7 +193,7 @@ function DailyMonitoring() {
 										<KeyboardDatePicker
 											disableToolbar
 											variant='inline'
-											format='MM/dd/yyyy'
+											format='dd/MM/yyyy'
 											margin='normal'
 											id='date-picker-inline'
 											label='Add Date'
@@ -217,7 +217,11 @@ function DailyMonitoring() {
 								</MuiPickersUtilsProvider>
 
 								<Grid item xs={12} sm={12}>
-									<Button onClick={bpHandler} variant='contained' color='primary' type='submit'>
+									<Button
+										onClick={bpHandler}
+										variant='contained'
+										color='primary'
+										type='submit'>
 										Add BP
 									</Button>
 								</Grid>
@@ -238,7 +242,7 @@ function DailyMonitoring() {
 										label='Add Oxygen Levels'
 										autoFocus
 										value={result}
-                    					onChange={(e) => setResult(e.target.value)}
+										onChange={(e) => setResult(e.target.value)}
 									/>
 								</Grid>
 
@@ -252,7 +256,7 @@ function DailyMonitoring() {
 										}}
 										variant='outlined'
 										value={pulseOxygen}
-                    					onChange={(e) => setPulseOxygen(e.target.value)}
+										onChange={(e) => setPulseOxygen(e.target.value)}
 									/>
 								</Grid>
 
@@ -261,7 +265,7 @@ function DailyMonitoring() {
 										<KeyboardDatePicker
 											disableToolbar
 											variant='inline'
-											format='MM/dd/yyyy'
+											format='dd/MM/yyyy'
 											margin='normal'
 											id='date-picker-inline'
 											label='Add Date'
@@ -285,7 +289,10 @@ function DailyMonitoring() {
 								</MuiPickersUtilsProvider>
 
 								<Grid item xs={12} sm={12}>
-									<Button onClick={oxygenHandler} variant='contained' color='primary'>
+									<Button
+										onClick={oxygenHandler}
+										variant='contained'
+										color='primary'>
 										Add Oxygen
 									</Button>
 								</Grid>
@@ -305,7 +312,7 @@ function DailyMonitoring() {
 										label='Add Sugar'
 										autoFocus
 										value={sugar}
-                    					onChange={(e) => setSugar(e.target.value)}
+										onChange={(e) => setSugar(e.target.value)}
 									/>
 								</Grid>
 
@@ -341,7 +348,7 @@ function DailyMonitoring() {
 										<KeyboardDatePicker
 											disableToolbar
 											variant='inline'
-											format='MM/dd/yyyy'
+											format='dd/MM/yyyy'
 											margin='normal'
 											id='date-picker-inline'
 											label='Add Date'
@@ -364,7 +371,10 @@ function DailyMonitoring() {
 									</Grid>
 								</MuiPickersUtilsProvider>
 								<Grid item xs={12} sm={12}>
-									<Button onClick={sugarHandler} variant='contained' color='primary'>
+									<Button
+										onClick={sugarHandler}
+										variant='contained'
+										color='primary'>
 										Add Sugar
 									</Button>
 								</Grid>

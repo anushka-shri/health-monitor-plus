@@ -1,4 +1,4 @@
-import React, {Fragment, useState } from "react";
+import React, {Fragment, useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -48,7 +48,7 @@ function NewDoctors() {
   const [notes, setNotes] = useState('');
 
   const [selectedDate, setSelectedDate] = useState(
-		new Date('2014-08-18T21:11:54'),
+		new Date(),
 	);
 
 	const handleDateChange = (date) => {
@@ -184,7 +184,7 @@ function NewDoctors() {
 										<KeyboardDatePicker
 											disableToolbar
 											variant='inline'
-											format='MM/dd/yyyy'
+											format='dd/MM/yyyy'
 											margin='normal'
 											id='date-picker-inline'
 											label='Add Date'

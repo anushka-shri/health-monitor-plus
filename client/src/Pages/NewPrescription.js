@@ -49,7 +49,7 @@ export default function NewPresciption() {
 	const [notes, setNote] = useState('');
 	const [fileSelected, setFiles] = useState([]);
 	const [selectedDate, setSelectedDate] = useState(
-		new Date('2014-08-18T21:11:54'),
+		new Date(),
 	);
 
 	const handleDateChange = (date) => {
@@ -208,7 +208,7 @@ export default function NewPresciption() {
 										<KeyboardDatePicker
 											disableToolbar
 											variant='inline'
-											format='MM/dd/yyyy'
+											format='dd/MM/yyyy'
 											margin='normal'
 											id='date-picker-inline'
 											label='Add Date'

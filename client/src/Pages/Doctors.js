@@ -3,7 +3,6 @@ import Particles from '../Components/Particles/Particles.js';
 import axios from 'axios';
 import './pagesCSS/Doctors.css';
 
-
 function Doctors() {
 	const [doctors, setDoctor] = useState([]);
 
@@ -30,19 +29,17 @@ function Doctors() {
 				<table className='Doctors_container'>
 					<tr>
 						<th>Doctor's Name</th>
-						<th align='right'>Hospital</th>
-						<th align='right'>Specialization</th>
-						<th align='right'>Notes</th>
+						<th>Hospital</th>
+						<th>Specialization</th>
+						<th>Notes</th>
 					</tr>
 
 					{doctors.map((doctor, i) => (
 						<tr key={i}>
-							<td component='th' scope='row'>
-								{doctor.Name}
-							</td>
-							<td align='right'>{doctor.Hospital}</td>
-							<td align='right'>{doctor.Specialization}</td>
-							<td align='right'>{doctor.Notes}</td>
+							<td>{doctor.Name}</td>
+							<td>{doctor.Hospital}</td>
+							<td>{doctor.Specialization}</td>
+							<td>{doctor.Notes}</td>
 						</tr>
 					))}
 				</table>

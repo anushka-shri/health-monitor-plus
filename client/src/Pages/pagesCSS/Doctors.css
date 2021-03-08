@@ -1,6 +1,6 @@
 .Doctors_container {
 	border: 2px solid rgba(0, 0, 0, 0.288);
-    transform: translate(170%, 100%);
+    transform: translate(150%, 100%);
 	position: relative;
 	z-index: 5 !important;
 }
