@@ -44,6 +44,9 @@ function Prescriptions() {
 							<td>{prescription.Doctor.Name}</td>
 							<td>{prescription.Notes}</td>
 							<td>{prescription.DateOfRec}</td>
+                            <td>{prescription.Prescription.map(element => {
+                               return <img src="./../Applogo.png" alt="Girl in a jacket" width="500" height="600"/>
+                            })}</td>
 						</tr>
 					))}
 				</table>
