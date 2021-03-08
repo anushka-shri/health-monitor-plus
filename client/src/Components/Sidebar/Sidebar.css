@@ -3,14 +3,15 @@
 }
 
 .Navbar_container {
-    margin-top: 0 !important;
+	margin-top: 0 !important;
 	height: 13vh !important;
 	background-color: #282c3df8;
 	width: 100%;
 	position: fixed !important;
 	z-index: 10 !important;
-    box-shadow: 0px 10px 8px -8px rgba(0,0,0,0.62);
+	box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.62);
 }
+
 .header {
 	display: flex;
 	justify-content: space-between;
@@ -18,17 +19,15 @@
 
 .Logo {
 	margin-left: 5vw;
+	margin-bottom: 8vw;
 	background: rgb(34, 193, 195);
-	background: linear-gradient(
-		0deg,
-		rgba(34, 193, 195, 0.5683006478958771) 0%,
-		rgba(253, 187, 45, 0.6187208159631039) 100%
-	);
+	background: linear-gradient( 0deg, rgba(34, 193, 195, 0.5683006478958771) 0%, rgba(253, 187, 45, 0.6187208159631039) 100%);
 	height: 12vh;
 	width: 6vw;
 	border-radius: 50%;
 	border: 2px solid rgb(211, 206, 142);
 }
+
 .Sidebar_container {
 	background-color: #212435;
 	width: 20vw;
@@ -36,7 +35,7 @@
 	position: fixed;
 	margin-top: 13vh;
 	overflow: scroll !important;
- z-index: 15;
+	z-index: 15;
 }
 
 .separator {
