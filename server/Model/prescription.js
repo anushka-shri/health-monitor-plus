@@ -15,10 +15,6 @@ const presiptionSchema = new mongoose.Schema({
         ref : "Doctor",
         required: [true, "A doctor name is required "]
     },
-    Medicine : {
-        type : String,
-        required: [true, "A medicine name is required "]
-    },
     Notes: {
         type: String,
         minlength: 1,
@@ -36,7 +32,23 @@ const presiptionSchema = new mongoose.Schema({
 
 });
 
+
+presiptionSchema.pre(/^find/, function (next) {
+    this.populate({
+      path: 'Doctor',
+      
+    });
+  
+    next();
+  });
+
+
 const Prescription = mongoose.model('Presciption', presiptionSchema);
+
+
+
+
+
 
 module.exports = Prescription;
 
