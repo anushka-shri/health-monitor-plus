@@ -16,7 +16,7 @@ function Sidebar() {
 		<>
 			<div className='Navbar_container'>
 					<Button variant='outlined' className='icon_texts' color='secondary'>
-						Profile;;
+						Profile
 					</Button>
 					<Button variant='outlined' className='icon_text' color='primary'>
 						Login

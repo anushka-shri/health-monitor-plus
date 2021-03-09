@@ -3,9 +3,11 @@
 }
 
 .Navbar_container {
+	display: flex;
+	justify-content:flex-end; 
 	margin-top: 0 !important;
 	margin-left: 20vw;
-	height: 10vh !important;
+	height: 8vh !important;
 	background-color: #282c3df8;
 	width: 80%;
 	position: fixed !important;
@@ -34,27 +36,27 @@
 	z-index: 15;
 }
 
-.Sidebar_buttons {
-	display: flex;
+ /* .Sidebar_buttons {
+	 display: flex;
 	justify-content: flex-end;
 	padding: 10px;
 	margin: 10px;
 	margin-bottom: 1px;
-}
+} */
 
 .icon_text {
-	/* display:flex;
-    justify-content: space-between; */
+	 /* display:flex;
+    justify-content: space-between;  */
 	margin-top: 10px;
 	font-size: 1.2rem;
 	margin-left: 50px;
-	margin-right: 0px;
+	margin-right: 30px !important;
 	border-radius: 5px;
 }
 
 .icon_texts {
 	/* display:flex;
-    justify-content: space-between; */
+    justify-content: space-between;  */
 	margin-top: 10px;
 	font-size: 1.2rem;
 	margin-left: 50px;

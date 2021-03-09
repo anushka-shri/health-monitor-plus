@@ -1,15 +1,8 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './pagesCSS/Dashboard.css';
-import {
-	BarGraph,
-	LineChartBP,
-	LineChartSugar,
-	Cards
-} from '../Components';
+import { BarGraph, LineChartBP, LineChartSugar, Cards } from '../Components';
 import Fade from 'react-reveal/Fade';
 import axios from 'axios';
-
-
 
 function Dashboard() {
 	const [records, setRecords] = useState([]);
@@ -22,9 +15,8 @@ function Dashboard() {
 			res.data.records.map((element) => {
 				console.log(element);
 				setRecords(element);
-			})
+			});
 			console.log(records);
-			
 		} catch {}
 	};
 
@@ -33,11 +25,7 @@ function Dashboard() {
 	}, []);
 
 	return (
-		
 		<div className='Dashboard_container'>
-
-			
-			
 			<Fade top>
 				<Cards />
 			</Fade>
