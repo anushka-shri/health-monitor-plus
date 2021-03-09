@@ -1,6 +1,4 @@
-import React,{Fragment, useState, useEffect }from 'react'
-import './trial.css'
-import Particles from '../Components/Particles/Particles.js';
+import React,{useState, useEffect }from 'react'
 import axios from 'axios'
 
 function Prescriptions() {
@@ -26,7 +24,7 @@ function Prescriptions() {
 
     return (
          <>
-            <Particles />
+          
         <div>
             <h2 className="heading">Prescriptions</h2>
             <table className='Doctors_container'>

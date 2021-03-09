@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Particles from '../Components/Particles/Particles.js';
 import axios from 'axios';
 import './pagesCSS/Doctors.css';
 
@@ -23,7 +22,7 @@ function Doctors() {
 
 	return (
 		<>
-			<Particles />
+			
 			<div>
 				<h2 className='heading'>Doctors Added</h2>
 				<table className='Doctors_container'>

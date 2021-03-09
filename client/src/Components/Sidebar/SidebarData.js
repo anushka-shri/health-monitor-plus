@@ -18,7 +18,7 @@ export const SidebarData = [
 	},
 	{
 		title: 'Personal Monitoring',
-		path: '/',
+		path: '/daily-monitoring',
 		icon: <BiIcons.BiTachometer />,
 		iconClosed: <AiIcons.AiOutlinePlus />,
 		iconOpened: <AiIcons.AiOutlineMinus />,
@@ -42,7 +42,7 @@ export const SidebarData = [
 	},
 	{
 		title: 'Prescriptions',
-		path: '/',
+		path: '/prescriptions',
 		icon: <FaIcons.FaPrescriptionBottleAlt />,
 		iconClosed: <AiIcons.AiOutlinePlus />,
 		iconOpened: <AiIcons.AiOutlineMinus />,
