@@ -13,6 +13,18 @@ catchError(async (req, res, next) => {
     });
 });
 
+exports.getRecord = (Model) => 
+  catchError(async (req, res, next) => {
+    
+    const records = await Model.find();
+    res.status(201).json({
+      status: 'success',
+      records
+      
+    });
+});
+
+
 
 
 

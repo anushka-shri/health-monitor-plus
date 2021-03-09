@@ -1,13 +1,12 @@
-.linechartBP{
-    height:45vh !important;
-    width:38vw !important;
+.linechartBP {
+    height: 45vh !important;
+    width: 35vw !important;
     background-color: rgba(0, 0, 0, 0.151);
-    color:rgb(0, 0, 0) !important;
+    color: rgb(0, 0, 0) !important;
 }
 
-
-.line_containerBP{
+.line_containerBP {
     /* transform: translate(25%, 70%); */
-    margin-left: 2vw;
+    margin-left: 1vw;
     margin-top: 15vh;
 }

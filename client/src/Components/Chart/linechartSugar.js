@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import './linechartSugar.css';
 import {
@@ -10,6 +10,7 @@ import {
 	Title,
 } from '@devexpress/dx-react-chart-material-ui';
 import { Animation } from '@devexpress/dx-react-chart';
+import axios from 'axios';
 
 const data = [
 	{ argument: 1, value: 10 },
@@ -20,6 +21,8 @@ const data = [
 	{ argument: 6, value: 20 },
 	{ argument: 7, value: 25 },
 ];
+
+
 
 export default () => (
 	<div className='line_container'>

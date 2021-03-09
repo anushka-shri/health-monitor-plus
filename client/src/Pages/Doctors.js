@@ -12,7 +12,7 @@ function Doctors() {
 			);
 			//console.log(res.data.data);
 			setDoctor(res.data.data);
-			//.log(doctors);
+			console.log(doctors);
 		} catch {}
 	};
 

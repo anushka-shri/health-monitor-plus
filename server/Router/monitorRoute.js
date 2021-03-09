@@ -14,7 +14,8 @@ router.post('/oxygenSaturation', monitorController.addOxygenSaturation);
 //router.post('/familyHistory', authenticationController.protect, monitorController.addFamilyHistory);
 //router.post('/heightandweight', authenticationController.protect, monitorController.addHeight);
 
-
+//get personal monitoring details
+router.get('/getGlucose',monitorController.getBloodGlucose);
 
 
 module.exports = router;

@@ -23,6 +23,7 @@ const AllRoutes = () => {
 			<Sidebar />
 			<Switch>
 				<Route exact path='/'>
+					
 					<Dashboard />
 				</Route>
 				<Route exact path='/doctors'>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import './pagesCSS/Dashboard.css';
 import {
 	BarGraph,
@@ -7,33 +7,36 @@ import {
 	Cards
 } from '../Components';
 import Fade from 'react-reveal/Fade';
-
-function reloadPage() {
-	console.log('here');
-	// The last "domLoading" Time //
-	var currentDocumentTimestamp =
-	new Date(performance.timing.domLoading).getTime();
-	// Current Time //
-	var now = Date.now();
-	// Ten Seconds //
-	var tenSec = 10 * 1000;
-	// Plus Ten Seconds //
-	var plusTenSec = currentDocumentTimestamp + tenSec;
-	if (now > plusTenSec) {
-	window.location.reload();
-	} else {}
-	}
-	reloadPage();
-
-
-
+import axios from 'axios';
 
 
 
 function Dashboard() {
+	const [records, setRecords] = useState([]);
+
+	const getRecords = async () => {
+		try {
+			const res = await axios.get(
+				'http://localhost:3005/api/v1/monitor/getGlucose',
+			);
+			res.data.records.map((element) => {
+				console.log(element);
+				setRecords(element);
+			})
+			console.log(records);
+			
+		} catch {}
+	};
+
+	useEffect(() => {
+		getRecords();
+	}, []);
+
 	return (
+		
 		<div className='Dashboard_container'>
 
+			
 			
 			<Fade top>
 				<Cards />
