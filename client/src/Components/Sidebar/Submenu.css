@@ -1,6 +1,6 @@
 .Sidebar_link {
     display: flex;
-    color: white;
+    color: rgb(0, 0, 0)!important;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
@@ -10,7 +10,7 @@
 }
 
 .Sidebar_link:hover {
-    background: #252831;
+    background: #ebe5e5;
     border-left: 4px solid #632ce4;
     cursor: pointer;
 }

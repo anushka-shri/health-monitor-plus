@@ -3,53 +3,44 @@
 }
 
 .Navbar_container {
-    margin-top: 0 !important;
+	margin-top: 0 !important;
+	margin-left: 20vw;
 	height: 13vh !important;
 	background-color: #282c3df8;
-	width: 100%;
+	width: 80%;
 	position: fixed !important;
 	z-index: 10 !important;
-    box-shadow: 0px 10px 8px -8px rgba(0,0,0,0.62);
+	box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.62);
 }
-.header {
+/* .header {
 	display: flex;
 	justify-content: space-between;
-}
+} */
 
 .Logo {
-	margin-left: 5vw;
-	background: rgb(34, 193, 195);
-	background: linear-gradient(
-		0deg,
-		rgba(34, 193, 195, 0.5683006478958771) 0%,
-		rgba(253, 187, 45, 0.6187208159631039) 100%
-	);
+	margin-left: 0vw;
 	height: 12vh;
-	width: 6vw;
-	border-radius: 50%;
-	border: 2px solid rgb(211, 206, 142);
+	width: 10vw;
+	background: white;
+	background-size: contain;
+	border: 2px solid rgb(255, 255, 255);
 }
 .Sidebar_container {
 	background-color: #212435;
 	width: 20vw;
-	height: 87vh;
+	height: 100vh;
 	position: fixed;
-	margin-top: 13vh;
+	margin-top: 0vh;
 	overflow: scroll !important;
- z-index: 15;
+	z-index: 15;
 }
 
-.separator {
-	background-color: rgb(7, 0, 34);
-	height: 5px;
-	border: rgb(7, 0, 34);
-}
 
-.profile_icon {
-	font-size: 2.7rem;
-	color: white;
-	margin-top: 20px;
-	margin-left: 30px;
+.Sidebar_buttons{
+	display: flex;
+	justify-content: flex-end; 
+	padding: 20px;
+	margin:10px;
 }
 
 .icon_text {
@@ -62,12 +53,12 @@
 	border-radius: 5px;
 }
 
-.icon_texts {
+.icon_texts{
 	/* display:flex;
     justify-content: space-between; */
 	margin-top: 20px;
 	font-size: 1.2rem;
 	margin-left: 50px;
-	margin-right: 0px;
+	margin-right: 20px !important;
 	border-radius: 5px;
 }
