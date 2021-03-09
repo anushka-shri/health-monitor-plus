@@ -5,7 +5,7 @@
 .Navbar_container {
 	margin-top: 0 !important;
 	margin-left: 20vw;
-	height: 13vh !important;
+	height: 10vh !important;
 	background-color: #282c3df8;
 	width: 80%;
 	position: fixed !important;
@@ -37,14 +37,14 @@
 .Sidebar_buttons{
 	display: flex;
 	justify-content: flex-end; 
-	padding: 20px;
+	padding: 10px;
 	margin:10px;
 }
 
 .icon_text {
 	/* display:flex;
     justify-content: space-between; */
-	margin-top: 20px;
+	margin-top: 10px;
 	font-size: 1.2rem;
 	margin-left: 50px;
 	margin-right: 0px;
@@ -54,7 +54,7 @@
 .icon_texts{
 	/* display:flex;
     justify-content: space-between; */
-	margin-top: 20px;
+	margin-top: 10px;
 	font-size: 1.2rem;
 	margin-left: 50px;
 	margin-right: 20px !important;

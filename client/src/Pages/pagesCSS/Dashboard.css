@@ -1,0 +1,13 @@
+.Dashboard_linecharts{
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction:column;
+}
+
+/* .line1{
+    margin-bottom: 2vh;
+}
+
+.line2{
+    margin-top: 2vh;
+} */

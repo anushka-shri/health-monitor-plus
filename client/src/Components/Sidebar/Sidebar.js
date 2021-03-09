@@ -4,8 +4,6 @@ import Button from '@material-ui/core/Button';
 // import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import Submenu from './Submenu';
-import { FiLogIn } from 'react-icons/fi';
-import { GrUserSettings } from 'react-icons/gr';
 import Logo from '../../Applogo.png'
 
 function Sidebar() {
@@ -20,12 +18,6 @@ function Sidebar() {
 						Login
 					</Button>
 
-					{/* <button className='icon_texts'>
-							Profile
-						</button>
-						<button className='icon_text'>
-							Login
-						</button> */}
 				</div>
 			</div>
 			<div className='Sidebar_container'>
