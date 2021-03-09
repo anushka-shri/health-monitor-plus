@@ -56,7 +56,7 @@ next();
 
 exports.createPrescription = catchError ( async(req,res,next) => {
     const doctor = await Doctor.findOne({Name: req.body.doctor});
-    console.log(doctor);
+    //console.log(doctor);
     if(!doctor){
         const err = new AppError('Doctor not found! Create a new doctor. ', 400);
         return next(err);
@@ -66,7 +66,6 @@ exports.createPrescription = catchError ( async(req,res,next) => {
       Title: req.body.Title,
       Prescription:req.body.prescriptions,
       Doctor: doctor._id,
-      Medicine: req.body.medicine,
       Notes: req.body.notes,
       DateOfRec: Date.now()
       
@@ -78,3 +77,15 @@ exports.createPrescription = catchError ( async(req,res,next) => {
         requestTime: req.requestTime,
        });
 });
+
+exports.getUserPrescriptions = catchError(async(req,res,next) => {
+
+  const userPrescription = await Prescription.find();
+  res.status(200).json({
+     status: 'success',
+     requestTime: req.requestTime,
+     data: userPrescription,
+     
+   });
+ 
+ })

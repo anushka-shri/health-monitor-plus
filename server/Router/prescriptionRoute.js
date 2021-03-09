@@ -10,4 +10,5 @@ prescriptionController.uploadImages,
 prescriptionController.resizeImages,
 prescriptionController.createPrescription,
 );
+router.get('/getUserPrescription',prescriptionController.getUserPrescriptions);
 module.exports = router;

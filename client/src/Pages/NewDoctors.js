@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NewDoctors() {
+  const [doctors, setDoctors] = useState([]);
   const [doctor, setDoctor] = useState('');
   const [hospital, setHospital] = useState('');
   const [specialization, setSpecialization] = useState('');
@@ -89,6 +90,26 @@ function NewDoctors() {
     } catch {}
   };
 
+  const getDoctors = async () => {
+		try {
+			const res = await axios.get(
+				'http://localhost:3005/api/v1/doctors/getUserDoctor',
+			);
+			//console.log(res.data.data);
+			setDoctors(res.data.data);
+			//.log(doctors);
+		} catch {}
+	};
+  const renderDoctors = () => {
+		return doctors.map((doctor, i) => {
+			return <MenuItem key={i}>{doctor.Name}</MenuItem>;
+		});
+	};
+
+  useEffect(() => {
+		getDoctors();
+	}, [])
+
   const classes = useStyles();
 
   return (
@@ -118,11 +139,7 @@ function NewDoctors() {
 								</Grid>
 								<Grid item xs={12} sm={4}>
 									<InputLabel id='demo-simple-select-label'>Doctors</InputLabel>
-									<Select value='Add Doctor'>
-										<MenuItem>AAAAa</MenuItem>
-										<MenuItem>AAggga</MenuItem>
-										<MenuItem>erereAa</MenuItem>
-									</Select>
+									<Select value='Add Doctor'>{renderDoctors()}</Select>
 								</Grid>
 
 								<Grid item xs={12} sm={8}>
