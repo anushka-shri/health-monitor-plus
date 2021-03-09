@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './pagesCSS/Dashboard.css';
 import {
 	BarGraph,
@@ -8,10 +8,16 @@ import {
 } from '../Components';
 import Fade from 'react-reveal/Fade';
 
+
+
 function Dashboard() {
+
+
 	return (
+		
 		<div className='Dashboard_container'>
 
+			
 			
 			<Fade top>
 				<Cards />
