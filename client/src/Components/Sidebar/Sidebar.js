@@ -6,19 +6,23 @@ import { SidebarData } from './SidebarData';
 import Submenu from './Submenu';
 import Logo from '../../Applogo.png'
 
+
+
+
+  
+
 function Sidebar() {
 	return (
 		<>
 			<div className='Navbar_container'>
-				<div className='Sidebar_buttons'>
 					<Button variant='outlined' className='icon_texts' color='secondary'>
 						Profile
 					</Button>
 					<Button variant='outlined' className='icon_text' color='primary'>
 						Login
 					</Button>
-
-				</div>
+			
+				
 			</div>
 			<div className='Sidebar_container'>
 				<img className='Logo' src={Logo} alt='logo' />

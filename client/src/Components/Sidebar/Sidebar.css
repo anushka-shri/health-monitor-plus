@@ -13,9 +13,9 @@
 	box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.62);
 }
 
-
 .Logo {
 	margin-left: 0vw;
+	margin-top: 2vw;
 	height: 12vh;
 	width: 10vw;
 	background: white;
@@ -30,15 +30,16 @@
 	position: fixed;
 	margin-top: 0vh;
 	overflow: scroll !important;
+	scrollbar-width: thin;
 	z-index: 15;
 }
 
-
-.Sidebar_buttons{
+.Sidebar_buttons {
 	display: flex;
-	justify-content: flex-end; 
+	justify-content: flex-end;
 	padding: 10px;
-	margin:10px;
+	margin: 10px;
+	margin-bottom: 1px;
 }
 
 .icon_text {
@@ -51,7 +52,7 @@
 	border-radius: 5px;
 }
 
-.icon_texts{
+.icon_texts {
 	/* display:flex;
     justify-content: space-between; */
 	margin-top: 10px;
