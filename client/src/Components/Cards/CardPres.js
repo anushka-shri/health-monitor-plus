@@ -10,7 +10,7 @@ function CardPres() {
 						<div class='content'>
 							<p>Prescriptions Added</p>
 							<p>
-								Number
+								Number.
 								<Button
 									variant='outlined'
 									className='icon_texts'
