@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-// import LockOutlinedIcon from '@material-ui/
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import axios from "axios";
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import AuthContext from '../Context/AuthContext'
 
 
 
@@ -67,10 +65,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function SignInSide() {
+export default function LoginPage() {
 	
 	const [email,setEmail] = useState("");
-	const [password,setPassword] = useState("");
+	const [password, setPassword] = useState("");
+	
+	const { getLoggedIn } = useContext(AuthContext);
+	 const history = useHistory();
 
 	const loginHandler =async(e) => {
 		e.preventDefault();
@@ -84,6 +85,8 @@ export default function SignInSide() {
 			if(res.data.status === "success"){
                console.log(res.status);
 			   //Redirection will happen here
+				getLoggedIn();
+				 history.push('/');
 			}
 
 		}catch{

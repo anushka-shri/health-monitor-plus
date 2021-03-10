@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { AuthContextProvider } from './Context/AuthContext';
 import Particles from './Components/Particles/Particles'
 
 
@@ -12,8 +13,9 @@ function App() {
 	return (
 		<div className='App'>
 			<Particles />
-			<AllRoutes />
-			
+			<AuthContextProvider>
+				<AllRoutes />
+			</AuthContextProvider>
 		</div>
 	);
 }
