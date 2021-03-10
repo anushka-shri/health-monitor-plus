@@ -1,0 +1,15 @@
+.DM_container {
+	/* transform: translate(90%, 30%); */
+	height: 150vh;
+	width: 55vw;
+	background-color: rgba(255, 255, 255, 0.884) !important;
+	border: 2px solid rgb(255, 255, 255);
+	margin-bottom: 10vh !important;
+	margin-top: 25vh;
+
+	margin-left: 32vw;
+	margin-right: 10vw;
+	position: absolute;
+	align-items: center;
+	overflow: scroll;
+}
