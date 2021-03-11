@@ -1,11 +1,12 @@
 import * as React from 'react';
 import Paper from '@material-ui/core/Paper';
-import './Bargraph.css'
+import './chartsCSS/Bargraph.css'
 import {
 	Chart,
 	BarSeries,
 	Title,
 	ArgumentAxis,
+	Legend,
 	ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
 
@@ -25,12 +26,13 @@ function BarGraph() {
 
 
 	return (
-		<div className="bar-graph-container">
+		<div className='bar-graph-container'>
 			<Paper className='bar-graph'>
 				<Chart data={data} className='bar-graph'>
 					<ArgumentAxis />
 					<ValueAxis max={7} />
-                     <BarSeries valueField='population' argumentField='year' />
+					<Legend />
+					<BarSeries valueField='population' argumentField='year' />
 					<Title text='BMI' />
 					<Animation />
 				</Chart>

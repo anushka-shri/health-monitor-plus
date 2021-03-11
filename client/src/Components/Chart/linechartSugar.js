@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
-import './linechartSugar.css';
+import './chartsCSS/linechartSugar.css';
 import {
 	ArgumentAxis,
 	ValueAxis,

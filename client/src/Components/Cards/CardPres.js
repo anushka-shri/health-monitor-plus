@@ -38,7 +38,7 @@ function CardPres() {
 					</div>
 				</div>
 			</div>
-			<div class='card DOC'>
+			<div class='card ANOTHER'>
 				<div class='card-content'>
 					<div class='content'>
 						<p>Another Card</p>
