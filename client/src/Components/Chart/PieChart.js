@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import {
 	Chart,
@@ -16,37 +16,26 @@ const data = [
 	{ region: 'Vaccinations added', val: 3 },
 	{ region: 'Lab reports added', val: 5 },
 	{ region: 'Hospitals Added', val: 7 },
-    { region: 'Medicines Added', val: 3 },
-   
+	{ region: 'Medicines Added', val: 3 },
 ];
 
-export default class Demo extends React.PureComponent {
-	constructor(props) {
-		super(props);
+export default function ActivityStats() {
+	const [chartData, setChartData] = useState(data);
 
-		this.state = {
-			data,
-		};
-	}
-
-	render() {
-		const { data: chartData } = this.state;
-
-		return (
-			<div className='pie-chart-container'>
-				<Paper className='pie-chart'>
-					<Chart data={chartData} className='pie-chart'>
-						<PieSeries
-							valueField='val'
-							argumentField='region'
-							innerRadius={0.6}
-						/>
-						<Title text='Your Activity' />
-						<Legend />
-						<Animation />
-					</Chart>
-				</Paper>
-			</div>
-		);
-	}
+	return (
+		<div className='pie-chart-container'>
+			<Paper className='pie-chart'>
+				<Chart data={chartData} className='pie-chart'>
+					<PieSeries
+						valueField='val'
+						argumentField='region'
+						innerRadius={0.6}
+					/>
+					<Title text='Your Activity' />
+					<Legend />
+					<Animation />
+				</Chart>
+			</Paper>
+		</div>
+	);
 }
