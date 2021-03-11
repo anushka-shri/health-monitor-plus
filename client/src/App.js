@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { AuthContextProvider } from './Context/AuthContext';
-import Particles from './Components/Particles/Particles'
+
 
 
 import AllRoutes from './AllRoutes';
@@ -12,7 +12,7 @@ import AllRoutes from './AllRoutes';
 function App() {
 	return (
 		<div className='App'>
-			<Particles />
+			
 			<AuthContextProvider>
 				<AllRoutes />
 			</AuthContextProvider>
