@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Sidebar } from './Components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import AuthContext from './Context/AuthContext';
-// import LoginRouter from './authPages/authRouter'
+import {useGlobalContext} from './Context/AppContext'
 import Particles from './Components/Particles/Particles'
 import {
 	Dashboard,
@@ -21,14 +20,13 @@ import {
 import { LoginPage, RegisterPage } from './authPages';
 
 const AllRoutes = () => {
-	const { loggedIn } = useContext(AuthContext);
-    console.log(loggedIn);
+	const { isLoggedIn, getLoggedIn} = useGlobalContext();
 	return (
 		<Router>
 			
 			<Switch>
 				
-				 {loggedIn === false  && ( 
+				 {isLoggedIn === false  && ( 
 					 <> 
 					<Route exact path='/register'>
 							<RegisterPage />
@@ -37,8 +35,8 @@ const AllRoutes = () => {
 							<LoginPage />
 						</Route>
 					</>
-				 )} 
-				 {loggedIn === true && (
+				 )}  
+				  {isLoggedIn === true && (
 					<>
 					<Particles />
 					<Sidebar /> 

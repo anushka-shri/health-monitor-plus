@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import AuthContext from '../Context/AuthContext'
+import { useGlobalContext } from '../Context/AppContext';
 
 
 
@@ -70,7 +70,7 @@ export default function LoginPage() {
 	const [email,setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	
-	const { getLoggedIn } = useContext(AuthContext);
+	const { getLoggedIn } = useGlobalContext();
 	 const history = useHistory();
 
 	const loginHandler =async(e) => {

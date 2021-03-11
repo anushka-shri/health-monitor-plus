@@ -1,6 +1,7 @@
 import {
     SET_BP,
     SET_SUGAR,
+    CHECK_LOGIN,
     SET_DOCTORS,
     SET_PRESCRIPTIONS,
     SET_FAMILYHISTORY,
@@ -11,10 +12,22 @@ import {
 } from './Actions';
 
 const reducer = (state, action) => {
+
+    if (action.type === SET_SUGAR)
+    {
+        return {
+            ...state,
+            sugar: action.payload.result,
+        }
+       }
     
-    return (
-        <></>
-    )
+   if(action.type === CHECK_LOGIN)
+   {
+       return{
+           ...state,
+           isLoggedIn: action.payload.LoggedIn
+       }
+   }
 }
 
 export default reducer;

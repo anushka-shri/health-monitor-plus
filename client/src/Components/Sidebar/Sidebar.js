@@ -8,12 +8,12 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Logo from '../../Applogo.png'
 import axios from 'axios';
-import AuthContext from '../../Context/AuthContext'
+import {useGlobalContext} from '../../Context/AppContext'
+
 
 function Sidebar() {
 
-	const { loggedIn } = useContext(AuthContext);
-	const { getLoggedIn } = useContext(AuthContext);
+	const { isLoggedIn, getLoggedIn} = useGlobalContext();
 
 	const history = useHistory();
 
@@ -27,7 +27,7 @@ function Sidebar() {
 	return (
 		<>
 			<div className='Navbar_container'>
-				{loggedIn === false && (
+				{isLoggedIn === false && (
 					<>
 						<Link to='/register'>
 							<Button
@@ -47,7 +47,7 @@ function Sidebar() {
 						</Link>
 					</>
 				)}
-				{loggedIn === true && (
+				{isLoggedIn === true && (
 					<>
 						<Button
 							onClick={logOut}

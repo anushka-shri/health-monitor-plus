@@ -1,7 +1,7 @@
 import React from 'react';
-import { AuthContextProvider } from './Context/AuthContext';
 import AllRoutes from './AllRoutes';
 import axios from 'axios';
+import {AppProvider} from './Context/AppContext'
 
 axios.defaults.withCredentials = true;
 
@@ -9,9 +9,10 @@ function App() {
 	return (
 		<div className='App'>
 			
-			<AuthContextProvider>
-				<AllRoutes />
-			</AuthContextProvider>
+				<AppProvider>
+					<AllRoutes />
+				</AppProvider>
+		
 		</div>
 	);
 }

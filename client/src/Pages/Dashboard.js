@@ -3,27 +3,11 @@ import './pagesCSS/Dashboard.css';
 import { BarGraph, LineChartBP, LineChartSugar, Cards } from '../Components';
 import Fade from 'react-reveal/Fade';
 import axios from 'axios';
+import {useGlobalContext} from '../Context/AppContext'
 
 function Dashboard() {
-	const [records, setRecords] = useState([]);
 
-	const getRecords = async () => {
-		try {
-			const res = await axios.get(
-				'http://localhost:3005/api/v1/monitor/getGlucose',
-			);
-			res.data.records.map((element) => {
-				console.log(element);
-				setRecords(element);
-			});
-			console.log(records);
-		} catch {}
-	};
-
-	useEffect(() => {
-		getRecords();
-	}, []);
-
+	const { sugar, getSugar } = useGlobalContext();
 	return (
 		<div className='Dashboard_container'>
 			<Fade top>

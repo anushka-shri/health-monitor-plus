@@ -13,10 +13,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
-import AuthContext from '../Context/AuthContext';
 import './Register.css'
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
+import { useGlobalContext } from '../Context/AppContext';
 
 
 
@@ -61,7 +61,7 @@ export default function SignUp() {
 	const [password,setPassword] = useState("");
 	const [confirmpassword, setConfpass] = useState("");
 	const history = useHistory();
-	const { getLoggedIn } = useContext(AuthContext);
+	const { getLoggedIn } = useGlobalContext();
 	
 	const registerHandler =async(e) => {
 		e.preventDefault();
