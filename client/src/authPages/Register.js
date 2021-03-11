@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
+import AuthContext from '../Context/AuthContext';
 import './Register.css'
 import axios from "axios";
 
@@ -57,7 +58,9 @@ export default function SignUp() {
 	const [lname,setLastname] = useState("");
 	const [email,setEmail] = useState("");
 	const [password,setPassword] = useState("");
-	const [confirmpassword,setConfpass] = useState("");
+	const [confirmpassword, setConfpass] = useState("");
+	
+	const { getLoggedIn } = useContext(AuthContext);
 	
 	const registerHandler =async(e) => {
 		e.preventDefault();
@@ -72,6 +75,7 @@ export default function SignUp() {
 			if(res.data.status === "success"){
              // This checks if res is success which means token is set and user is created now she can be redirected to home page  
 			// redirection
+				getLoggedIn();
 			}
 
 		}catch{
