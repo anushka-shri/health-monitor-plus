@@ -3,6 +3,7 @@ import { Sidebar } from './Components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AuthContext from './Context/AuthContext';
 // import LoginRouter from './authPages/authRouter'
+import Particles from './Components/Particles/Particles'
 import {
 	Dashboard,
 	Doctors,
@@ -39,6 +40,7 @@ const AllRoutes = () => {
 				 )} 
 				 {loggedIn === true && (
 					<>
+					<Particles />
 					<Sidebar /> 
 						<Route exact path='/'>
 							<Dashboard />
@@ -72,9 +74,7 @@ const AllRoutes = () => {
 						<Route exact path='/lab-reports'>
 							<LabReports />
 						</Route>
-						<Route path='*'>
-							<Error />
-						</Route>
+						
 					</>
 				)} 
 			</Switch>
