@@ -86,7 +86,7 @@ export default function SignUp() {
 	 const classes = useStyles();
 
 	return (
-		<Container component='main' maxWidth='xs' className='root'>
+		<Container component='main' maxWidth='xs' className='Register_container'>
 			<CssBaseline />
 			 <div className={classes.paper}> 
 				<Avatar className={classes.avatar}>{/* <LockOutlinedIcon /> */}</Avatar>
