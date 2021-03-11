@@ -3,10 +3,9 @@ import './pagesCSS/Dashboard.css';
 import { BarGraph, LineChartBP, LineChartSugar, Cards } from '../Components';
 import Fade from 'react-reveal/Fade';
 import axios from 'axios';
-import {useGlobalContext} from '../Context/AppContext'
+import { useGlobalContext } from '../Context/AppContext';
 
 function Dashboard() {
-
 	const { sugar, getSugar } = useGlobalContext();
 	return (
 		<div className='Dashboard_container'>

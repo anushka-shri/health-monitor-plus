@@ -1,16 +1,16 @@
-.PRES{
-    height:20vh;
-    width:15vw;
-    margin-left: 30vw;
-    margin-top: 25vh;
+.PRES {
+	height: 20vh;
+	width: 15vw;
+	margin-left: 30vw;
+	margin-top: 25vh;
 }
 
-.DOC{
-     height:20vh;
-    width:15vw;
-    margin-left: 5vw;
-    margin-top: 25vh;
+.DOC {
+	height: 20vh;
+	width: 15vw;
+	margin-left: 5vw;
+	margin-top: 25vh;
 }
-.cards{
-    display: flex;
+.cards {
+	display: flex;
 }

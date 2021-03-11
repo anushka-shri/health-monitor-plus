@@ -8,3 +8,4 @@ export const SET_LABREPORTS = 'SET_LABREPORTS';
 export const SET_OXYGEN = 'SET_OXYGEN';
 export const SET_FAMILYHISTORY = 'SET_FAMILYHISTORY';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
+export const CHECK_LOGOUT = 'CHECK_LOGOUT';

@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
 	SET_BP,
 	CHECK_LOGIN,
+	CHECK_LOGOUT,
 	SET_SUGAR,
 	SET_DOCTORS,
 	SET_PRESCRIPTIONS,
@@ -11,21 +12,19 @@ import {
 	SET_VACCINATIONS,
 	SET_PULSE,
 	SET_LABREPORTS,
-} from '../Actions';
-import reducer from '../Reducer'
+} from './Actions';
+import reducer from './Reducer';
 
 const initialState = {
 	sugar: 'soha',
-	isLoggedIn:undefined,
-    
-}
+	isLoggedIn: undefined,
+	LoggedOut: undefined,
+};
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
-
-	
 
 	async function getLoggedIn() {
 		const loggedInRes = await axios.get(
@@ -33,15 +32,21 @@ const AppProvider = ({ children }) => {
 		);
 		dispatch({
 			type: CHECK_LOGIN,
-			payload:
-			{
-				LoggedIn: loggedInRes.data,	
-			}})
-		
+			payload: {
+				LoggedIn: loggedInRes.data,
+			},
+		});
 	}
 
-	
+	const LogOut = async () => {
+		const loggedOutRes = await axios.get(
+			'http://localhost:3005/api/v1/users/logout',
+		);
 
+		dispatch({
+			type: CHECK_LOGOUT,
+		});
+	};
 
 	const getSugar = async () => {
 		try {
@@ -51,12 +56,10 @@ const AppProvider = ({ children }) => {
 			console.log(res);
 			dispatch({
 				type: SET_SUGAR,
-				payload:
-				{
-					result: res.data.records,	
-				}})
-			
-			
+				payload: {
+					result: res.data.records,
+				},
+			});
 		} catch {}
 	};
 
@@ -65,10 +68,8 @@ const AppProvider = ({ children }) => {
 		getSugar();
 	}, []);
 
-
 	return (
-		<AppContext.Provider
-			value={{...state, getSugar, getSugar }}>
+		<AppContext.Provider value={{ ...state, getSugar, getLoggedIn, LogOut }}>
 			{children}
 		</AppContext.Provider>
 	);

@@ -20,6 +20,7 @@ import { useGlobalContext } from '../Context/AppContext';
 
 
 
+
 function Copyright() {
 	return (
 		<Typography variant='body2' color='textSecondary' align='center'>
@@ -47,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
+		
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -88,7 +90,7 @@ export default function SignUp() {
 	 const classes = useStyles();
 
 	return (
-		<Container component='main' maxWidth='xs' className='Register_container'>
+		<Container component='main' maxWidth='xs' className='body' >
 			<CssBaseline />
 			 <div className={classes.paper}> 
 				<Avatar className={classes.avatar}>{/* <LockOutlinedIcon /> */}</Avatar>

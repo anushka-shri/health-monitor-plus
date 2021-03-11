@@ -1,7 +1,7 @@
 .linechartBP {
     height: 45vh !important;
     width: 35vw !important;
-    background-color: rgba(0, 0, 0, 0.151);
+    background-color: rgb(255, 255, 255) !important;
     color: rgb(0, 0, 0) !important;
 }
 

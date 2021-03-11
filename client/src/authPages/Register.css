@@ -1,4 +1,6 @@
-.Register_container{ 
-    background: rgba(224, 214, 214, 0.562);
-   
+.body{
+   /* background: rgb(131,58,180);
+background: linear-gradient(to bottom, rgba(255, 251, 251, 0.384) 0%, rgba(126, 84, 84, 0.788) 100%); */
+   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.384) 0%, rgb(192, 173, 236) 100%);
+    margin-bottom: 10vh;
 }

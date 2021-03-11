@@ -1,6 +1,7 @@
 .bar-graph {
     height: 45vh !important;
     width: 40vw;
+    background-color: rgb(255, 255, 255) !important;
 }
 
 .bar-graph-container {

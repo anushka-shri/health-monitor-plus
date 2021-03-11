@@ -22,7 +22,6 @@ function Doctors() {
 
 	return (
 		<>
-			
 			<div>
 				<h2 className='heading'>Doctors Added</h2>
 				<table className='Doctors_container'>

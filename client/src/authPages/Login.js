@@ -12,6 +12,9 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useGlobalContext } from '../Context/AppContext';
+import img from '../images/medical-service-678.jpg';
+import './Login.css'
+
 
 
 
@@ -31,17 +34,20 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: '100vh',
-		backgroundColor: 'rgba(224, 214, 214, 0.562)',
+		background: '#edb0b0',
 	},
 	image: {
-		backgroundImage: 'url(../../public/medical-service-678)',
+		backgroundImage: 'url(' + img + ')',
 		backgroundRepeat: 'no-repeat',
 		backgroundColor:
 			theme.palette.type === 'light'
 				? theme.palette.grey[50]
 				: theme.palette.grey[900],
 		backgroundSize: 'cover',
-		backgroundPosition: 'center',
+		backgroundPosition: 'left',
+		// borderTop: '10px solid rgb(131,58,180)',
+		// borderBottom: '10px solid rgb(131,58,180)',
+		borderLeft: '5px solid rgb(0,0,0)',
 	},
 	paper: {
 		// background: 'black',
@@ -49,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		
 	},
 	avatar: {
 		margin: theme.spacing(1),
@@ -58,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
 	form: {
 		width: '100%', // Fix IE 11 issue.
 		marginTop: theme.spacing(1),
-		
 	},
 	submit: {
 		margin: theme.spacing(3, 0, 2),

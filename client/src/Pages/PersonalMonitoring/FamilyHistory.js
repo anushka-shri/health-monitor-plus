@@ -10,7 +10,7 @@ import Particles from '../../Components/Particles/Particles2.js';
 
 // import axios from 'axios';
 
-import '../pagesCSS/FamilyHistory.css'
+import '../pagesCSS/FamilyHistory.css';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -35,11 +35,7 @@ const useStyles = makeStyles((theme) => ({
 function NewMembers() {
 	const [name, setName] = useState('');
 	const [relation, setRelation] = useState('');
-	const [description, setDescription]  = useState('');
-
-
-
-
+	const [description, setDescription] = useState('');
 
 	// const newRealativeHandler = async (e) => {
 	// 	e.preventDefault();
@@ -77,13 +73,10 @@ function NewMembers() {
 					<CssBaseline />
 					<div className={classes.paper}>
 						<Typography component='h1' variant='h5'>
-							Add a Family Member Here 
+							Add a Family Member Here
 						</Typography>
-						<form  className={classes.form} Validate>
+						<form className={classes.form} Validate>
 							<Grid container spacing={4}>
-								
-							
-
 								<Grid item xs={12} sm={6}>
 									<TextField
 										variant='outlined'
@@ -97,7 +90,6 @@ function NewMembers() {
 										onChange={(e) => setName(e.target.value)}
 									/>
 								</Grid>
-								
 
 								<Grid item xs={12} sm={6}>
 									<TextField
@@ -129,7 +121,6 @@ function NewMembers() {
 									/>
 								</Grid>
 
-								
 								<Grid item xs={12} sm={8}>
 									<Button
 										type='submit'
@@ -140,7 +131,6 @@ function NewMembers() {
 										Save
 									</Button>
 								</Grid>
-								
 							</Grid>
 						</form>
 					</div>

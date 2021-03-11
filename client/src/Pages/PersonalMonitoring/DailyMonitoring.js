@@ -1,4 +1,4 @@
-import React, {Fragment, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -12,7 +12,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Container from '@material-ui/core/Container';
 import Particles from '../../Components/Particles/Particles';
-
 
 import { TimePicker } from '@material-ui/pickers';
 import 'date-fns';
@@ -46,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DailyMonitoring() {
-
 	const [value, setValue] = useState('');
 	const [systolic, setSystolic] = useState('');
 	const [diastolic, setDiastolic] = useState('');
@@ -54,80 +52,70 @@ function DailyMonitoring() {
 	const [result, setResult] = useState('');
 	const [pulseOxygen, setPulseOxygen] = useState('');
 	const [sugar, setSugar] = useState('');
-	const [selectedDate, setSelectedDate] = useState(
-			new Date(),
-		);
+	const [selectedDate, setSelectedDate] = useState(new Date());
 
 	const handleChange = (e) => {
-
-		
 		setValue(e.target.value);
-	}
+	};
 
 	const handleDateChange = (date) => {
 		setSelectedDate(date);
 	};
 
-	const bpHandler = async(e) => {
+	const bpHandler = async (e) => {
 		e.preventDefault();
 		try {
 			const res = await axios.post(
-			  "http://localhost:3005/api/v1/monitor/bloodPressure",
-			  {
-				Systolic: systolic,
-				Diastolic: diastolic,
-				Pulse:pulse,
-				DateOfRec:Date.now()
-				
-			  }
+				'http://localhost:3005/api/v1/monitor/bloodPressure',
+				{
+					Systolic: systolic,
+					Diastolic: diastolic,
+					Pulse: pulse,
+					DateOfRec: Date.now(),
+				},
 			);
-		   
-			if (res.data.status === "success") {
-			  window.alert("Blood Pressure recorded!");
-			}
-		  } catch {}
-	}
 
-	const oxygenHandler = async(e) => {
+			if (res.data.status === 'success') {
+				window.alert('Blood Pressure recorded!');
+			}
+		} catch {}
+	};
+
+	const oxygenHandler = async (e) => {
 		e.preventDefault();
 		try {
 			const res = await axios.post(
-			  "http://localhost:3005/api/v1/monitor/oxygenSaturation",
-			  {
-				Result: result,
-				Pulse: pulseOxygen,
-				DateOfRec:Date.now()
-				
-			  }
+				'http://localhost:3005/api/v1/monitor/oxygenSaturation',
+				{
+					Result: result,
+					Pulse: pulseOxygen,
+					DateOfRec: Date.now(),
+				},
 			);
-		   
-			if (res.data.status === "success") {
-			  window.alert("Oxygen Saturation recorded!");
-			}
-		  } catch {}
-	}
 
-    const sugarHandler = async(e) => {
+			if (res.data.status === 'success') {
+				window.alert('Oxygen Saturation recorded!');
+			}
+		} catch {}
+	};
+
+	const sugarHandler = async (e) => {
 		e.preventDefault();
 		try {
 			const res = await axios.post(
-			  "http://localhost:3005/api/v1/monitor/bloodGlucose",
-			  {
-				Type: value,
-				Result: sugar,
-				DateOfRec:Date.now()
-				
-			  }
+				'http://localhost:3005/api/v1/monitor/bloodGlucose',
+				{
+					Type: value,
+					Result: sugar,
+					DateOfRec: Date.now(),
+				},
 			);
-		   
-			if (res.data.status === "success") {
-			  window.alert("Blood sugar recorded!");
+
+			if (res.data.status === 'success') {
+				window.alert('Blood sugar recorded!');
 			}
-		  } catch {}
-	}
-
-
-
+		} catch {}
+	};
 
 	const classes = useStyles();
 

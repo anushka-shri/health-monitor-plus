@@ -30,16 +30,14 @@ export default () => (
 			<Chart className='linechart' data={data}>
 				<ArgumentAxis />
 				<ValueAxis />
-
-				<Legend />
+                <Legend />
 				<Animation />
 				<LineSeries
 					valueField='value'
 					argumentField='argument'
 					name='Series name'
 				/>
-
-				<Title text='Sugar Stats' />
+                <Title text='Sugar Stats' />
 			</Chart>
 		</Paper>
 	</div>
