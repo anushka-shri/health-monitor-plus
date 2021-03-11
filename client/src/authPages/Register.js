@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../Context/AuthContext';
 import './Register.css'
 import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -59,7 +60,7 @@ export default function SignUp() {
 	const [email,setEmail] = useState("");
 	const [password,setPassword] = useState("");
 	const [confirmpassword, setConfpass] = useState("");
-	
+	const history = useHistory();
 	const { getLoggedIn } = useContext(AuthContext);
 	
 	const registerHandler =async(e) => {
@@ -76,6 +77,7 @@ export default function SignUp() {
              // This checks if res is success which means token is set and user is created now she can be redirected to home page  
 			// redirection
 				getLoggedIn();
+				history.push('/');
 			}
 
 		}catch{

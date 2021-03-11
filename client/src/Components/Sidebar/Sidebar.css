@@ -4,7 +4,7 @@
 
 .Navbar_container {
 	display: flex;
-	justify-content:flex-end; 
+	justify-content: flex-end;
 	margin-top: 0 !important;
 	margin-left: 20vw;
 	height: 8vh !important;
@@ -15,14 +15,28 @@
 	box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.62);
 }
 
+.Logo_container {
+	background: #383e56;
+	height: 145px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	border-radius: 10px;
+}
+
 .Logo {
-	margin-left: 0vw;
+	margin-left: 3vw;
 	margin-top: 2vw;
 	height: 12vh;
-	width: 10vw;
+	width: 11vw;
 	background: white;
 	background-size: contain;
 	border: 2px solid rgb(255, 255, 255);
+	border-radius: 4px;
+}
+
+.Menu_container {
+	margin-top: 25px
 }
 
 .Sidebar_container {
@@ -36,7 +50,7 @@
 	z-index: 15;
 }
 
- /* .Sidebar_buttons {
+/* .Sidebar_buttons {
 	 display: flex;
 	justify-content: flex-end;
 	padding: 10px;
@@ -45,13 +59,14 @@
 } */
 
 .icon_text {
-	 /* display:flex;
+	/* display:flex;
     justify-content: space-between;  */
-	margin-top: 10px;
+	margin-bottom: 2px;
 	font-size: 1.2rem;
 	margin-left: 50px;
 	margin-right: 30px !important;
 	border-radius: 5px;
+	height: 45px;
 }
 
 .icon_texts {

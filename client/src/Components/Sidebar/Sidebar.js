@@ -60,11 +60,14 @@ function Sidebar() {
 				)}
 			</div>
 			<div className='Sidebar_container'>
+				<div className='Logo_container'>
 				<img className='Logo' src={Logo} alt='logo' />
-
+				</div>
+				<div className='Menu_container'>
 				{SidebarData.map((item, index) => {
 					return <Submenu item={item} key={index} />;
 				})}
+				</div>
 			</div>
 		</>
 	);

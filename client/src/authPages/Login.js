@@ -85,7 +85,7 @@ export default function LoginPage() {
 			if(res.data.status === "success"){
                console.log(res.status);
 			   //Redirection will happen here
-				getLoggedIn();
+				 getLoggedIn();
 				 history.push('/');
 			}
 
