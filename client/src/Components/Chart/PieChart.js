@@ -12,11 +12,12 @@ import { Animation } from '@devexpress/dx-react-chart';
 
 const data = [
 	{ region: 'Doctors added', val: 4 },
-	{ region: 'prescriptions added', val: 1 },
+	{ region: 'Prescriptions added', val: 1 },
 	{ region: 'Vaccinations added', val: 3 },
 	{ region: 'Lab reports added', val: 5 },
 	{ region: 'Hospitals Added', val: 7 },
-	{ region: 'Personal Monitoring', val: 3 },
+    { region: 'Medicines Added', val: 3 },
+   
 ];
 
 export default class Demo extends React.PureComponent {
