@@ -21,23 +21,25 @@ import { LoginPage, RegisterPage } from './authPages';
 
 const AllRoutes = () => {
 	const { loggedIn } = useContext(AuthContext);
-
+    console.log(loggedIn);
 	return (
 		<Router>
-			<Sidebar />
+			
 			<Switch>
-				{loggedIn === false && (
-					<>
-						<Route path='/register'>
+				
+				 {loggedIn === false  && ( 
+					 <> 
+					<Route exact path='/register'>
 							<RegisterPage />
 						</Route>
-						<Route path='/login'>
+						<Route exact path='/login'>
 							<LoginPage />
 						</Route>
 					</>
-				)}
-				{loggedIn === true && (
+				 )} 
+				 {loggedIn === true && (
 					<>
+					<Sidebar /> 
 						<Route exact path='/'>
 							<Dashboard />
 						</Route>
@@ -74,8 +76,9 @@ const AllRoutes = () => {
 							<Error />
 						</Route>
 					</>
-				)}
+				)} 
 			</Switch>
+			 
 		</Router>
 	);
 };

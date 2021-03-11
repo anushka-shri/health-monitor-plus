@@ -120,25 +120,26 @@ exports.protect = catchError(async ( req, res, next) => {
 exports.isLoggedIn = async (req, res, next) => {
   
   try {
-    if (req.cookies.JWT) {
+    const token = req.cookies.JWT;
+    if(!token){
+      return res.json(false);
+    }
       //Verify the cookie
-      
       const decoded = await jwt.verify(req.cookies.JWT, process.env.JWT_SECRET);
       
       //Check if the user still exists
       let currentUser = await User.findById(decoded.id);
       if (!currentUser) {
-        return next();
+        res.send(false);
       }
      
     //THERE IS A LOGGED IN USER
-      
       res.locals.user = currentUser;
       req.user = currentUser;
       console.log(req.user);
-      res.json(false);
-      //return next();
-    }
+      res.send(true);
+      
+    
     
   } catch (err) {
     res.json(false);
