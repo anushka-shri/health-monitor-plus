@@ -48,10 +48,12 @@ const AppProvider = ({ children }) => {
 			const res = await axios.get(
 				'http://localhost:3005/api/v1/monitor/getGlucose',
 			);
+			console.log(res);
 			dispatch({
-				type: SET_SUGAR, payload:
+				type: SET_SUGAR,
+				payload:
 				{
-					result: res.data.records.Result,	
+					result: res.data.records,	
 				}})
 			
 			
