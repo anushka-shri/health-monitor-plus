@@ -1,0 +1,9 @@
+export const SET_DOCTORS = 'SET_DOCTORS';
+export const SET_PRESCRIPTIONS = 'SET_PRESCRIPTIONS';
+export const SET_BP = 'SET_BP';
+export const SET_SUGAR = 'SET_SUGAR';
+export const SET_PULSE = 'SET_PULSE';
+export const SET_VACCINATIONS = 'SET_VACCINATIONS';
+export const SET_LABREPORTS = 'SET_LABREPORTS';
+export const SET_OXYGEN = 'SET_OXYGEN';
+export const SET_FAMILYHISTORY = 'SET_FAMILYHISTORY';
