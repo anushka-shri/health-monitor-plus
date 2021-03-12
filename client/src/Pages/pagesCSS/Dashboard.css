@@ -12,3 +12,10 @@
 		rgba(252, 176, 69, 1) 100%
 	);
 }
+
+.Dashboard_heading {
+	font-size: 2rem;
+	font-weight: bold;
+	color: aliceblue;
+	transform: translate(50%, 250%);
+}

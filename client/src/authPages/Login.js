@@ -98,10 +98,7 @@ export default function LoginPage() {
 		}
 	}
 
-
-
 	const classes = useStyles();
-
 
 	return (
 		<Grid container component='main' className={classes.root}>

@@ -23,7 +23,7 @@ function Doctors() {
 	return (
 		<>
 			<div>
-				<h2 className='heading'>Doctors Added</h2>
+				<h2 className='doctors_heading'>Doctors Added</h2>
 				<table className='Doctors_container'>
 					<tr>
 						<th>Doctor's Name</th>

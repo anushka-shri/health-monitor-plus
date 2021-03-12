@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Paper from '@material-ui/core/Paper';
-import './linechartBP.css';
+import './chartsCSS/linechartBP.css';
 import {
 	ArgumentAxis,
 	ValueAxis,

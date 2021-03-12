@@ -1,0 +1,16 @@
+.pie-chart {
+    height: 55vh !important;
+    width: 48vw;
+    background-color: rgb(255, 255, 255) !important;
+    
+    
+}
+
+
+
+.pie-chart-container {
+    margin-left: 29vw;
+    margin-top: 15vh;
+    margin-bottom: 0vh;
+}
+

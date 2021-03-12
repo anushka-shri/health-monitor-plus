@@ -1,11 +1,11 @@
 .bar-graph {
     height: 45vh !important;
-    width: 40vw;
+    width: 48vw;
     background-color: rgb(255, 255, 255) !important;
 }
 
 .bar-graph-container {
-    margin-left: 40vw;
-    margin-top: 5vh;
+    margin-left: 29vw;
+    margin-top: 15vh;
     margin-bottom: 10vh;
 }
