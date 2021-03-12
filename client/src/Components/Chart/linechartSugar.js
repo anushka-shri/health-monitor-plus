@@ -10,21 +10,38 @@ import {
 	Title,
 } from '@devexpress/dx-react-chart-material-ui';
 import { Animation } from '@devexpress/dx-react-chart';
-import axios from 'axios';
 
-const data = [
-	{ argument: 1, value: 10 },
-	{ argument: 2, value: 20 },
-	{ argument: 3, value: 60 },
-	{ argument: 4, value: 10 },
-	{ argument: 5, value: 80 },
-	{ argument: 6, value: 20 },
-	{ argument: 7, value: 25 },
-];
+import { useGlobalContext } from './../../Context/AppContext';
 
 
 
-export default () => (
+
+function sugarChart (){
+
+    const { sugar,  getSugar } = useGlobalContext();
+
+	const data= [
+		{ argument: 'Day-1', value: 10, argument2: 'Day-1', value2: 10},
+		{ argument: 'Day-2', value: 20, argument2:'Day-2' , value2: 30},
+		{ argument: 'Day-3', value: 60, argument2:'Day-3', value2: 80 },
+		{ argument: 'Day-4', value: 10 ,argument2:'Day-4', value2: 50},
+		{ argument: 'Day-5', value: 80 ,argument2:'Day-5', value2: 10},
+		{ argument: 'Day-6', value: 20 ,argument2: 'Day-6', value2: 45},
+		{ argument: 'Day-7', value: 25 ,argument2: 'Day-7', value2: 25},
+	];
+	
+	
+	  const array = Array.from(sugar);
+	//   array.map((el,i) => {
+	//  	 data[i].value = el.Result;
+	// 	 console.log(data[i].value); 
+	// 	 data[i].value2 = el.Result;
+	// 	 console.log(data[i].value2);
+		 
+	//   });
+
+	
+	return(
 	<div className='line_container'>
 		<Paper className='linechart'>
 			<Chart className='linechart' data={data}>
@@ -35,10 +52,18 @@ export default () => (
 				<LineSeries
 					valueField='value'
 					argumentField='argument'
-					name='Series name'
+					name='Fasting'
 				/>
+				<LineSeries
+					valueField='value2'
+					argumentField='argument2'
+					name='Random'
+				/>
+				
                 <Title text='Sugar Stats' />
 			</Chart>
 		</Paper>
 	</div>
-);
+)};
+
+export default sugarChart;
