@@ -65,7 +65,7 @@ const AppProvider = ({ children }) => {
 
 	useEffect(() => {
 		getLoggedIn();
-		getSugar();
+		
 	}, []);
 
 	return (

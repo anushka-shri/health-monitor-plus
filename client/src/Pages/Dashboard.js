@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useGlobalContext } from '../Context/AppContext';
 
 function Dashboard() {
-	const { sugar, getSugar } = useGlobalContext();
+	
 	return (
 		<div className='Dashboard_container'>
 			<h2 className='Dashboard_heading'>

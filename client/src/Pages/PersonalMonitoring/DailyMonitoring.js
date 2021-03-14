@@ -71,7 +71,7 @@ function DailyMonitoring() {
 					Systolic: systolic,
 					Diastolic: diastolic,
 					Pulse: pulse,
-					DateOfRec: Date.now(),
+					DateOfRec:selectedDate,
 				},
 			);
 
@@ -107,7 +107,7 @@ function DailyMonitoring() {
 				{
 					Type: value,
 					Result: sugar,
-					DateOfRec: Date.now(),
+					DateOfRec:selectedDate,
 				},
 			);
 

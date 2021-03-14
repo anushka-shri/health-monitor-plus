@@ -2,6 +2,7 @@ import React from 'react';
 import { Sidebar } from './Components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import {useGlobalContext} from './Context/AppContext'
+import { AppProvider } from './Context/AppContext';
 import Particles from './Components/Particles/Particles'
 import {
 	Dashboard,
@@ -22,22 +23,28 @@ import { LoginPage, RegisterPage } from './authPages';
 const AllRoutes = () => {
 	const { isLoggedIn, getLoggedIn} = useGlobalContext();
 	return (
+		<AppProvider>
 		<Router>
 			
 			<Switch>
-				
+			
 				 {isLoggedIn === false  && ( 
-					 <> 
+					 <>
+					 
 					<Route exact path='/register'>
 							<RegisterPage />
 						</Route>
 						<Route exact path='/login'>
 							<LoginPage />
 						</Route>
+					
 					</>
+				 
 				 )}  
+				
 				  {isLoggedIn === true && (
 					<>
+					<AppProvider> 
 					<Particles />
 					<Sidebar /> 
 						<Route exact path='/'>
@@ -72,12 +79,14 @@ const AllRoutes = () => {
 						<Route exact path='/lab-reports'>
 							<LabReports />
 						</Route>
-						
+						</AppProvider> 
 					</>
 				)} 
+				
 			</Switch>
 			 
 		</Router>
+		</AppProvider>
 	);
 };
 
