@@ -63,12 +63,12 @@ function sugarChart (){
 
 	const data= [
 		{ argument: `${pastDates[0].day}/${pastDates[0].month}`, value: 0,argument1: `${pastDates[0].day}/${pastDates[0].month}` , value2: 0},
-		{ argument: `${pastDates[1].day}/${pastDates[1].month}`, value: 0, argument1: `${pastDates[1].day}/${pastDates[0].month}`,value2: 0},
-		{ argument: `${pastDates[2].day}/${pastDates[2].month}`, value: 0, argument1: `${pastDates[2].day}/${pastDates[0].month}`, value2: 0 },
-		{ argument: `${pastDates[3].day}/${pastDates[3].month}`, value: 0 ,argument1: `${pastDates[3].day}/${pastDates[0].month}`,value2: 0},
-		{ argument: `${pastDates[4].day}/${pastDates[4].month}`,value: 0 ,argument1: `${pastDates[4].day}/${pastDates[0].month}` ,value2: 0},
-		{ argument: `${pastDates[5].day}/${pastDates[5].month}`, value: 0 ,argument1: `${pastDates[5].day}/${pastDates[0].month}`,value2: 0},
-		{ argument: `${pastDates[6].day}/${pastDates[6].month}`,value: 0 ,argument1: `${pastDates[6].day}/${pastDates[0].month}`,value2: 0},
+		{ argument: `${pastDates[1].day}/${pastDates[1].month}`, value: 0, argument1: `${pastDates[1].day}/${pastDates[1].month}`,value2: 0},
+		{ argument: `${pastDates[2].day}/${pastDates[2].month}`, value: 0, argument1: `${pastDates[2].day}/${pastDates[2].month}`, value2: 0 },
+		{ argument: `${pastDates[3].day}/${pastDates[3].month}`, value: 0 ,argument1: `${pastDates[3].day}/${pastDates[3].month}`,value2: 0},
+		{ argument: `${pastDates[4].day}/${pastDates[4].month}`,value: 0 ,argument1: `${pastDates[4].day}/${pastDates[4].month}` ,value2: 0},
+		{ argument: `${pastDates[5].day}/${pastDates[5].month}`, value: 0 ,argument1: `${pastDates[5].day}/${pastDates[5].month}`,value2: 0},
+		{ argument: `${pastDates[6].day}/${pastDates[6].month}`,value: 0 ,argument1: `${pastDates[6].day}/${pastDates[6].month}`,value2: 0},
 	   ];
    
 

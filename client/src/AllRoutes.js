@@ -23,7 +23,7 @@ import { LoginPage, RegisterPage } from './authPages';
 const AllRoutes = () => {
 	const { isLoggedIn, getLoggedIn} = useGlobalContext();
 	return (
-		<AppProvider>
+		
 		<Router>
 			
 			<Switch>
@@ -44,7 +44,7 @@ const AllRoutes = () => {
 				
 				  {isLoggedIn === true && (
 					<>
-					<AppProvider> 
+					
 					<Particles />
 					<Sidebar /> 
 						<Route exact path='/'>
@@ -79,14 +79,14 @@ const AllRoutes = () => {
 						<Route exact path='/lab-reports'>
 							<LabReports />
 						</Route>
-						</AppProvider> 
+						
 					</>
 				)} 
 				
 			</Switch>
 			 
 		</Router>
-		</AppProvider>
+		
 	);
 };
 
