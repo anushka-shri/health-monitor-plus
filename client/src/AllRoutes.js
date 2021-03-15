@@ -9,7 +9,6 @@ import {
 	NewDoctors,
 	NewPrescription,
 	Prescriptions,
-	Error,
 	DailyMonitoring,
 	FamilyHistory,
 	Vaccinations,
