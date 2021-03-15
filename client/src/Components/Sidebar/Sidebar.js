@@ -7,14 +7,13 @@ import Submenu from './Submenu';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Logo from '../../images/Applogo.png';
-import axios from 'axios';
 import { useGlobalContext } from '../../Context/AppContext';
 
 
 function Sidebar() {
 	const { isLoggedIn,  LogOut } = useGlobalContext();
 
-	const history = useHistory();
+	// const history = useHistory();
 
 	// async function logOut() {
 

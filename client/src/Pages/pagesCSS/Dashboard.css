@@ -1,8 +1,8 @@
-.Dashboard_linecharts {
+/* .Dashboard_linecharts {
 	display: flex;
 	justify-content: space-evenly;
 	/* flex-direction:column; */
-}
+
 
 .Dashboard_container {
 	background: rgb(131, 58, 180);

@@ -1,7 +1,8 @@
 import React from 'react';
 import AllRoutes from './AllRoutes';
 import axios from 'axios';
-import {AppProvider} from './Context/AppContext';
+import { AppProvider } from './Context/AppContext';
+
 
 axios.defaults.withCredentials = true;
 

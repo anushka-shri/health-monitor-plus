@@ -1,11 +1,11 @@
-.linechart {
+.linechartBPE {
     height: 50vh !important;
     width: 40vw !important;
     background-color: rgb(255, 255, 255) !important;
     color: rgb(0, 0, 0) !important;
 }
 
-.line_container {
+.line_containerBPE {
     /* transform: translate(25%, 70%); */
     margin-left: 35vw;
     margin-top: 15vh;

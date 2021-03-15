@@ -1,9 +1,8 @@
 import React from 'react';
 import { Sidebar } from './Components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import {useGlobalContext} from './Context/AppContext'
-import { AppProvider } from './Context/AppContext';
-import Particles from './Components/Particles/Particles'
+import { useGlobalContext } from './Context/AppContext';
+import Particles from './Components/Particles/Particles';
 import {
 	Dashboard,
 	Doctors,
@@ -21,32 +20,25 @@ import {
 import { LoginPage, RegisterPage } from './authPages';
 
 const AllRoutes = () => {
-	const { isLoggedIn, getLoggedIn} = useGlobalContext();
+	const { isLoggedIn, getLoggedIn } = useGlobalContext();
 	return (
-		<AppProvider>
 		<Router>
-			
 			<Switch>
-			
-				 {isLoggedIn === false  && ( 
-					 <>
-					 
-					<Route exact path='/register'>
+				{isLoggedIn === false && (
+					<>
+						<Route exact path='/register'>
 							<RegisterPage />
 						</Route>
 						<Route exact path='/login'>
 							<LoginPage />
 						</Route>
-					
 					</>
-				 
-				 )}  
-				
-				  {isLoggedIn === true && (
+				)}
+
+				{isLoggedIn === true && (
 					<>
-					<AppProvider> 
-					<Particles />
-					<Sidebar /> 
+						<Particles />
+						<Sidebar />
 						<Route exact path='/'>
 							<Dashboard />
 						</Route>
@@ -79,14 +71,10 @@ const AllRoutes = () => {
 						<Route exact path='/lab-reports'>
 							<LabReports />
 						</Route>
-						</AppProvider> 
 					</>
-				)} 
-				
+				)}
 			</Switch>
-			 
 		</Router>
-		</AppProvider>
 	);
 };
 

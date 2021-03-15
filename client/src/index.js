@@ -3,14 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import 'bulma/css/bulma.min.css';
-import { AppProvider } from './Context/AppContext';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
 	<React.StrictMode>
-		
-			<App />
-		
+		<App />
 	</React.StrictMode>,
 	document.getElementById('root'),
 );

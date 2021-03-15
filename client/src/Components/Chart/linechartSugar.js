@@ -12,142 +12,178 @@ import {
 import { Animation } from '@devexpress/dx-react-chart';
 import axios from 'axios';
 
-import { useGlobalContext } from './../../Context/AppContext';
 
 
-function sugarChart (){
+function sugarChart() {
+	const [sugar, setSugar] = useState([]);
 
- const [ sugar,  setSugar ]= useState([]);
+	const getSugar = async () => {
+		try {
+			const res = await axios.get(
+				'http://localhost:3005/api/v1/monitor/getGlucose',
+			);
+			console.log(res);
+			setSugar(res.data.records);
+		} catch {}
+	};
 
- const getSugar = async () => {
- 	try {
- 		const res = await axios.get(
- 			'http://localhost:3005/api/v1/monitor/getGlucose',
- 		);
- 		console.log(res); 		
-		setSugar(res.data.records);
- 	} catch {}
- };
+	useEffect(() => {
+		getSugar();
+	}, []);
 
-  useEffect(() => {
-  	getSugar();
-  }, []);
-
-
-
-	
-	  
-	  //get past seven days
-	  var timeFrom = (X) => {
+	//get past seven days
+	var timeFrom = (X) => {
 		var dates = [];
 		for (let I = 0; I < Math.abs(X); I++) {
-			dates.push(new Date(new Date().getTime() - ((X >= 0 ? I : (I - I - I)) * 24 * 60 * 60 * 1000)).toLocaleString());
+			dates.push(
+				new Date(
+					new Date().getTime() - (X >= 0 ? I : I - I - I) * 24 * 60 * 60 * 1000,
+				).toLocaleString(),
+			);
 		}
 		return dates;
-	}
-	const pastDays = timeFrom(7); 
+	};
+	const pastDays = timeFrom(7);
+	console.log(pastDays)
 
 	const pastDates = [];
 	const pastDatesRecords = [];
-	const getPastDate = string => (([month, day, year]) => ({ day, month, year }))(string.split('/'));
-	pastDays.forEach((el,i) => {
+	const getPastDate = (string) =>
+		(([day, month, year]) => ({ day, month, year }))(string.split('/'));
+	pastDays.forEach((el, i) => {
 		pastDates.push(getPastDate(el.split(',')[0]));
 	});
 	pastDates.reverse();
-    console.log(pastDates);
-	
-	
-	const getPastDateRecord = string => (([year,month,day]) => ({ day, month, year }))(string.split('-'));
-	
+	console.log(pastDates);
 
+	const getPastDateRecord = (string) =>
+		(([year, month, day]) => ({ day, month, year }))(string.split('-'));
 
-	const data= [
-		{ argument: `${pastDates[0].day}/${pastDates[0].month}`, value: 0,argument1: `${pastDates[0].day}/${pastDates[0].month}` , value2: 0},
-		{ argument: `${pastDates[1].day}/${pastDates[1].month}`, value: 0, argument1: `${pastDates[1].day}/${pastDates[0].month}`,value2: 0},
-		{ argument: `${pastDates[2].day}/${pastDates[2].month}`, value: 0, argument1: `${pastDates[2].day}/${pastDates[0].month}`, value2: 0 },
-		{ argument: `${pastDates[3].day}/${pastDates[3].month}`, value: 0 ,argument1: `${pastDates[3].day}/${pastDates[0].month}`,value2: 0},
-		{ argument: `${pastDates[4].day}/${pastDates[4].month}`,value: 0 ,argument1: `${pastDates[4].day}/${pastDates[0].month}` ,value2: 0},
-		{ argument: `${pastDates[5].day}/${pastDates[5].month}`, value: 0 ,argument1: `${pastDates[5].day}/${pastDates[0].month}`,value2: 0},
-		{ argument: `${pastDates[6].day}/${pastDates[6].month}`,value: 0 ,argument1: `${pastDates[6].day}/${pastDates[0].month}`,value2: 0},
-	   ];
-   
+	const data = [
+		{
+			argument: `${pastDates[0].day}/${pastDates[0].month}`,
+			value: 0,
+			argument1: `${pastDates[0].day}/${pastDates[0].month}`,
+			value2: 0,
+		},
+		{
+			argument: `${pastDates[1].day}/${pastDates[1].month}`,
+			value: 0,
+			argument1: `${pastDates[1].day}/${pastDates[1].month}`,
+			value2: 0,
+		},
+		{
+			argument: `${pastDates[2].day}/${pastDates[2].month}`,
+			value: 0,
+			argument1: `${pastDates[2].day}/${pastDates[2].month}`,
+			value2: 0,
+		},
+		{
+			argument: `${pastDates[3].day}/${pastDates[3].month}`,
+			value: 0,
+			argument1: `${pastDates[3].day}/${pastDates[3].month}`,
+			value2: 0,
+		},
+		{
+			argument: `${pastDates[4].day}/${pastDates[4].month}`,
+			value: 0,
+			argument1: `${pastDates[4].day}/${pastDates[4].month}`,
+			value2: 0,
+		},
+		{
+			argument: `${pastDates[5].day}/${pastDates[5].month}`,
+			value: 0,
+			argument1: `${pastDates[5].day}/${pastDates[5].month}`,
+			value2: 0,
+		},
+		{
+			argument: `${pastDates[6].day}/${pastDates[6].month}`,
+			value: 0,
+			argument1: `${pastDates[6].day}/${pastDates[6].month}`,
+			value2: 0,
+		},
+	];
 
+	const array = Array.from(sugar);
 
-	
-		
-		const array = Array.from(sugar);
+	array.map((el, i) => {
+		var obj = new Object();
+		obj.date = getPastDateRecord(el.DateOfRec.split('T')[0]);
+		obj.type = el.Type;
+		obj.Result = el.Result;
+		pastDatesRecords.push(obj);
+		if (pastDatesRecords[i].date.day.startsWith('0')) {
+			pastDatesRecords[i].date.day = pastDatesRecords[i].date.day.split('0')[1];
+		}
+		if (pastDatesRecords[i].date.month.startsWith('0')) {
+			pastDatesRecords[i].date.month = pastDatesRecords[i].date.month.split(
+				'0',
+			)[1];
+		}
 
-		array.map((el,i) => {
+	});
+
+	console.log(pastDatesRecords)
+	const finalDate = [];
+	pastDatesRecords.map((el, i) => {
+		const found = pastDates.find(function(Element) {
+			return (
+				Element.day === pastDatesRecords[i].date.day &&
+				Element.month === pastDatesRecords[i].date.month &&
+				Element.year === pastDatesRecords[i].date.year
+			);
 			
-			var obj = new Object()
-			obj.date = getPastDateRecord(el.DateOfRec.split('T')[0]);
-			obj.type = el.Type;
-			obj.Result = el.Result;
-			pastDatesRecords.push(obj);
-			if(pastDatesRecords[i].date.day.startsWith('0')  ){
-				pastDatesRecords[i].date.day = pastDatesRecords[i].date.day.split('0')[1];
-			}
-			if(pastDatesRecords[i].date.month.startsWith('0')  ){
-				pastDatesRecords[i].date.month = pastDatesRecords[i].date.month.split('0')[1];
-			}
 		});
-		const finalDate =[];
-		pastDatesRecords.map((el,i)=> {
-			const found = pastDates.find(function(Element){
-				return (Element.day === pastDatesRecords[i].date.day && Element.month === pastDatesRecords[i].date.month && Element.year === pastDatesRecords[i].date.year)
-					
-        });
-			if(found !== undefined){
-				finalDate.push(pastDatesRecords[i]);
-			}
-	   });
-	   
-	   console.log(finalDate);
-	   
-	finalDate.map((el,i) => {
+		console.log(found);
+		if (found !== undefined) {
+			finalDate.push(pastDatesRecords[i]);
+		}
 		
-		const index = pastDates.findIndex(element => {
-			return (element.day === el.date.day && element.month === el.date.month && element.year === el.date.year)
-		})
+	});
+
+	console.log(finalDate);
+
+	finalDate.map((el, i) => {
+		const index = pastDates.findIndex((element) => {
+			return (
+				element.day === el.date.day &&
+				element.month === el.date.month &&
+				element.year === el.date.year
+			);
+		});
 		console.log(index);
-		 if(el.type === 'fasting'){
-		 	data[index].value = el.Result;
-		 }
-		 else if (el.type === 'Random'){
-			
+		if (el.type === 'fasting') {
+			data[index].value = el.Result;
+		} else if (el.type === 'Random') {
 			data[index].value2 = el.Result;
 			console.log(data);
-		 }
-	})
+		}
+	});
 
+	return (
+		<div className='line_container'>
+			<Paper className='linechart'>
+				<Chart className='linechart' data={data}>
+					<ArgumentAxis />
+					<ValueAxis />
+					<Legend />
+					<Animation />
+					<LineSeries
+						valueField='value'
+						argumentField='argument'
+						name='Fasting'
+					/>
+					<LineSeries
+						valueField='value2'
+						argumentField='argument1'
+						name='Random'
+					/>
 
-	
-	  
-   
-	
-	return(
-	<div className='line_container'>
-		<Paper className='linechart'>
-			<Chart className='linechart' data={data}>
-				<ArgumentAxis />
-				<ValueAxis />
-                <Legend />
-				<Animation />
-				<LineSeries
-					valueField='value'
-					argumentField='argument'
-					name='Fasting'
-				/>
-				<LineSeries
-					valueField='value2'
-					argumentField='argument1'
-					name='Random'
-				/>
-				
-                <Title text='Sugar Stats' />
-			</Chart>
-		</Paper>
-	</div>
-)};
+					<Title text='Sugar Stats' />
+				</Chart>
+			</Paper>
+		</div>
+	);
+}
 
 export default sugarChart;
