@@ -8,6 +8,7 @@ import {
 	PieChart,
 	BPChartE,
 } from '../Components';
+import ScrollUpButton from 'react-scroll-up-button';
 import Fade from 'react-reveal/Fade';
 
 
@@ -38,6 +39,10 @@ function Dashboard() {
 			<Fade bottom>
 				<PieChart />
 			</Fade>
+
+			<div>
+				<ScrollUpButton />
+			</div>
 		</div>
 	);
 }
