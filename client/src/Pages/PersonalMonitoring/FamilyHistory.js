@@ -7,9 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Particles from '../../Components/Particles/Particles2.js';
-
 // import axios from 'axios';
-
 import '../pagesCSS/FamilyHistory.css';
 
 const useStyles = makeStyles((theme) => ({
