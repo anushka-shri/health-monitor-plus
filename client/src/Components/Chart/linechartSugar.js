@@ -38,7 +38,7 @@ function sugarChart() {
 			dates.push(
 				new Date(
 					new Date().getTime() - (X >= 0 ? I : I - I - I) * 24 * 60 * 60 * 1000,
-				).toLocaleString(),
+				).toLocaleString('en-US'),
 			);
 		}
 		return dates;
@@ -49,7 +49,7 @@ function sugarChart() {
 	const pastDates = [];
 	const pastDatesRecords = [];
 	const getPastDate = (string) =>
-		(([day, month, year]) => ({ day, month, year }))(string.split('/'));
+		(([month, day, year]) => ({ day, month, year }))(string.split('/'));
 	pastDays.forEach((el, i) => {
 		pastDates.push(getPastDate(el.split(',')[0]));
 	});
