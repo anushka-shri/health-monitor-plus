@@ -41,7 +41,7 @@ export default () => (
 					name='Diastolic'
 				/>
 
-				<Title text='Blood Pressure Stats Evening' />
+				<Title text='BP Stats Evening' />
 			</Chart>
 		</Paper>
 	</div>
