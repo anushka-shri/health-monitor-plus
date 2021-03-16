@@ -207,9 +207,31 @@ function DailyMonitoring() {
 									</Grid>
 								</MuiPickersUtilsProvider>
 
+								<Grid item xs={12} sm={4} md={6}>
+									<FormControl component='fieldset'>
+										<FormLabel component='legend'>Select Time</FormLabel>
+										<RadioGroup
+											aria-label='morning'
+											name='morning'
+											value={value}
+											onChange={handleChange}>
+											<FormControlLabel
+												value='morning'
+												control={<Radio />}
+												label='Morning'
+											/>
+											<FormControlLabel
+												value='Evening'
+												control={<Radio />}
+												label='Evening'
+											/>
+										</RadioGroup>
+									</FormControl>
+								</Grid>
 								<Grid item xs={12} sm={12}>
 									<Button
 										onClick={bpHandler}
+										className='centeralign'
 										variant='contained'
 										color='primary'
 										type='submit'>
@@ -282,6 +304,7 @@ function DailyMonitoring() {
 								<Grid item xs={12} sm={12}>
 									<Button
 										onClick={oxygenHandler}
+										className='centeralign'
 										variant='contained'
 										color='primary'>
 										Add Oxygen
@@ -361,9 +384,10 @@ function DailyMonitoring() {
 										</Fragment>
 									</Grid>
 								</MuiPickersUtilsProvider>
-								<Grid item xs={12} sm={12}>
+								<Grid item item xs={12} sm={4} md={6}>
 									<Button
 										onClick={sugarHandler}
+										className='centeralign'
 										variant='contained'
 										color='primary'>
 										Add Sugar
