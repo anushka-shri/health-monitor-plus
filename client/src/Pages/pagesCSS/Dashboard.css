@@ -7,7 +7,7 @@
 .Dashboard_container {
 	background: rgb(131, 58, 180);
 	background: linear-gradient(
-		to top,
+		to bottom,
 		rgba(131, 58, 180, 1) 0%,
 		rgba(252, 176, 69, 1) 100%
 	);
