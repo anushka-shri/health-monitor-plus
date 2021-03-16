@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import './chartsCSS/linechartBP.css';
 import {
@@ -10,6 +10,7 @@ import {
 	Title,
 } from '@devexpress/dx-react-chart-material-ui';
 import { ValueScale, Animation } from '@devexpress/dx-react-chart';
+import axios from 'axios';
 
 const data = [
 	{ argument: 1, value: 10, argument1: 1, value2: 15 },
@@ -21,8 +22,48 @@ const data = [
 	{ argument: 7, value: 25, argument1: 7, value2: 10},
 ];
 
+function bpChart(){
 
-export default () => (
+
+	const [bp, setBp] = useState([]);
+
+	const getBp = async () => {
+		try {
+			const res = await axios.get(
+				'http://localhost:3005/api/v1/monitor/getBloodPressure',
+			);
+			console.log(res);
+			//setBp(res.data.records);
+		} catch {}
+	};
+
+	useEffect(() => {
+		getBp();
+	}, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	return (
 	<div className='line_containerBP'>
 		<Paper className='linechartBP'>
 			<Chart className='linechartBP' data={data}>
@@ -46,4 +87,6 @@ export default () => (
 			</Chart>
 		</Paper>
 	</div>
-);
+)};
+
+export default bpChart;

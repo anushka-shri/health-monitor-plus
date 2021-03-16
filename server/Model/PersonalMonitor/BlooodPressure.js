@@ -17,7 +17,7 @@ const BPSchema = new mongoose.Schema({
     },
     DateOfRec : {
         type: Date,
-    },
+    }
     
     /*User : {
         type : mongoose.Schema.ObjectId,

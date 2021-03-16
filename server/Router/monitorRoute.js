@@ -15,6 +15,7 @@ router.post('/oxygenSaturation', monitorController.addOxygenSaturation);
 //router.post('/heightandweight', authenticationController.protect, monitorController.addHeight);
 
 //get personal monitoring details
+router.get('/getBloodPressure',monitorController.getBp);
 router.get('/getGlucose',monitorController.getBloodGlucose);
 
 

@@ -52,6 +52,7 @@ function DailyMonitoring() {
 	const [pulseOxygen, setPulseOxygen] = useState('');
 	const [sugar, setSugar] = useState('');
 	const [selectedDate, setSelectedDate] = useState(new Date());
+	
 
 	const handleChange = (e) => {
 		setValue(e.target.value);
@@ -60,6 +61,7 @@ function DailyMonitoring() {
 	const handleDateChange = (date) => {
 		setSelectedDate(date);
 	};
+	
 
 	const bpHandler = async (e) => {
 		e.preventDefault();
@@ -71,6 +73,7 @@ function DailyMonitoring() {
 					Diastolic: diastolic,
 					Pulse: pulse,
 					DateOfRec:selectedDate,
+					
 				},
 			);
 
@@ -196,6 +199,7 @@ function DailyMonitoring() {
 											<TimePicker
 												autoOk
 												label='Add Time'
+												
 												value={selectedDate}
 												onChange={handleDateChange}
 											/>
