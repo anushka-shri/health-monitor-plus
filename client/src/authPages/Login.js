@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useGlobalContext } from '../Context/AppContext';
-import img from '../images/medical-service-678.jpg';
+import img from '../images/0001.jpg';
 import './Login.css'
 
 
@@ -34,9 +34,11 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: '100vh',
+
 		background: '#edb0b0',
 	},
 	image: {
+		width: '80vw',
 		backgroundImage: 'url(' + img + ')',
 		backgroundRepeat: 'no-repeat',
 		backgroundColor:
@@ -51,8 +53,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 	paper: {
 		// background: 'black',
+		width: '30vw',
 		margin: theme.spacing(8, 4),
 		display: 'flex',
+		marginLeft:'5vw',
 		flexDirection: 'column',
 		alignItems: 'center',
 	},
@@ -104,7 +108,7 @@ export default function LoginPage() {
 		<Grid container component='main' className={classes.root}>
 			<CssBaseline />
 			<Grid item xs={false} sm={4} md={7} className={classes.image} />
-			<Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+			<Grid item xs={12} sm={6} md={5} component={Paper} elevation={6} square>
 				<div className={classes.paper}>
 					<Avatar className={classes.avatar}>
 						{/* <LockOutlinedIcon /> */}
