@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,10 +13,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useGlobalContext } from '../Context/AppContext';
 import img from '../images/0001.jpg';
-import './Login.css'
-
-
-
+import './Login.css';
 
 function Copyright() {
 	return (
@@ -34,8 +31,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: '100vh',
-
-		background: '#edb0b0',
+		background: '#edb0b0'
 	},
 	image: {
 		width: '80vw',
@@ -48,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundSize: 'cover',
 		backgroundPosition: 'left',
 		// borderTop: '10px solid rgb(131,58,180)',
-		// borderBottom: '10px solid rgb(131,58,180)',
+		// borderBottom: '23px solid rgb(137, 100, 172)',
 		borderLeft: '5px solid rgb(0,0,0)',
 	},
 	paper: {
@@ -56,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 		width: '30vw',
 		margin: theme.spacing(8, 4),
 		display: 'flex',
-		marginLeft:'5vw',
+		// marginLeft: '5vw',
 		flexDirection: 'column',
 		alignItems: 'center',
 	},
@@ -74,41 +70,36 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function LoginPage() {
-	
-	const [email,setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	
-	const { getLoggedIn } = useGlobalContext();
-	 const history = useHistory();
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
-	const loginHandler =async(e) => {
+	const { getLoggedIn } = useGlobalContext();
+	const history = useHistory();
+
+	const loginHandler = async (e) => {
 		e.preventDefault();
-		try{
-			const res = await axios.post("http://localhost:3005/api/v1/users/login", {
+		try {
+			const res = await axios.post('http://localhost:3005/api/v1/users/login', {
 				email,
 				password,
-				
 			});
 			// we get res from the server that token is set so now we can redirect to our home page.
-			if(res.data.status === "success"){
-               console.log(res.status);
-			   //Redirection will happen here
-				 getLoggedIn();
-				 history.push('/');
+			if (res.data.status === 'success') {
+				console.log(res.status);
+				//Redirection will happen here
+				getLoggedIn();
+				history.push('/');
 			}
-
-		}catch{
-
-		}
-	}
+		} catch {}
+	};
 
 	const classes = useStyles();
 
 	return (
 		<Grid container component='main' className={classes.root}>
 			<CssBaseline />
-			<Grid item xs={false} sm={4} md={7} className={classes.image} />
-			<Grid item xs={12} sm={6} md={5} component={Paper} elevation={6} square>
+			<Grid item xs={12} sm={8}  className={classes.image} />
+			<Grid item xs={12} sm={4}  component={Paper} elevation={6} square>
 				<div className={classes.paper}>
 					<Avatar className={classes.avatar}>
 						{/* <LockOutlinedIcon /> */}
@@ -130,7 +121,6 @@ export default function LoginPage() {
 							autoFocus
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
-							
 						/>
 						<TextField
 							variant='outlined'
@@ -144,7 +134,6 @@ export default function LoginPage() {
 							autoComplete='current-password'
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
-							
 						/>
 
 						<Button
@@ -152,8 +141,7 @@ export default function LoginPage() {
 							fullWidth
 							variant='contained'
 							color='primary'
-							className={classes.submit}
-							>
+							className={classes.submit}>
 							Sign In
 						</Button>
 						<Grid container>
