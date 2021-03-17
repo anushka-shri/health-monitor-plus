@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useGlobalContext } from '../Context/AppContext';
-import img from '../images/0001.jpg';
+import img from '../images/3.jpeg';
 import './Login.css';
 
 function Copyright() {
