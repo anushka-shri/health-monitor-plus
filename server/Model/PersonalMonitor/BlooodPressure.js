@@ -17,6 +17,12 @@ const BPSchema = new mongoose.Schema({
     },
     DateOfRec : {
         type: Date,
+       
+    },
+    Time: {
+        type: String,
+        enum: ['morning', 'Evening'],
+        required: [ true ,"A time for bp is required"],
     }
     
     /*User : {

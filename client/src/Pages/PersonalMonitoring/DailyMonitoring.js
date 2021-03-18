@@ -73,6 +73,7 @@ function DailyMonitoring() {
 					Diastolic: diastolic,
 					Pulse: pulse,
 					DateOfRec:selectedDate,
+					Time:value,
 					
 				},
 			);

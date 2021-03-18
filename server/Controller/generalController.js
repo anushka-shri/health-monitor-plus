@@ -13,6 +13,31 @@ catchError(async (req, res, next) => {
     });
 });
 
+exports.getMorningRecord=(Model) => 
+catchError(async (req,res,next) => {
+const records = await Model.find({Time:"morning"});
+res.status(201).json({
+  status: 'success',
+  records
+  
+});
+
+})
+
+exports.getEveningRecord=(Model) => 
+catchError(async (req,res,next) => {
+  const records = await Model.find({Time:"Evening"});
+  res.status(201).json({
+    status: 'success',
+    records
+    
+  });
+  
+  
+})
+
+
+
 exports.getRecord = (Model) => 
   catchError(async (req, res, next) => {
     

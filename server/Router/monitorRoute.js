@@ -16,6 +16,8 @@ router.post('/oxygenSaturation', monitorController.addOxygenSaturation);
 
 //get personal monitoring details
 router.get('/getBloodPressure',monitorController.getBp);
+router.get('/getBloodPressure/morning',monitorController.getBpMorning);
+router.get('/getBloodPressure/Evening',monitorController.getBpEvening);
 router.get('/getGlucose',monitorController.getBloodGlucose);
 
 

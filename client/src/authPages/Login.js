@@ -32,9 +32,11 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		height: '100vh',
 		background: '#edb0b0'
+		//backgroundColor: 'red'
 	},
 	image: {
 		width: '80vw',
+		
 		backgroundImage: 'url(' + img + ')',
 		backgroundRepeat: 'no-repeat',
 		backgroundColor:
@@ -45,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundPosition: 'left',
 		// borderTop: '10px solid rgb(131,58,180)',
 		// borderBottom: '23px solid rgb(137, 100, 172)',
-		borderLeft: '5px solid rgb(0,0,0)',
+		borderLeft: '1px solid rgb(0,0,0)',
 	},
 	paper: {
 		// background: 'black',

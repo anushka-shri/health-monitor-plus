@@ -23,4 +23,7 @@ exports.addHeight = general.createRecord(Height);
 
 //get records
 exports.getBloodGlucose = general.getRecord(Glucose);
+
 exports.getBp = general.getRecord(BloodPressure);
+exports.getBpMorning = general.getMorningRecord(BloodPressure);
+exports.getBpEvening = general.getEveningRecord(BloodPressure);
