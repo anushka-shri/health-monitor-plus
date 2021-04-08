@@ -180,8 +180,9 @@ export default () => {
 	]);
 
 	return (
-		<React.Fragment>
-			{/* <EditingOptionsSelector
+		<div className='meds_container'>
+			<React.Fragment>
+				{/* <EditingOptionsSelector
 				options={editingOptions}
 				onOptionsChange={handleEditingOptionsChange}
 			/> */}
@@ -206,7 +207,6 @@ export default () => {
 						timeTableCellComponent={TimeTableCell}
 					/>
 				
-
 					<ViewSwitcher />
 					<Appointments />
 
@@ -219,5 +219,7 @@ export default () => {
 				</Scheduler>
 			</Paper>
 		</React.Fragment>
+		</div>
 	);
 };
+
