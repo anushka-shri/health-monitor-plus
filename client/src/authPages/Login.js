@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-// import LockOutlinedIcon from '@material-ui/
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-
-const axios = require('axios').default;
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { useGlobalContext } from '../Context/AppContext';
+import img from '../images/3.jpeg';
+import './Login.css';
 
 function Copyright() {
 	return (
@@ -32,25 +31,32 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: '100vh',
-		backgroundColor: 'rgba(224, 214, 214, 0.562)',
+		background: '#edb0b0'
+		//backgroundColor: 'red'
 	},
 	image: {
-		backgroundImage: 'url(https://source.unsplash.com/random)',
+		width: '80vw',
+		
+		backgroundImage: 'url(' + img + ')',
 		backgroundRepeat: 'no-repeat',
 		backgroundColor:
 			theme.palette.type === 'light'
 				? theme.palette.grey[50]
 				: theme.palette.grey[900],
 		backgroundSize: 'cover',
-		backgroundPosition: 'center',
+		backgroundPosition: 'left',
+		// borderTop: '10px solid rgb(131,58,180)',
+		// borderBottom: '23px solid rgb(137, 100, 172)',
+		borderLeft: '1px solid rgb(0,0,0)',
 	},
 	paper: {
 		// background: 'black',
+		width: '30vw',
 		margin: theme.spacing(8, 4),
 		display: 'flex',
+		// marginLeft: '5vw',
 		flexDirection: 'column',
 		alignItems: 'center',
-		
 	},
 	avatar: {
 		margin: theme.spacing(1),
@@ -59,39 +65,43 @@ const useStyles = makeStyles((theme) => ({
 	form: {
 		width: '100%', // Fix IE 11 issue.
 		marginTop: theme.spacing(1),
-		
 	},
 	submit: {
 		margin: theme.spacing(3, 0, 2),
 	},
 }));
 
-export default function SignInSide() {
-	const classes = useStyles();
-	const [password, setPassword] = useState('');
+export default function LoginPage() {
 	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
-	async function handleSubmit(e) {
+	const { getLoggedIn } = useGlobalContext();
+	const history = useHistory();
+
+	const loginHandler = async (e) => {
 		e.preventDefault();
-
 		try {
-			const registerData = {
-				password,
-
+			const res = await axios.post('http://localhost:3005/api/v1/users/login', {
 				email,
-			};
+				password,
+			});
+			// we get res from the server that token is set so now we can redirect to our home page.
+			if (res.data.status === 'success') {
+				console.log(res.status);
+				//Redirection will happen here
+				getLoggedIn();
+				history.push('/');
+			}
+		} catch {}
+	};
 
-			await axios.post('http://localhost:3005/api/v1/users/login', registerData);
-		} catch (error) {
-			console.error(error);
-		}
-	}
+	const classes = useStyles();
 
 	return (
 		<Grid container component='main' className={classes.root}>
 			<CssBaseline />
-			<Grid item xs={false} sm={4} md={7} className={classes.image} />
-			<Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+			<Grid item xs={12} sm={8}  className={classes.image} />
+			<Grid item xs={12} sm={4}  component={Paper} elevation={6} square>
 				<div className={classes.paper}>
 					<Avatar className={classes.avatar}>
 						{/* <LockOutlinedIcon /> */}
@@ -99,7 +109,7 @@ export default function SignInSide() {
 					<Typography component='h1' variant='h5'>
 						Login Here
 					</Typography>
-					<form className={classes.form} Validate>
+					<form onSubmit={loginHandler} className={classes.form} Validate>
 						<TextField
 							variant='outlined'
 							margin='normal'
@@ -111,8 +121,8 @@ export default function SignInSide() {
 							autoComplete='email'
 							type='email'
 							autoFocus
-							onChange={(e) => setEmail(e.target.value)}
 							value={email}
+							onChange={(e) => setEmail(e.target.value)}
 						/>
 						<TextField
 							variant='outlined'
@@ -124,8 +134,8 @@ export default function SignInSide() {
 							type='password'
 							id='password'
 							autoComplete='current-password'
-							onChange={(e) => setPassword(e.target.value)}
 							value={password}
+							onChange={(e) => setPassword(e.target.value)}
 						/>
 
 						<Button
@@ -133,8 +143,7 @@ export default function SignInSide() {
 							fullWidth
 							variant='contained'
 							color='primary'
-							className={classes.submit}
-							onSubmit={handleSubmit}>
+							className={classes.submit}>
 							Sign In
 						</Button>
 						<Grid container>

@@ -1,0 +1,12 @@
+.linechart {
+    height: 45vh !important;
+    width: 35vw !important;
+    background-color: rgba(0, 0, 0, 0.151);
+    color: rgb(0, 0, 0) !important;
+}
+
+.line_container {
+    /* transform: translate(25%, 70%); */
+    margin-left: 20vw;
+    margin-top: 15vh;
+}

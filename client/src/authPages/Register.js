@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,8 +14,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 import './Register.css'
+import axios from "axios";
+import { useHistory } from 'react-router-dom';
+import { useGlobalContext } from '../Context/AppContext';
 
-const axios = require('axios').default;
+
+
 
 function Copyright() {
 	return (
@@ -31,81 +35,83 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
-
-	paper: {
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
 		
-		margin: theme.spacing(8, 4),
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-	},
-	avatar: {
-		margin: theme.spacing(1),
-		backgroundColor: theme.palette.secondary.main,
-	},
-	form: {
-		width: '100%', // Fix IE 11 issue.
-		marginTop: theme.spacing(1),
-	},
-	submit: {
-		margin: theme.spacing(3, 0, 2),
-	},
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
 export default function SignUp() {
-	const classes = useStyles();
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
-	const [password, setPassword] = useState('');
-	const [passwordConfirm, setPasswordConfirm] = useState('');
-	const [email, setEmail] = useState('');
-
-	async function handleSubmit(e) {
+	
+    const [fname,setFirstname] = useState("");
+	const [lname,setLastname] = useState("");
+	const [email,setEmail] = useState("");
+	const [password,setPassword] = useState("");
+	const [confirmpassword, setConfpass] = useState("");
+	const history = useHistory();
+	const { getLoggedIn } = useGlobalContext();
+	
+	const registerHandler =async(e) => {
 		e.preventDefault();
-
-		try {
-			// const registerData = {
-			// 	firstName,
-			// 	lastName,
-			// 	password,
-			// 	passwordConfirm,
-			// 	email,
-			// };
-
-			await axios.post('http://localhost:3005/api/v1/users/signup', {
-				firstName,
-				lastName,
-				password,
-				passwordConfirm,
+		try{
+			const res = await axios.post("http://localhost:3005/api/v1/users/signup", {
+				fname,
+				lname,
 				email,
+				password,
+				confirmpassword
 			});
-		} catch (error) {
-			console.error(error);
+			if(res.data.status === "success"){
+             // This checks if res is success which means token is set and user is created now she can be redirected to home page  
+			// redirection
+				getLoggedIn();
+				history.push('/');
+			}
+
+		}catch{
+
 		}
 	}
 
+	 const classes = useStyles();
+
 	return (
-		<Container component='main' maxWidth='xs' className='root'>
+		<Container component='main' maxWidth='xs' className='body' >
 			<CssBaseline />
-			<div className={classes.paper}>
+			 <div className={classes.paper}> 
 				<Avatar className={classes.avatar}>{/* <LockOutlinedIcon /> */}</Avatar>
 				<Typography component='h1' variant='h5'>
 					Register
 				</Typography>
-				<form className={classes.form} Validate>
+				<form onSubmit={registerHandler} className={classes.form} Validate>
 					<Grid container spacing={2}>
 						<Grid item xs={12} sm={6}>
 							<TextField
 								autoComplete='fname'
-								name='firstName'
+								name='firstName' 
 								variant='outlined'
 								required
 								fullWidth
 								id='firstName'
 								label='First Name'
 								autoFocus
-								onChange={(e) => setFirstName(e.target.value)}
-								value={firstName}
+								value={fname}
+								onChange={(e) => setFirstname(e.target.value)}
+								
 							/>
 						</Grid>
 						<Grid item xs={12} sm={6}>
@@ -117,9 +123,9 @@ export default function SignUp() {
 								label='Last Name'
 								name='lastName'
 								autoComplete='lname'
-								onChange={(e) => setLastName(e.target.value)}
-								value={lastName}
-							/>
+								value={lname}
+								onChange={(e) => setLastname(e.target.value)}
+								/>
 						</Grid>
 						<Grid item xs={12}>
 							<TextField
@@ -131,8 +137,9 @@ export default function SignUp() {
 								name='email'
 								type='email'
 								autoComplete='email'
-								onChange={(e) => setEmail(e.target.value)}
 								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+								
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -141,12 +148,13 @@ export default function SignUp() {
 								required
 								fullWidth
 								name='password'
-								label='Password'
+								 label='Password'
 								type='password'
 								id='password'
 								autoComplete='current-password'
+								 value={password}
 								onChange={(e) => setPassword(e.target.value)}
-								value={password}
+							
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -159,8 +167,9 @@ export default function SignUp() {
 								type='password'
 								id='confirm-password'
 								autoComplete='current-password'
-								onChange={(e) => setPasswordConfirm(e.target.value)}
-								value={passwordConfirm}
+								value={confirmpassword}
+								onChange={(e) => setConfpass(e.target.value)}
+								
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -175,8 +184,8 @@ export default function SignUp() {
 						fullWidth
 						variant='contained'
 						color='primary'
-						className={classes.submit}
-						onSubmit={handleSubmit}>
+						 className={classes.submit}
+						>
 						Register
 					</Button>
 					<Grid container justify='flex-end'>

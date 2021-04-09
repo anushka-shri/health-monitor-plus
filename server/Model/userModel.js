@@ -4,15 +4,16 @@ const bcrypt = require('bcryptjs');
 
 
 
+
 const userSchema = new mongoose.Schema({
   //SCHEMA FOR ADMINS
   firstName: {
     type: String,
-    required: [true, 'A name is required!'],
+    required: [true, 'Please provide a fist name!'],
   },
    lastName: {
     type: String,
-    required: [true, 'A name is required!'],
+    required: [true, 'Please provide a last name'],
   },
   email: {
     type: String,
@@ -44,6 +45,7 @@ const userSchema = new mongoose.Schema({
       message: 'Password confirmation wrong!',
     },
   },
+  
   
 });
 

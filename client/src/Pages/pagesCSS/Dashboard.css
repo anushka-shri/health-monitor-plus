@@ -1,0 +1,21 @@
+/* .Dashboard_linecharts {
+	display: flex;
+	justify-content: space-evenly;
+	/* flex-direction:column; */
+
+
+.Dashboard_container {
+	background: rgb(131, 58, 180);
+	background: linear-gradient(
+		to bottom,
+		rgba(131, 58, 180, 1) 0%,
+		rgba(252, 176, 69, 1) 100%
+	);
+}
+
+.Dashboard_heading {
+	font-size: 2rem;
+	font-weight: bold;
+	color: aliceblue;
+	transform: translate(50%, 250%);
+}

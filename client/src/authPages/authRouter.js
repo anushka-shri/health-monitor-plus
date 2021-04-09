@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
 
-function Router() {
+function LoginRouter() {
 	return (
 		<BrowserRouter>
 			<Switch>
@@ -18,4 +18,4 @@ function Router() {
 	);
 }
 
-export default Router;
+export default LoginRouter;
