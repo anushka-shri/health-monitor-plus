@@ -9,6 +9,7 @@ import NewPrescription from "./NewPrescription";
 import Error from "./Error";
 import Medications from "./Medications";
 import LabReports from "./LabReports";
+import Event from "./Events";
 
 export {
   Dashboard,
@@ -22,4 +23,5 @@ export {
   Vaccinations,
   Medications,
   LabReports,
+  Event
 };
