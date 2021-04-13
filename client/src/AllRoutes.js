@@ -5,6 +5,7 @@ import { useGlobalContext } from './Context/AppContext';
 import Particles from './Components/Particles/Particles';
 import {
 	Dashboard,
+	Scheduler,
 	Doctors,
 	NewDoctors,
 	NewPrescription,
@@ -41,6 +42,9 @@ const AllRoutes = () => {
 						<Sidebar />
 						<Route exact path='/'>
 							<Dashboard />
+						</Route>
+						<Route exact path='/events'>
+							<Scheduler />
 						</Route>
 						<Route exact path='/doctors'>
 							<Doctors />
