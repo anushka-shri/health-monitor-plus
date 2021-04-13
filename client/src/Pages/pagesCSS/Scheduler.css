@@ -1,16 +1,15 @@
-.meds_wrapper{
-    
-    width:68vw !important;
-    margin-left:25vw !important;
-    margin-right:4vw !important;
-    height: 100vh !important;
-   transform: translate(1%,10%) !important;
-   margin-bottom: 1vh !important;
-   color: #fff !important;
+.meds_wrapper {
+	width: 68vw !important;
+	margin-left: 25vw !important;
+	margin-right: 4vw !important;
+	height: 110vh !important;
+	transform: translate(1%, 10%) !important;
+	margin-bottom: 1vh !important;
+	color: #fff !important;
 }
 
-.meds_container{
-background: rgb(144, 70, 194) !important;
+.meds_container {
+	background: rgb(144, 70, 194) !important;
 	background: linear-gradient(
 		to bottom,
 		rgb(150, 80, 196) 0%,
