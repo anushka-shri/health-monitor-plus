@@ -202,11 +202,7 @@ function ScForm() {
 												control={<Radio color='primary' />}
 												label='ALL DAY'
 											/>
-											<FormControlLabel
-												value='end'
-												control={<Radio color='primary' />}
-												label='REPEAT'
-											/>
+											
 										</RadioGroup>
 									</FormControl>
 								</Grid>
@@ -224,6 +220,7 @@ function ScForm() {
 											// onChange={handleChange}
 										>
 											<MenuItem value={10}>DAILY</MenuItem>
+											<MenuItem value={10}>WEEKLY</MenuItem>
 											<MenuItem value={20}>MONTHLY</MenuItem>
 											<MenuItem value={30}>YEARLY</MenuItem>
 										</Select>
