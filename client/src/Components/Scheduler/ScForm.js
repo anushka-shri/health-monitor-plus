@@ -47,6 +47,13 @@ const useStyles = makeStyles((theme) => ({
 		flexDirection: 'column',
 		alignItems: 'center',
 	},
+	formControl: {
+		margin: theme.spacing(1),
+		minWidth: 120,
+	},
+	selectEmpty: {
+		marginTop: theme.spacing(2),
+	},
 
 	form: {
 		width: '100%', // Fix IE 11 issue.
@@ -130,12 +137,6 @@ function ScForm() {
 									/>
 								</Grid>
 
-								{/* <Grid item xs={12} sm={12}>
-									<Typography component='h1' variant='h6'>
-										Add Event Duration
-									</Typography>
-								</Grid> */}
-
 								<MuiPickersUtilsProvider utils={DateFnsUtils}>
 									<Grid item xs={12} sm={6}>
 										<KeyboardDatePicker
@@ -173,7 +174,7 @@ function ScForm() {
 												autoOk
 												label='Start Time'
 												value={startTime}
-												 onChange={handleTimeChangeStart}
+												onChange={handleTimeChangeStart}
 											/>
 										</Fragment>
 									</Grid>
@@ -189,9 +190,11 @@ function ScForm() {
 									</Grid>
 								</MuiPickersUtilsProvider>
 
-								<Grid item xs={6}>
+								<Grid item xs={8}>
 									<FormControl component='fieldset'>
-										<FormLabel component='legend'>Add Event all day ?</FormLabel>
+										<FormLabel component='legend'>
+											Add Event all day ?
+										</FormLabel>
 										<RadioGroup
 											row
 											aria-label='position'
@@ -202,11 +205,6 @@ function ScForm() {
 												control={<Radio color='primary' />}
 												label='ALL DAY'
 											/>
-											<FormControlLabel
-												value='end'
-												control={<Radio color='primary' />}
-												label='REPEAT'
-											/>
 										</RadioGroup>
 									</FormControl>
 								</Grid>
@@ -214,20 +212,32 @@ function ScForm() {
 								<Grid item xs={6}>
 									<FormControl variant='filled' className={classes.formControl}>
 										<InputLabel id='demo-simple-select-filled-label'>
-										REPEAT
+											REPEAT
 										</InputLabel>
 										<Select
 											labelId='demo-simple-select-filled-label'
 											id='demo-simple-select-filled'
-											
+
 											// value={age}
 											// onChange={handleChange}
 										>
 											<MenuItem value={10}>DAILY</MenuItem>
+											<MenuItem value={30}>WEEKLY</MenuItem>
 											<MenuItem value={20}>MONTHLY</MenuItem>
 											<MenuItem value={30}>YEARLY</MenuItem>
 										</Select>
 									</FormControl>
+								</Grid>
+								<Grid item xs={6}>
+									<TextField
+										id='filled-number'
+										label='REPEAT FOR(DAYS)'
+										type='number'
+										InputLabelProps={{
+											shrink: true,
+										}}
+										variant='filled'
+									/>
 								</Grid>
 
 								<Grid item xs={12}>
