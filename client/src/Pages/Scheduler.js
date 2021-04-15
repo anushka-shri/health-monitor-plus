@@ -23,16 +23,31 @@ import {
 	ConfirmationDialog,
 	AllDayPanel,
 } from '@devexpress/dx-react-scheduler-material-ui';
+import { getHours } from 'date-fns';
 const getEvents = async () => {
 	try {
 		const res = await axios.get('http://localhost:3005/api/v1/events/getEvent');
 		if (res) {
 			//console.log(new Date(res.data.records[0].startDate));
 			res.data.records.forEach((element) => {
-				element.startDate = new Date(element.startDate);
-				element.endDate = new Date(element.endDate);
+				var sHour = new Date(element.startTime).getHours();
+				var eHour = new Date(element.endTime).getHours();
+				var sMinute = new Date(element.startTime).getMinutes();
+				var eMinute = new Date(element.endTime).getMinutes();
+				var sSeconds = new Date(element.startTime).getSeconds();
+				var eSeconds = new Date(element.endTime).getSeconds();
+				
+				
+				var startDate = new Date(element.startDate);
+				startDate.setHours(sHour,sMinute,sSeconds);
+				var endDate = new Date(element.endDate);
+				endDate.setHours(eHour,eMinute,eSeconds);
+				
+				element.startDate = startDate;
+				element.endDate = endDate;
+				
 				element.id = element._id;
-				//console.log(element);
+				
 				recurrenceAppointments.push(element);
 			});
 		}
