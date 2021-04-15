@@ -3,14 +3,14 @@ import React, {useState, useEffect } from "react";
 import axios from 'axios';
 import Paper from '@material-ui/core/Paper';
 import './pagesCSS/Scheduler.css';
-import AddButton from './../Components/Scheduler/Addbutton';
-import ScForm from './../Components/Scheduler/ScForm'
-import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
+import { AddButton, ScForm } from './../Components';
+import { ViewState, EditingState,IntegratedEditing } from '@devexpress/dx-react-scheduler';
 import {
 	Scheduler,
 	WeekView,
 	Appointments,
 	DragDropProvider,
+	AppointmentTooltip,
 	EditRecurrenceMenu,
 	AllDayPanel,
 } from '@devexpress/dx-react-scheduler-material-ui';
@@ -41,25 +41,7 @@ const getEvents = async () => {
 };
 getEvents();
 
-const recurrenceAppointments = [
-	// {
-	// 	title: 'Website Re-Design Plan',
-	// 	startDate: new Date(2018, 5, 25, 9, 15),
-	// 	endDate: new Date(2018, 5, 25, 11, 30),
-	// 	id: 100,
-	// 	//rRule: 'FREQ=DAILY;COUNT=3',
-	// 	//exDate: '20180628T063500Z,20180626T061500Z',
-	// },
-	//   {
-	//    description: "Asprin 2mg",
-	//   endDate: new Date(2018, 5, 25, 9, 59),
-	//    id: "6076705cace27d4f2486b5d8",
-	//    startDate: new Date(2018, 5, 25, 9, 59),
-	//    title: "medicine",
-	//    __v: 0,
-	//    _id: "6076705cace27d4f2486b5d8",
-	//    }
-];
+const recurrenceAppointments = [];
 
 
 const dragDisableIds = new Set([3, 8, 10, 12]);
@@ -130,33 +112,20 @@ export default class Demo extends React.PureComponent {
 
 		const { data, currentDate } = this.state;
         
-		
-
 	
-		
-		
-
-
-
-
-
-
-	
-
-
-
-
 
 		return (
 			<div className='meds_container'>
-			<AddButton />
+			
 				<Paper className='meds_wrapper'>
+				<AddButton />
 					<Scheduler data={data} height={660}>
 						<ViewState defaultCurrentDate={currentDate} />
 						<EditingState onCommitChanges={this.onCommitChanges} />
 						<EditRecurrenceMenu />
 						<WeekView startDayHour={9} endDayHour={24} />
 						<Appointments appointmentComponent={appointmentComponent} />
+						<AppointmentTooltip showDeleteButton />
 						<AllDayPanel />
 						<DragDropProvider allowDrag={allowDrag} />
 					</Scheduler>

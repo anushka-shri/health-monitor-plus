@@ -19,7 +19,7 @@ export default function Addbutton() {
 				color='default'
 				className={classes.button}
 				startIcon={<CloudUploadIcon />}>
-				Upload
+				Add Event
 			</Button>
 		</div>
 	);

@@ -139,6 +139,26 @@ function ScForm() {
 											}}
 										/>
 									</Grid>
+									<Grid item xs={12} sm={6}>
+										<Fragment>
+											<TimePicker
+												autoOk
+												label='Start Time'
+												// value={selectedDate}
+												// onChange={handleDateChange}
+											/>
+										</Fragment>
+									</Grid>
+									<Grid item xs={12} sm={6}>
+										<Fragment>
+											<TimePicker
+												autoOk
+												label='End Time'
+												// value={selectedDate}
+												// onChange={handleDateChange}
+											/>
+										</Fragment>
+									</Grid>
 								</MuiPickersUtilsProvider>
 
 								{/* <Grid item xs={12} sm={12}>

@@ -14,6 +14,11 @@ import * as GrIcons from 'react-icons/gr';
  		path: '/',
  		icon: <RiIcons.RiDashboardLine />,
  	},
+	 {
+		title: 'Events',
+		path: '/events',
+		icon: <FcIcons.FcCalendar />,
+	},
  	{
  		title: 'Medications',
  		path: '/medications',
@@ -86,16 +91,7 @@ import * as GrIcons from 'react-icons/gr';
  			},
  		],
  	},
-	 {
-		title: 'Event',
-		path: '/event',
-		icon: <RiIcons.RiDashboardLine />,
-	},
-	{
-		title: 'Events',
-		path: '/events',
-		icon: <FcIcons.FcCalendar />,
-	},
+	
 	{
 		title: 'Medications',
 		path: '/medications',

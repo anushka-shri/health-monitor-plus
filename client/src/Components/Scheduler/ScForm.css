@@ -1,8 +1,8 @@
 .ScForm_container {
 	/* transform: translate(90%, 30%); */
-	height: 70vh;
+	height: 80vh;
 	width: 40vw;
-	background-color: rgba(255, 255, 255, 0.801) !important;
+	background-color: rgba(255, 255, 255, 0.897) !important;
 	border: 2px solid rgb(255, 255, 255);
 	margin-top: 23vh;
 	margin-left: 40vw;
