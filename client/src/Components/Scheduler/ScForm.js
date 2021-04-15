@@ -59,7 +59,7 @@ function ScForm() {
 	const [endTime, setEndTime] = useState(null);
 
     const newEvent = async (e) => {
-		e.preventDefault();
+		//e.preventDefault();
 		
 		try {
 		  const res = await axios.post(
