@@ -22,6 +22,7 @@ import {
 	DateNavigator,
 	TodayButton,
 	EditRecurrenceMenu,
+	ConfirmationDialog,
 	AllDayPanel,
 } from '@devexpress/dx-react-scheduler-material-ui';
 const getEvents = async () => {
@@ -110,8 +111,9 @@ export default class Demo extends React.PureComponent {
 						<EditRecurrenceMenu />
 						<WeekView startDayHour={9} endDayHour={24} />
 						<Toolbar />
-                        <DateNavigator />
+						<DateNavigator />
 						<TodayButton />
+						<ConfirmationDialog />
 						<Appointments appointmentComponent={appointmentComponent} />
 						<AppointmentTooltip showDeleteButton />
 						<AllDayPanel />
