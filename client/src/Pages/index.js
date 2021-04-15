@@ -10,7 +10,7 @@ import Error from "./Error";
 import Medications from "./Medications";
 import Scheduler from "./Scheduler";
 import LabReports from "./LabReports";
-import Event from "./Events";
+
 
 export {
   Dashboard,
@@ -25,5 +25,5 @@ export {
   Vaccinations,
   Medications,
   LabReports,
-  Event
+  
 };

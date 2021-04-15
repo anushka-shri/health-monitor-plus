@@ -1,8 +1,10 @@
 /* eslint-disable react/destructuring-assignment */
-import * as React from 'react';
+import React, {useState, useEffect } from "react";
+import axios from 'axios';
 import Paper from '@material-ui/core/Paper';
 import './pagesCSS/Scheduler.css';
-import { AddButton, ScForm } from './../Components';
+import AddButton from './../Components/Scheduler/Addbutton';
+import ScForm from './../Components/Scheduler/ScForm'
 import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
 import {
 	Scheduler,
@@ -12,75 +14,53 @@ import {
 	EditRecurrenceMenu,
 	AllDayPanel,
 } from '@devexpress/dx-react-scheduler-material-ui';
+import { GiCondorEmblem } from "react-icons/gi";
+const getEvents = async () => {
+	try {
+		const res = await axios.get(
+			'http://localhost:3005/api/v1/events/getEvent',
+		);
+		if(res){
+		
+		//console.log(new Date(res.data.records[0].startDate));
+		res.data.records.forEach(element => {
+			element.startDate = new Date(element.startDate);
+			element.endDate = new Date(element.endDate);
+			element.id = element._id;
+			//console.log(element);
+			recurrenceAppointments.push(element);
+		});
+		
+		
+		
+		
+		}
+		//setEvents(res.data.data);
+		
+	} catch {}
+};
+getEvents();
 
 const recurrenceAppointments = [
-	{
-		title: 'Website Re-Design Plan',
-		startDate: new Date(2018, 5, 25, 9, 15),
-		endDate: new Date(2018, 5, 25, 11, 30),
-		id: 100,
-		rRule: 'FREQ=DAILY;COUNT=3',
-		exDate: '20180628T063500Z,20180626T061500Z',
-	},
-	{
-		title: 'Book Flights to San Fran for Sales Trip',
-		startDate: new Date(2018, 5, 25, 12, 11),
-		endDate: new Date(2018, 5, 25, 13, 0),
-		id: 101,
-		rRule: 'FREQ=DAILY;COUNT=4',
-		exDate: '20180627T091100Z',
-		allDay: true,
-	},
-	{
-		title: 'Install New Router in Dev Room',
-		startDate: new Date(2018, 5, 25, 13, 30),
-		endDate: new Date(2018, 5, 25, 14, 35),
-		id: 102,
-		rRule: 'FREQ=DAILY;COUNT=5',
-	},
-	{
-		title: 'Approve Personal Computer Upgrade Plan',
-		startDate: new Date(2018, 5, 26, 10, 0),
-		endDate: new Date(2018, 5, 26, 11, 0),
-		id: 3,
-		location: 'Room 2',
-	},
-	{
-		title: 'Final Budget Review',
-		startDate: new Date(2018, 5, 27, 11, 45),
-		endDate: new Date(2018, 5, 27, 13, 20),
-		id: 4,
-		location: 'Room 2',
-	},
-	{
-		title: 'New Brochures',
-		startDate: new Date(2018, 5, 26, 14, 40),
-		endDate: new Date(2018, 5, 26, 15, 45),
-		id: 5,
-		location: 'Room 2',
-	},
-	{
-		title: 'Install New Database',
-		startDate: new Date(2018, 5, 28, 9, 45),
-		endDate: new Date(2018, 5, 28, 11, 15),
-		id: 6,
-		location: 'Room 1',
-	},
-	{
-		title: 'Approve New Online Marketing Strategy',
-		startDate: new Date(2018, 5, 29, 11, 45),
-		endDate: new Date(2018, 5, 29, 13, 5),
-		id: 7,
-		location: 'Room 3',
-	},
-	{
-		title: 'Create Icons for Website',
-		startDate: new Date(2018, 5, 29, 10, 0),
-		endDate: new Date(2018, 5, 29, 11, 30),
-		id: 12,
-		location: 'Room 2',
-	},
+	// {
+	// 	title: 'Website Re-Design Plan',
+	// 	startDate: new Date(2018, 5, 25, 9, 15),
+	// 	endDate: new Date(2018, 5, 25, 11, 30),
+	// 	id: 100,
+	// 	//rRule: 'FREQ=DAILY;COUNT=3',
+	// 	//exDate: '20180628T063500Z,20180626T061500Z',
+	// },
+	//   {
+	//    description: "Asprin 2mg",
+	//   endDate: new Date(2018, 5, 25, 9, 59),
+	//    id: "6076705cace27d4f2486b5d8",
+	//    startDate: new Date(2018, 5, 25, 9, 59),
+	//    title: "medicine",
+	//    __v: 0,
+	//    _id: "6076705cace27d4f2486b5d8",
+	//    }
 ];
+
 
 const dragDisableIds = new Set([3, 8, 10, 12]);
 
@@ -98,20 +78,32 @@ const appointmentComponent = (props) => {
 };
 
 export default class Demo extends React.PureComponent {
+
+
+
+	
+		
+
+
+	
 	constructor(props) {
 		super(props);
+		
 
 		this.state = {
 			data: recurrenceAppointments,
-			currentDate: new Date('2018-06-27'),
+			currentDate: new Date(),
+			
 		};
-
+	 console.log(this.state);
 		this.onCommitChanges = this.commitChanges.bind(this);
+		
 	}
 
 	commitChanges({ added, changed, deleted }) {
 		this.setState((state) => {
 			let { data } = state;
+		
 			if (added) {
 				const startingAddedId =
 					data.length > 0 ? data[data.length - 1].id + 1 : 0;
@@ -132,16 +124,38 @@ export default class Demo extends React.PureComponent {
 	}
 
 	render() {
+
+
+		
+
 		const { data, currentDate } = this.state;
+        
+		
+
+	
+		
+		
+
+
+
+
+
+
+	
+
+
+
+
 
 		return (
 			<div className='meds_container'>
+			<AddButton />
 				<Paper className='meds_wrapper'>
 					<Scheduler data={data} height={660}>
 						<ViewState defaultCurrentDate={currentDate} />
 						<EditingState onCommitChanges={this.onCommitChanges} />
 						<EditRecurrenceMenu />
-						<WeekView startDayHour={9} endDayHour={16} />
+						<WeekView startDayHour={9} endDayHour={24} />
 						<Appointments appointmentComponent={appointmentComponent} />
 						<AllDayPanel />
 						<DragDropProvider allowDrag={allowDrag} />

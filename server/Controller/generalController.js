@@ -5,7 +5,7 @@ const AppError = require('../utils/appError');
 
 exports.createRecord=(Model) =>
 catchError(async (req, res, next) => {
-    
+    console.log(req.body);
     const newDoc = await Model.create(req.body);
     res.status(201).json({
       status: 'success',

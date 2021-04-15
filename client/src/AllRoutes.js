@@ -15,7 +15,7 @@ import {
 	Vaccinations,
 	Medications,
 	LabReports,
-	Event,
+	
 } from './Pages/index.js';
 
 import { LoginPage, RegisterPage } from './authPages';
@@ -75,9 +75,7 @@ const AllRoutes = () => {
 						<Route exact path='/lab-reports'>
 							<LabReports />
 						</Route>
-						<Route exact path='/events'>
-							<Event />
-						</Route>
+						
 					</>
 				)}
 			</Switch>

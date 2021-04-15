@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -38,14 +39,42 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ScForm() {
-	const [name, setName] = useState('');
+	const [title, setName] = useState('');
 	const [description, setDescription] = useState('');
-	const [selectedDate, setSelectedDate] = useState(new Date());
+	const [startDate, setStartDate] = useState(new Date());
+	const [endDate, setEndDate] = useState(new Date());
 
-	const handleDateChange = (date) => {
-		setSelectedDate(date);
+    const newEvent = async (e) => {
+		e.preventDefault();
+		
+		try {
+		  const res = await axios.post(
+			"http://localhost:3005/api/v1/events/addEvent",
+			{
+			  title,
+			  description,
+			  startDate,
+			  endDate
+			}
+		  );
+		 
+		  if (res.data.status === "success") {
+			window.alert("Event added!");
+		  }else if(res.data.status === "failed"){
+			  console.log('error');
+		  }
+		} catch {}
+	  };
+
+
+	const handleDateChangeStart = (date) => {
+		setStartDate(date);
+	};
+	const handleDateChangeEnd = (date) => {
+		setEndDate(date);
 	};
 
+	
 	const classes = useStyles();
 
 	return (
@@ -57,7 +86,7 @@ function ScForm() {
 						<Typography component='h1' variant='h5'>
 							Add an Event Here
 						</Typography>
-						<form className={classes.form} Validate>
+						<form  onSubmit={newEvent} className={classes.form} Validate>
 							<Grid container spacing={4}>
 								<Grid item xs={12}>
 									<TextField
@@ -68,7 +97,7 @@ function ScForm() {
 										label='Add Title'
 										name='title'
 										autoComplete='title'
-										// value={title}
+									    value={title}
 										onChange={(e) => setName(e.target.value)}
 									/>
 								</Grid>
@@ -88,8 +117,8 @@ function ScForm() {
 											margin='normal'
 											id='date-picker-inline'
 											label='Start Date'
-											value={selectedDate}
-											onChange={handleDateChange}
+											value={startDate}
+											onChange={handleDateChangeStart}
 											KeyboardButtonProps={{
 												'aria-label': 'change date',
 											}}
@@ -103,8 +132,8 @@ function ScForm() {
 											margin='normal'
 											id='date-picker-inline'
 											label='End Date'
-											value={selectedDate}
-											onChange={handleDateChange}
+											value={endDate}
+											onChange={handleDateChangeEnd}
 											KeyboardButtonProps={{
 												'aria-label': 'change date',
 											}}

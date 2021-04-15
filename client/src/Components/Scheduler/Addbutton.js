@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Addbuttonl() {
+export default function Addbutton() {
 	const classes = useStyles();
 
 	return (
