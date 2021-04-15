@@ -55,6 +55,8 @@ function ScForm() {
 	const [description, setDescription] = useState('');
 	const [startDate, setStartDate] = useState(new Date());
 	const [endDate, setEndDate] = useState(new Date());
+	const [startTime, setStartTime] = useState(null);
+	const [endTime, setEndTime] = useState(null);
 
     const newEvent = async (e) => {
 		e.preventDefault();
@@ -66,7 +68,9 @@ function ScForm() {
 			  title,
 			  description,
 			  startDate,
-			  endDate
+			  endDate,
+			  startTime,
+			  endTime
 			}
 		  );
 		 
@@ -84,6 +88,12 @@ function ScForm() {
 	};
 	const handleDateChangeEnd = (date) => {
 		setEndDate(date);
+	};
+	const handleTimeChangeStart = (time) => {
+		setStartTime(time);
+	};
+	const handleTimeChangeEnd = (time) => {
+		setEndTime(time);
 	};
 
 	
@@ -156,8 +166,8 @@ function ScForm() {
 											<TimePicker
 												autoOk
 												label='Start Time'
-												// value={selectedDate}
-												// onChange={handleDateChange}
+												value={startTime}
+												 onChange={handleTimeChangeStart}
 											/>
 										</Fragment>
 									</Grid>
@@ -166,8 +176,8 @@ function ScForm() {
 											<TimePicker
 												autoOk
 												label='End Time'
-												// value={selectedDate}
-												// onChange={handleDateChange}
+												value={endTime}
+												onChange={handleTimeChangeEnd}
 											/>
 										</Fragment>
 									</Grid>
