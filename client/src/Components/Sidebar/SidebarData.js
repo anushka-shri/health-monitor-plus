@@ -26,7 +26,6 @@ import * as GrIcons from 'react-icons/gr';
  	},
  	{
  		title: 'Personal Monitoring',
- 		 path: '/daily-monitoring',
  		icon: <BiIcons.BiTachometer />,
  		iconClosed: <AiIcons.AiOutlinePlus />,
  		iconOpened: <AiIcons.AiOutlineMinus />,
@@ -50,7 +49,6 @@ import * as GrIcons from 'react-icons/gr';
  	},
  	{
  		title: 'Prescriptions',
- 		 path: '/prescriptions',
  		icon: <FaIcons.FaPrescriptionBottleAlt />,
  		iconClosed: <AiIcons.AiOutlinePlus />,
  		iconOpened: <AiIcons.AiOutlineMinus />,
@@ -74,7 +72,6 @@ import * as GrIcons from 'react-icons/gr';
  	},
     {
  		title: 'Doctors',
- 		 path: '/',
  		icon: <FaIcons.FaUserNurse />,
  		iconClosed: <AiIcons.AiOutlinePlus />,
  		iconOpened: <AiIcons.AiOutlineMinus />,

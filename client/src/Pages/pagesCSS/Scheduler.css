@@ -9,10 +9,11 @@
 }
 
 .meds_container {
+	height: 120vh !important;
 	background: rgb(144, 70, 194) !important;
 	background: linear-gradient(
 		to bottom,
 		rgb(150, 80, 196) 0%,
-		rgb(252, 190, 103) 100%
-	) !important;
-}
+		rgb(252, 190, 103) 150%
+	) !important; 
+} 
