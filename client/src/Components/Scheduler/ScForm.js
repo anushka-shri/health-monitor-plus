@@ -191,7 +191,7 @@ function ScForm() {
 
 								<Grid item xs={6}>
 									<FormControl component='fieldset'>
-										<FormLabel component='legend'>Add Frequency</FormLabel>
+										<FormLabel component='legend'>Add Event all day ?</FormLabel>
 										<RadioGroup
 											row
 											aria-label='position'
@@ -200,7 +200,7 @@ function ScForm() {
 											<FormControlLabel
 												value='end'
 												control={<Radio color='primary' />}
-												label='DAILY'
+												label='ALL DAY'
 											/>
 											<FormControlLabel
 												value='end'
@@ -214,7 +214,7 @@ function ScForm() {
 								<Grid item xs={6}>
 									<FormControl variant='filled' className={classes.formControl}>
 										<InputLabel id='demo-simple-select-filled-label'>
-											REPEAT
+										REPEAT
 										</InputLabel>
 										<Select
 											labelId='demo-simple-select-filled-label'
