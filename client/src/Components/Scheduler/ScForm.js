@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -8,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { TimePicker } from '@material-ui/pickers';
+import { Link } from 'react-scroll';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -17,6 +19,15 @@ import {
 
 // import axios from 'axios';
 import './ScForm.css';
+
+
+const theme = createMuiTheme({
+	palette: {
+		secondary: {
+			main: "#fbaed2",
+		},
+	},
+});
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -38,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+  
 function ScForm() {
 	const [title, setName] = useState('');
 	const [description, setDescription] = useState('');
@@ -79,14 +91,14 @@ function ScForm() {
 
 	return (
 		<>
-			<div className='ScForm_container'>
+			<div className='ScForm_container' id='SForm'>
 				<Container component='main' maxWidth='xs' className='root'>
 					<CssBaseline />
 					<div className={classes.paper}>
 						<Typography component='h1' variant='h5'>
 							Add an Event Here
 						</Typography>
-						<form  onSubmit={newEvent} className={classes.form} Validate>
+						<form onSubmit={newEvent} className={classes.form} Validate>
 							<Grid container spacing={4}>
 								<Grid item xs={12}>
 									<TextField
@@ -97,7 +109,7 @@ function ScForm() {
 										label='Add Title'
 										name='title'
 										autoComplete='title'
-									    value={title}
+										value={title}
 										onChange={(e) => setName(e.target.value)}
 									/>
 								</Grid>
@@ -187,14 +199,18 @@ function ScForm() {
 								</Grid>
 
 								<Grid item xs={12} sm={12}>
-									<Button
-										type='submit'
-										fullWidth
-										variant='contained'
-										color='primary'
-										className={classes.submit}>
-										Add Event
-									</Button>
+									<ThemeProvider theme={theme}>
+										<Button
+											type='submit'
+											fullWidth
+											variant='contained'
+											color='secondary'
+											className={classes.submit}>
+											<Link to='AE_btn' spy={true} smooth={true}>
+												Add Event
+											</Link>
+										</Button>
+									</ThemeProvider>
 								</Grid>
 							</Grid>
 						</form>
