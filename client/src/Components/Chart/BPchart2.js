@@ -9,7 +9,7 @@ import {
 	Legend,
 	Title,
 } from '@devexpress/dx-react-chart-material-ui';
-import { ValueScale, Animation } from '@devexpress/dx-react-chart';
+import { Animation } from '@devexpress/dx-react-chart';
 import axios from 'axios';
 
 

@@ -46,7 +46,7 @@ export default function NewPresciption() {
 	const [Title, setTitle] = useState('');
 	const [doctor, setDoctor] = useState('');
 	const [notes, setNote] = useState('');
-	const [fileSelected, setFiles] = useState([]);
+	 const [fileSelected, setFiles] = useState([]);
 	const [selectedDate, setSelectedDate] = useState(
 		new Date(),
 	);

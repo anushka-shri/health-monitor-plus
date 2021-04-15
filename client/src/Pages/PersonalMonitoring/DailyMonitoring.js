@@ -385,7 +385,7 @@ function DailyMonitoring() {
 										</Fragment>
 									</Grid>
 								</MuiPickersUtilsProvider>
-								<Grid item item xs={12} sm={4} md={6}>
+								<Grid item xs={12} sm={4} md={6}>
 									<Button
 										onClick={sugarHandler}
 										className='centeralign'

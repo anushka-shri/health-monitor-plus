@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-scroll';
 import * as RiIcons from 'react-icons/ri';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+
 
 const useStyles = makeStyles((theme) => ({
 	button: {

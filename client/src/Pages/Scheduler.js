@@ -1,10 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import Paper from '@material-ui/core/Paper';
 import './pagesCSS/Scheduler.css';
-import ColorLens from '@material-ui/icons/ColorLens';
-import { withStyles } from '@material-ui/core/styles';
 
 import { AddButton, ScForm } from './../Components';
 import {

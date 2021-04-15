@@ -1,17 +1,17 @@
-import React, { useContext, useEffect, useReducer, useState } from 'react';
+import React, { useContext, useEffect, useReducer } from 'react';
 import axios from 'axios';
 import {
-	SET_BP,
+	// SET_BP,
 	CHECK_LOGIN,
 	CHECK_LOGOUT,
 	SET_SUGAR,
-	SET_DOCTORS,
-	SET_PRESCRIPTIONS,
-	SET_FAMILYHISTORY,
-	SET_OXYGEN,
-	SET_VACCINATIONS,
-	SET_PULSE,
-	SET_LABREPORTS,
+	// SET_DOCTORS,
+	// SET_PRESCRIPTIONS,
+	// SET_FAMILYHISTORY,
+	// SET_OXYGEN,
+	// SET_VACCINATIONS,
+	// SET_PULSE,
+	// SET_LABREPORTS,
 } from './Actions';
 import reducer from './Reducer';
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import axios from 'axios';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -11,6 +11,18 @@ import Container from '@material-ui/core/Container';
 import { TimePicker } from '@material-ui/pickers';
 import { Link } from 'react-scroll';
 import 'date-fns';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+
+import Select from '@material-ui/core/Select';
+
 import DateFnsUtils from '@date-io/date-fns';
 import {
 	MuiPickersUtilsProvider,
@@ -20,11 +32,10 @@ import {
 // import axios from 'axios';
 import './ScForm.css';
 
-
 const theme = createMuiTheme({
 	palette: {
 		secondary: {
-			main: "#fbaed2",
+			main: '#fbaed2',
 		},
 	},
 });
@@ -49,35 +60,33 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-  
 function ScForm() {
 	const [title, setName] = useState('');
 	const [description, setDescription] = useState('');
 	const [startDate, setStartDate] = useState(new Date());
 	const [endDate, setEndDate] = useState(new Date());
 
-    const newEvent = async (e) => {
+	const newEvent = async (e) => {
 		e.preventDefault();
-		
-		try {
-		  const res = await axios.post(
-			"http://localhost:3005/api/v1/events/addEvent",
-			{
-			  title,
-			  description,
-			  startDate,
-			  endDate
-			}
-		  );
-		 
-		  if (res.data.status === "success") {
-			window.alert("Event added!");
-		  }else if(res.data.status === "failed"){
-			  console.log('error');
-		  }
-		} catch {}
-	  };
 
+		try {
+			const res = await axios.post(
+				'http://localhost:3005/api/v1/events/addEvent',
+				{
+					title,
+					description,
+					startDate,
+					endDate,
+				},
+			);
+
+			if (res.data.status === 'success') {
+				window.alert('Event added!');
+			} else if (res.data.status === 'failed') {
+				console.log('error');
+			}
+		} catch {}
+	};
 
 	const handleDateChangeStart = (date) => {
 		setStartDate(date);
@@ -86,7 +95,6 @@ function ScForm() {
 		setEndDate(date);
 	};
 
-	
 	const classes = useStyles();
 
 	return (
@@ -173,15 +181,46 @@ function ScForm() {
 									</Grid>
 								</MuiPickersUtilsProvider>
 
-								{/* <Grid item xs={12} sm={12}>
-									<Button
-										// onClick={oxygenHandler}
-										className='centeralign'
-										variant='contained'
-										color='primary'>
-										Add duration
-									</Button>
-								</Grid> */}
+								<Grid item xs={6}>
+									<FormControl component='fieldset'>
+										<FormLabel component='legend'>Add Frequency</FormLabel>
+										<RadioGroup
+											row
+											aria-label='position'
+											name='position'
+											defaultValue='top'>
+											<FormControlLabel
+												value='end'
+												control={<Radio color='primary' />}
+												label='DAILY'
+											/>
+											<FormControlLabel
+												value='end'
+												control={<Radio color='primary' />}
+												label='REPEAT'
+											/>
+										</RadioGroup>
+									</FormControl>
+								</Grid>
+
+								<Grid item xs={6}>
+									<FormControl variant='filled' className={classes.formControl}>
+										<InputLabel id='demo-simple-select-filled-label'>
+											REPEAT
+										</InputLabel>
+										<Select
+											labelId='demo-simple-select-filled-label'
+											id='demo-simple-select-filled'
+											
+											// value={age}
+											// onChange={handleChange}
+										>
+											<MenuItem value={10}>DAILY</MenuItem>
+											<MenuItem value={20}>MONTHLY</MenuItem>
+											<MenuItem value={30}>YEARLY</MenuItem>
+										</Select>
+									</FormControl>
+								</Grid>
 
 								<Grid item xs={12}>
 									<TextField
