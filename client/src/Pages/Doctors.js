@@ -186,6 +186,7 @@ const EnhancedTableToolbar = (props) => {
 				</Tooltip>
 			) : (
 				<Tooltip title='Filter list'>
+				    
 					<IconButton aria-label='filter list'>
 						<FilterListIcon />
 					</IconButton>
@@ -264,7 +265,7 @@ export default function EnhancedTable() {
 
 	const handleSelectAllClick = (event) => {
 		if (event.target.checked) {
-			const newSelecteds = rows.map((n) => n.name);
+			const newSelecteds = rows.map((n) => n.DoctorName);
 			setSelected(newSelecteds);
 			return;
 		}
@@ -273,6 +274,7 @@ export default function EnhancedTable() {
 
 	const handleClick = (event, name) => {
 		const selectedIndex = selected.indexOf(name);
+		
 		let newSelected = [];
 
 		if (selectedIndex === -1) {
@@ -333,17 +335,18 @@ export default function EnhancedTable() {
 								{stableSort(rows, getComparator(order, orderBy))
 									.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 									.map((row, index) => {
-										const isItemSelected = isSelected(row.name);
+										console.log(row);
+										const isItemSelected = isSelected(row.DoctorName);
 										const labelId = `enhanced-table-checkbox-${index}`;
 
 										return (
 											<TableRow
 												hover
-												onClick={(event) => handleClick(event, row.name)}
+												onClick={(event) => handleClick(event, row.DoctorName)}
 												role='checkbox'
 												aria-checked={isItemSelected}
 												tabIndex={-1}
-												key={row.name}
+												key={row.DoctorName}
 												selected={isItemSelected}>
 												<TableCell padding='checkbox'>
 													<Checkbox
@@ -356,7 +359,7 @@ export default function EnhancedTable() {
 													id={labelId}
 													scope='row'
 													padding='none'>
-													{row.name}
+													{row.DoctorName}
 												</TableCell>
 												<TableCell align='right'>{row.DoctorName}</TableCell>
 												<TableCell align='right'>{row.Hospital}</TableCell>
