@@ -23,6 +23,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import axios from 'axios';
 import './pagesCSS/Doctors.css';
 
+
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
 		return -1;

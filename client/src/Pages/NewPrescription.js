@@ -117,7 +117,6 @@ export default function NewPresciption() {
 
 	return (
 		<>
-		
 			<div className='NPrescription_container'>
 				<Container component='main' maxWidth='xs' className='root'>
 					<CssBaseline />
@@ -158,11 +157,11 @@ export default function NewPresciption() {
 										onChange={(e) => setDoctor(e.target.value)}
 									/>
 								</Grid>
-								{/* <Grid item xs={12} sm={4}>
+								<Grid item xs={12} sm={4}>
 									<InputLabel id='demo-simple-select-label'>Doctors</InputLabel>
 									<Select value='Add Doctor'>{renderDoctors()}</Select>
 								</Grid>
-								<Grid item xs={12}>
+								{/*<Grid item xs={12}>
 									<Button variant='contained' color='primary' sm={6}>
 										Add Doctor +
 									</Button>

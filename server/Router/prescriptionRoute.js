@@ -6,6 +6,7 @@ const router = express.Router();
 
 
 router.post('/addNew',
+authenticationController.isLoggedIn,
 prescriptionController.uploadImages,
 prescriptionController.resizeImages,
 prescriptionController.createPrescription,
