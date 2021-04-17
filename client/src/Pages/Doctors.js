@@ -87,6 +87,30 @@ function createData(DoctorsName, Hospital, Specialization, Notes) {
 // 						</tr>
 // 					))}
 
+
+
+function Doctors() {
+		const [doctors, setDoctor] = useState([]);
+	
+		const getDoctors = async () => {
+			try {
+				const res = await axios.get(
+					'http://localhost:3005/api/v1/doctors/getUserDoctor',
+				);
+				//console.log(res.data.data);
+				setDoctor(res.data.data);
+				console.log(doctors);
+			} catch {}
+		};
+	
+		useEffect(() => {
+			getDoctors();
+		}, []);
+	
+
+
+
+
 const rows = [
 
 	createData('DoctorsName', 305, 3.7, 67, 4.3),
@@ -458,5 +482,4 @@ export default function EnhancedTable() {
 				/>
 			</div>
 		</div>
-	);
-}
+	)}

@@ -24,11 +24,11 @@ const presiptionSchema = new mongoose.Schema({
     DateOfRec : {
         type: Date,
     },
-    /*User : {
+    User : {
         type : mongoose.Schema.ObjectId,
         ref : "User",
         required : [true, "Prescription must belong to some user"]
-    }*/
+    }
 
 });
 
