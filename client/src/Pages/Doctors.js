@@ -75,59 +75,58 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import axios from 'axios';
 import './pagesCSS/Doctors.css';
 
-function createData(DoctorsName, Hospital, Specialization, Notes) {
-	return { DoctorsName, Hospital, Specialization, Notes };
-}
 
-//{doctors.map((doctor, i) => (
-// 						<tr key={i}>
-// 							<td>{doctor.Name}</td>
-// 							<td>{doctor.Hospital}</td>
-// 							<td>{doctor.Specialization}</td>
-// 							<td>{doctor.Notes}</td>
-// 						</tr>
-// 					))}
+// const getDoctors = async () => {
+// 			try {
+// 				const res = await axios.get(
+// 					'http://localhost:3005/api/v1/doctors/getUserDoctor',
+// 				);
+// 				if(res.data.data){
+// 					res.data.data.forEach(element => {
+// 						docArray.push({
+// 							Hospital:element.Hospital,
+// 							 DoctorName:element.Name,
+// 							Specialization: element.Specialization,
+// 							 Notes: element.Notes
+// 						});
+// 					});
+					
+// 				}
+// 				//setDoctor(res.data.data);
+// 				//console.log(doctors);
+				
+// 			} catch {}
+// 		};
 
+// getDoctors();
 
+// var docArray = [];
 
-function Doctors() {
-		const [doctors, setDoctor] = useState([]);
-	
-		const getDoctors = async () => {
-			try {
-				const res = await axios.get(
-					'http://localhost:3005/api/v1/doctors/getUserDoctor',
-				);
-				//console.log(res.data.data);
-				setDoctor(res.data.data);
-				console.log(doctors);
-			} catch {}
-		};
-	
-		useEffect(() => {
-			getDoctors();
-		}, []);
-	
+// const rows = docArray;
+// console.log(rows);
 
 
 
 
-const rows = [
 
-	createData('DoctorsName', 305, 3.7, 67, 4.3),
-	createData('Hospital', 452, 25.0, 51, 4.9),
-	createData('Eclair', 262, 16.0, 24, 6.0),
-	createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-	createData('Gingerbread', 356, 16.0, 49, 3.9),
-	createData('Honeycomb', 408, 3.2, 87, 6.5),
-	createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-	createData('Jelly Bean', 375, 0.0, 94, 0.0),
-	createData('KitKat', 518, 26.0, 65, 7.0),
-	createData('Lollipop', 392, 0.2, 98, 0.0),
-	createData('Marshmallow', 318, 0, 81, 2.0),
-	createData('Nougat', 360, 19.0, 9, 37.0),
-	createData('Oreo', 437, 18.0, 63, 4.0),
-];
+// const rows = [
+// //     createData('DoctorsName', 305, 3.7, 67, 4.3),
+// // 	createData('Hospital', 452, 25.0, 51, 4.9),
+// // 	createData('Eclair', 262, 16.0, 24, 6.0),
+// // 	createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+// // 	createData('Gingerbread', 356, 16.0, 49, 3.9),
+// // 	createData('Honeycomb', 408, 3.2, 87, 6.5),
+// // 	createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+// // 	createData('Jelly Bean', 375, 0.0, 94, 0.0),
+// // 	createData('KitKat', 518, 26.0, 65, 7.0),
+// // 	createData('Lollipop', 392, 0.2, 98, 0.0),
+// // 	createData('Marshmallow', 318, 0, 81, 2.0),
+// // 	createData('Nougat', 360, 19.0, 9, 37.0),
+// // 	createData('Oreo', 437, 18.0, 63, 4.0),
+// ];
+
+
+
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -169,8 +168,8 @@ const headCells = [
 		label: 'Doctors Name',
 	},
 	{ id: 'fat', numeric: true, disablePadding: false, label: 'Hospital' },
-	{ id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-	{ id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
+	{ id: 'carbs', numeric: true, disablePadding: false, label: 'Specialization' },
+	{ id: 'protein', numeric: true, disablePadding: false, label: 'Notes' },
 
 ];
 
@@ -276,7 +275,7 @@ const EnhancedTableToolbar = (props) => {
 					variant='h6'
 					id='tableTitle'
 					component='div'>
-					Nutrition
+					Doctors
 				</Typography>
 			)}
 
@@ -333,22 +332,61 @@ export default function EnhancedTable() {
 	const [page, setPage] = React.useState(0);
 	const [dense, setDense] = React.useState(false);
 	const [rowsPerPage, setRowsPerPage] = React.useState(5);
-		const [doctors, setDoctor] = useState([]);
-
+    const [doctors, setDoctor] = useState([]);
+		
+ 
 		const getDoctors = async () => {
 			try {
 				const res = await axios.get(
 					'http://localhost:3005/api/v1/doctors/getUserDoctor',
 				);
-				//console.log(res.data.data);
-				setDoctor(res.data.data);
-				console.log(doctors);
+				if(res.data.data){
+					setDoctor(res.data.data);
+					//docArray = res.data.data;
+					// res.data.data.forEach(element => {
+					// 	docArray.push({
+					// 		Hospital:element.Hospital,
+					// 		 DoctorName:element.Name,
+					// 		Specialization: element.Specialization,
+					// 		 Notes: element.Notes
+					// 	});
+					// });
+					
+				}
+				
+				
 			} catch {}
 		};
 
 		useEffect(() => {
-			getDoctors();
-		}, []);
+					getDoctors();
+			}, []);
+
+
+        var rows = doctors.map(element => (
+			{
+				Hospital:element.Hospital,
+				DoctorName:element.Name,
+				Specialization: element.Specialization,
+				Notes: element.Notes
+			}
+		));
+			console.log(rows);
+
+		// const getDoctors = async () => {
+		// 	try {
+		// 		const res = await axios.get(
+		// 			'http://localhost:3005/api/v1/doctors/getUserDoctor',
+		// 		);
+		// 		console.log(res.data.data);
+		// 		setDoctor(res.data.data);
+		// 		//console.log(doctors);
+		// 	} catch {}
+		// };
+
+		// useEffect(() => {
+		// 	getDoctors();
+		// }, []);
 
 	const handleRequestSort = (event, property) => {
 		const isAsc = orderBy === property && order === 'asc';
@@ -452,10 +490,10 @@ export default function EnhancedTable() {
 													padding='none'>
 													{row.name}
 												</TableCell>
-												<TableCell align='right'>{row.DoctorsName}</TableCell>
+												<TableCell align='right'>{row.DoctorName}</TableCell>
 												<TableCell align='right'>{row.Hospital}</TableCell>
-												<TableCell align='right'>{row.carbs}</TableCell>
-												<TableCell align='right'>{row.protein}</TableCell>
+												<TableCell align='right'>{row.Specialization}</TableCell>
+												<TableCell align='right'>{row.Notes}</TableCell>
 											</TableRow>
 										);
 									})}
@@ -483,4 +521,5 @@ export default function EnhancedTable() {
 				/>
 			</div>
 		</div>
-	)}
+	);
+}
