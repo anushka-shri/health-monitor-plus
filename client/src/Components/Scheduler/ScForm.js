@@ -31,6 +31,18 @@ import {
 
 // import axios from 'axios';
 import './ScForm.css';
+import { ValueAxis } from '@devexpress/dx-react-chart-material-ui';
+
+
+
+import Checkbox from '@material-ui/core/Checkbox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import FormGroup from '@material-ui/core/FormGroup';
+
+
 
 const theme = createMuiTheme({
 	palette: {
@@ -46,6 +58,13 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
+	},
+	formControl: {
+		margin: theme.spacing(1),
+		minWidth: 120,
+	},
+	selectEmpty: {
+		marginTop: theme.spacing(2),
 	},
 
 	form: {
@@ -67,6 +86,12 @@ function ScForm() {
 	const [endDate, setEndDate] = useState(new Date());
 	const [startTime, setStartTime] = useState(null);
 	const [endTime, setEndTime] = useState(null);
+	const [freq, setRepeat] = useState(null);
+	const [count, setCount] = useState(null);
+	const [checked, setAllDay] = useState(false);
+		
+	
+	//const [value,setRepeat] = useState('');
 
 	const newEvent = async (e) => {
 		e.preventDefault();
@@ -79,6 +104,12 @@ function ScForm() {
 					description,
 					startDate,
 					endDate,
+					startTime,
+					endTime,
+					freq,
+					count,
+					checked
+					
 				},
 			);
 
@@ -89,7 +120,12 @@ function ScForm() {
 			}
 		} catch {}
 	};
-
+	const handleChange = (e) => {
+		setRepeat(e.target.innerText);
+	}
+	const handleChangeAllDay = (event) => {
+		setAllDay({ ...checked, [event.target.name]: event.target.checked });
+	  };
 	const handleDateChangeStart = (date) => {
 		setStartDate(date);
 	};
@@ -130,12 +166,6 @@ function ScForm() {
 									/>
 								</Grid>
 
-								{/* <Grid item xs={12} sm={12}>
-									<Typography component='h1' variant='h6'>
-										Add Event Duration
-									</Typography>
-								</Grid> */}
-
 								<MuiPickersUtilsProvider utils={DateFnsUtils}>
 									<Grid item xs={12} sm={6}>
 										<KeyboardDatePicker
@@ -173,7 +203,7 @@ function ScForm() {
 												autoOk
 												label='Start Time'
 												value={startTime}
-												 onChange={handleTimeChangeStart}
+												onChange={handleTimeChangeStart}
 											/>
 										</Fragment>
 									</Grid>
@@ -189,42 +219,63 @@ function ScForm() {
 									</Grid>
 								</MuiPickersUtilsProvider>
 
-								<Grid item xs={6}>
-									<FormControl component='fieldset'>
-										<FormLabel component='legend'>Add Event all day ?</FormLabel>
+								<Grid item xs={8}>
+									{/* <FormControl component='fieldset'>
+										<FormLabel component='legend'>
+											Add Event all day ?
+										</FormLabel>
 										<RadioGroup
 											row
 											aria-label='position'
 											name='position'
-											defaultValue='top'>
+											defaultValue='top'
+											
+											>
 											<FormControlLabel
-												value='end'
+												value={allDay}
+											    onClick = {handleChangeAllDay}
 												control={<Radio color='primary' />}
 												label='ALL DAY'
 											/>
-											
 										</RadioGroup>
-									</FormControl>
+									</FormControl> */}
+									<FormGroup row>
+      									<FormControlLabel
+        									control={<Checkbox checked={checked.checkedA} onChange={handleChangeAllDay} name="checkedA" />}
+        									label="All Day"
+      									/>
+									</FormGroup>
 								</Grid>
 
 								<Grid item xs={6}>
 									<FormControl variant='filled' className={classes.formControl}>
 										<InputLabel id='demo-simple-select-filled-label'>
-										REPEAT
+											REPEAT
 										</InputLabel>
 										<Select
 											labelId='demo-simple-select-filled-label'
 											id='demo-simple-select-filled'
 											
-											// value={age}
-											// onChange={handleChange}
 										>
-											<MenuItem value={10}>DAILY</MenuItem>
-											<MenuItem value={10}>WEEKLY</MenuItem>
-											<MenuItem value={20}>MONTHLY</MenuItem>
-											<MenuItem value={30}>YEARLY</MenuItem>
+											<MenuItem onClick={handleChange} value={freq}>DAILY</MenuItem>
+											<MenuItem onClick={handleChange} value={freq}>WEEKLY</MenuItem>
+											<MenuItem onClick={handleChange} value={freq}>MONTHLY</MenuItem>
+											<MenuItem onClick={handleChange} value={freq}>YEARLY</MenuItem>
 										</Select>
 									</FormControl>
+								</Grid>
+								<Grid item xs={6}>
+									<TextField
+										id='filled-number'
+										label='REPEAT FOR(DAYS)'
+										type='number'
+										value={count}
+										onChange={(e) => setCount(e.target.value)}
+										InputLabelProps={{
+											shrink: true,
+										}}
+										variant='filled'
+									/>
 								</Grid>
 
 								<Grid item xs={12}>

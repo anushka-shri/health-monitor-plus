@@ -1,0 +1,22 @@
+[
+    {
+      "Disease": "Fungal infection",
+      "Symptom_1": "itching",
+      "Symptom_2": "skin_rash",
+      "Symptom_3": "nodal_skin_eruptions"
+      
+    },
+    {
+      "Disease": "Fungal infection",
+      "Symptom_1": "skin_rash",
+      "Symptom_2": "nodal_skin_eruptions",
+      "Symptom_3": "dischromic _patches"
+      
+    },
+    {
+      "Disease": "Fungal infection",
+      "Symptom_1": "itching",
+      "Symptom_2": "nodal_skin_eruptions",
+      "Symptom_3": "dischromic _patches"
+      
+    }]

@@ -35,6 +35,21 @@ const eventSchema = new mongoose.Schema({
     endTime:{
         type: Date
     },
+    freq:{
+        type:String
+    },
+    count:{
+        type:String
+    },
+    rRule:{
+        type: String
+    },
+    checked: {
+        type: Object
+    },
+    allDay:{
+        type:Boolean
+    }
     //Repeat:{
        // type: String
     //},
@@ -48,6 +63,25 @@ const eventSchema = new mongoose.Schema({
        //type : String
     //}
 });
+
+
+eventSchema.pre('save', function (next) {
+    console.log(this);
+    if(this.freq && this.count){
+    var freq = this.freq;
+    var count = this.count;
+    this.rRule = `FREQ=${freq};COUNT=${count}`;
+    }
+    if(this.checked){
+        var allDay = this.checked.checkedA;
+        this.allDay = allDay;
+    }
+    next();
+    
+  });
+  
+
+
 
 const Event = mongoose.model('Event', eventSchema);
 
