@@ -79,6 +79,7 @@ function NewDoctors() {
 	 
       if (res.data.status === "success") {
         window.alert("Doctor added!");
+		window.location.reload();
       }else if(res.data.status === "failed"){
 		  window.alert("Same name doctor already exists!");
 		  setDoctor('');

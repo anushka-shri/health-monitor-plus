@@ -21,12 +21,12 @@ const labSchema = new mongoose.Schema({
         },
     DateOfRec : {
         type: Date,
-    }
-    /*User : {
+    },
+    User : {
         type : mongoose.Schema.ObjectId,
         ref : "User",
         required : [true, "Lab report must belong to some user"]
-    }*/
+    }
 
 });
 

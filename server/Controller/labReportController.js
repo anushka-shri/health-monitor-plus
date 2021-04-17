@@ -68,7 +68,8 @@ exports.createReport = catchError ( async(req,res,next) => {
       Doctor: doctor._id,
       Report: req.body.reports,
       Notes: req.body.notes,
-      DateOfRec: Date.now()
+      DateOfRec: Date.now(),
+      User : req.user._id
       
       });
 

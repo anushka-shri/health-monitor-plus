@@ -50,3 +50,11 @@ exports.getUserDoc = catchError(async(req,res,next) => {
   });
 
 })
+
+exports.deleteDoctor = async(req,res,next) => {
+  console.log(req.body);
+  await Doctor.remove( { Name : { $in :req.body.deleteDoctor}});
+  res.status(200).json({
+    status: 'success',
+  });
+}

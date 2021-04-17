@@ -152,8 +152,38 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 
 const EnhancedTableToolbar = (props) => {
+   
+	
+	const deleteDoc = async (deleteDoctor) => {
+		
+
+		try {
+			const res = await axios.post(
+				'http://localhost:3005/api/v1/doctors/deleteDoctors',
+				{
+					deleteDoctor
+				},
+			);
+
+			if (res.data.status === 'success') {
+				window.alert('Doctor deleted!');
+				window.location.reload();
+			} else if (res.data.status === 'failed') {
+				console.log('error');
+			}
+		} catch {}
+	};
+
+
+	const handleDeleteClick = (event, selected) => {
+		
+		deleteDoc(selected);
+	};
+
+
+
 	const classes = useToolbarStyles();
-	const { numSelected } = props;
+	const { numSelected , selected} = props;
 
 	return (
 		<Toolbar
@@ -180,7 +210,7 @@ const EnhancedTableToolbar = (props) => {
 
 			{numSelected > 0 ? (
 				<Tooltip title='Delete'>
-					<IconButton aria-label='delete'>
+					<IconButton aria-label='delete' onClick={(event) => handleDeleteClick(event,selected)}>
 						<DeleteIcon />
 					</IconButton>
 				</Tooltip>
@@ -289,7 +319,7 @@ export default function EnhancedTable() {
 				selected.slice(selectedIndex + 1),
 			);
 		}
-
+        
 		setSelected(newSelected);
 	};
 
@@ -315,7 +345,7 @@ export default function EnhancedTable() {
 		<div className='Doctors_container'>
 			<div className={classes.root}>
 				<Paper className={classes.paper}>
-					<EnhancedTableToolbar numSelected={selected.length} />
+					<EnhancedTableToolbar numSelected={selected.length} selected={selected} />
 					<TableContainer>
 						<Table
 							className={classes.table}
@@ -359,7 +389,7 @@ export default function EnhancedTable() {
 													id={labelId}
 													scope='row'
 													padding='none'>
-													{row.DoctorName}
+													{}
 												</TableCell>
 												<TableCell align='right'>{row.DoctorName}</TableCell>
 												<TableCell align='right'>{row.Hospital}</TableCell>

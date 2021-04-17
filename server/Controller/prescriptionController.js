@@ -67,7 +67,8 @@ exports.createPrescription = catchError ( async(req,res,next) => {
       Prescription:req.body.prescriptions,
       Doctor: doctor._id,
       Notes: req.body.notes,
-      DateOfRec: Date.now()
+      DateOfRec: Date.now(),
+      User : req.user._id
       
       });
 
