@@ -1,11 +1,11 @@
-.NPrescription_container {
-	/* transform: translate(90%, 30%); */
-	height: 87vh;
-	width: 45vw;
+.LabRep_container{
+    
+    height: 85vh;
+	width: 48vw;
 	background-color: rgba(255, 245, 245, 0.87) !important;
 	border: 2px solid rgb(255, 255, 255);
-	margin-top: 15vh;
-	margin-left: 37vw;
+	margin-top: 22vh;
+	margin-left: 35vw;
 	margin-right: 10vw;
 	position: absolute;
 	border-radius:10px;

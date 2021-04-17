@@ -7,10 +7,10 @@ const prescriptionRoute = require('./Router/prescriptionRoute');
 const doctorRoute = require('./Router/doctorRoute');
 const labReportRoute = require('./Router/labReportRoute');
 const eventsRoute = require('./Router/eventsRoute');
-const brain = require('brain.js');
-const data = require('./Machine Learning/data.json');
+// const brain = require('brain.js');
+// const data = require('./Machine Learning/data.json');
 
-const fs = require('fs');
+// const fs = require('fs');
 
 const app = express();
 

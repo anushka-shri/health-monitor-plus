@@ -23,14 +23,14 @@ import './pagesCSS/NewPres.css';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
-		marginTop: theme.spacing(0),
+		marginTop: theme.spacing(1),
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
 	},
 
 	form: {
-		width: '135%', // Fix IE 11 issue.
+		width: '100%', // Fix IE 11 issue.
 		marginTop: theme.spacing(3),
 	},
 	submit: {
@@ -158,7 +158,7 @@ export default function NewPresciption() {
 										onChange={(e) => setDoctor(e.target.value)}
 									/>
 								</Grid>
-								<Grid item xs={12} sm={4}>
+								{/* <Grid item xs={12} sm={4}>
 									<InputLabel id='demo-simple-select-label'>Doctors</InputLabel>
 									<Select value='Add Doctor'>{renderDoctors()}</Select>
 								</Grid>
@@ -166,7 +166,7 @@ export default function NewPresciption() {
 									<Button variant='contained' color='primary' sm={6}>
 										Add Doctor +
 									</Button>
-								</Grid>
+								</Grid> */}
 
 								<Grid item xs={12}>
 									<label htmlFor='contained-button-file'>

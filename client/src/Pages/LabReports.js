@@ -18,7 +18,7 @@ import {
 } from '@material-ui/pickers';
 import axios from 'axios';
 
-import './pagesCSS/NewPres.css';
+import './pagesCSS/LabReports.css';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -116,7 +116,7 @@ export default function NewPresciption() {
 
 	return (
 		<>
-			<div className='NPrescription_container'>
+			<div className='LabRep_container'>
 				<Container component='main' maxWidth='xs' className='root'>
 					<CssBaseline />
 					<div className={classes.paper}>
@@ -153,7 +153,7 @@ export default function NewPresciption() {
 										onChange={(e) => setDoctor(e.target.value)}
 									/>
 								</Grid>
-								<Grid item xs={12} sm={4}>
+								{/* <Grid item xs={12} sm={4}>
 									<InputLabel id='demo-simple-select-label'>Doctors</InputLabel>
 									<Select value='Add Doctor'>{renderDoctors()}</Select>
 								</Grid>
@@ -161,7 +161,7 @@ export default function NewPresciption() {
 									<Button variant='contained' color='primary' sm={6}>
 										Add Doctor +
 									</Button>
-								</Grid>
+								</Grid> */}
 
 								<Grid item xs={12}>
 									<label htmlFor='contained-button-file'>
