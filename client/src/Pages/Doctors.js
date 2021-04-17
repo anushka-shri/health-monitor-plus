@@ -1,56 +1,4 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import './pagesCSS/Doctors.css';
-
-// function Doctors() {
-// 	const [doctors, setDoctor] = useState([]);
-
-// 	const getDoctors = async () => {
-// 		try {
-// 			const res = await axios.get(
-// 				'http://localhost:3005/api/v1/doctors/getUserDoctor',
-// 			);
-// 			//console.log(res.data.data);
-// 			setDoctor(res.data.data);
-// 			console.log(doctors);
-// 		} catch {}
-// 	};
-
-// 	useEffect(() => {
-// 		getDoctors();
-// 	}, []);
-// 
-
-// 	return (
-// 		<>
-// 			<div>
-// 				<h2 className='doctors_heading'>Doctors Added</h2>
-// 				<table className='Doctors_container'>
-// 					<tr>
-// 						<th>Doctor's Name</th>
-// 						<th>Hospital</th>
-// 						<th>Specialization</th>
-// 						<th>Notes</th>
-// 					</tr>
-
-// 					{doctors.map((doctor, i) => (
-// 						<tr key={i}>
-// 							<td>{doctor.Name}</td>
-// 							<td>{doctor.Hospital}</td>
-// 							<td>{doctor.Specialization}</td>
-// 							<td>{doctor.Notes}</td>
-// 						</tr>
-// 					))}
-// 				</table>
-// 			</div>
-// 		</>
-// 	);
-// }
-
-// export default Doctors;
-
-
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -74,59 +22,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import axios from 'axios';
 import './pagesCSS/Doctors.css';
-
-
-// const getDoctors = async () => {
-// 			try {
-// 				const res = await axios.get(
-// 					'http://localhost:3005/api/v1/doctors/getUserDoctor',
-// 				);
-// 				if(res.data.data){
-// 					res.data.data.forEach(element => {
-// 						docArray.push({
-// 							Hospital:element.Hospital,
-// 							 DoctorName:element.Name,
-// 							Specialization: element.Specialization,
-// 							 Notes: element.Notes
-// 						});
-// 					});
-					
-// 				}
-// 				//setDoctor(res.data.data);
-// 				//console.log(doctors);
-				
-// 			} catch {}
-// 		};
-
-// getDoctors();
-
-// var docArray = [];
-
-// const rows = docArray;
-// console.log(rows);
-
-
-
-
-
-// const rows = [
-// //     createData('DoctorsName', 305, 3.7, 67, 4.3),
-// // 	createData('Hospital', 452, 25.0, 51, 4.9),
-// // 	createData('Eclair', 262, 16.0, 24, 6.0),
-// // 	createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-// // 	createData('Gingerbread', 356, 16.0, 49, 3.9),
-// // 	createData('Honeycomb', 408, 3.2, 87, 6.5),
-// // 	createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-// // 	createData('Jelly Bean', 375, 0.0, 94, 0.0),
-// // 	createData('KitKat', 518, 26.0, 65, 7.0),
-// // 	createData('Lollipop', 392, 0.2, 98, 0.0),
-// // 	createData('Marshmallow', 318, 0, 81, 2.0),
-// // 	createData('Nougat', 360, 19.0, 9, 37.0),
-// // 	createData('Oreo', 437, 18.0, 63, 4.0),
-// ];
-
-
-
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -156,21 +51,25 @@ function stableSort(array, comparator) {
 
 const headCells = [
 	{
-		id: 'name',
+		id: 'Select All',
 		numeric: false,
 		disablePadding: true,
 		label: 'Select All',
 	},
 	{
-		id: 'calories',
+		id: 'DoctorName',
 		numeric: true,
 		disablePadding: false,
 		label: 'Doctors Name',
 	},
-	{ id: 'fat', numeric: true, disablePadding: false, label: 'Hospital' },
-	{ id: 'carbs', numeric: true, disablePadding: false, label: 'Specialization' },
-	{ id: 'protein', numeric: true, disablePadding: false, label: 'Notes' },
-
+	{ id: 'Hospital', numeric: true, disablePadding: false, label: 'Hospital' },
+	{
+		id: 'Specialization',
+		numeric: true,
+		disablePadding: false,
+		label: 'Specialization',
+	},
+	{ id: 'Notes', numeric: true, disablePadding: false, label: 'Notes' },
 ];
 
 function EnhancedTableHead(props) {
@@ -188,7 +87,7 @@ function EnhancedTableHead(props) {
 	};
 
 	return (
-		<TableHead >
+		<TableHead>
 			<TableRow>
 				<TableCell padding='checkbox'>
 					<Checkbox
@@ -332,61 +231,30 @@ export default function EnhancedTable() {
 	const [page, setPage] = React.useState(0);
 	const [dense, setDense] = React.useState(false);
 	const [rowsPerPage, setRowsPerPage] = React.useState(5);
-    const [doctors, setDoctor] = useState([]);
-		
- 
-		const getDoctors = async () => {
-			try {
-				const res = await axios.get(
-					'http://localhost:3005/api/v1/doctors/getUserDoctor',
-				);
-				if(res.data.data){
-					setDoctor(res.data.data);
-					//docArray = res.data.data;
-					// res.data.data.forEach(element => {
-					// 	docArray.push({
-					// 		Hospital:element.Hospital,
-					// 		 DoctorName:element.Name,
-					// 		Specialization: element.Specialization,
-					// 		 Notes: element.Notes
-					// 	});
-					// });
-					
-				}
-				
-				
-			} catch {}
-		};
+	const [doctors, setDoctor] = useState([]);
 
-		useEffect(() => {
-					getDoctors();
-			}, []);
-
-
-        var rows = doctors.map(element => (
-			{
-				Hospital:element.Hospital,
-				DoctorName:element.Name,
-				Specialization: element.Specialization,
-				Notes: element.Notes
+	const getDoctors = async () => {
+		try {
+			const res = await axios.get(
+				'http://localhost:3005/api/v1/doctors/getUserDoctor',
+			);
+			if (res.data.data) {
+				setDoctor(res.data.data);
 			}
-		));
-			console.log(rows);
+		} catch {}
+	};
 
-		// const getDoctors = async () => {
-		// 	try {
-		// 		const res = await axios.get(
-		// 			'http://localhost:3005/api/v1/doctors/getUserDoctor',
-		// 		);
-		// 		console.log(res.data.data);
-		// 		setDoctor(res.data.data);
-		// 		//console.log(doctors);
-		// 	} catch {}
-		// };
+	useEffect(() => {
+		getDoctors();
+	}, []);
 
-		// useEffect(() => {
-		// 	getDoctors();
-		// }, []);
+	var rows = doctors.map((element) => ({
+		Hospital: element.Hospital,
+		DoctorName: element.Name,
+		Specialization: element.Specialization,
+		Notes: element.Notes,
+	}));
+	console.log(rows);
 
 	const handleRequestSort = (event, property) => {
 		const isAsc = orderBy === property && order === 'asc';
@@ -492,7 +360,9 @@ export default function EnhancedTable() {
 												</TableCell>
 												<TableCell align='right'>{row.DoctorName}</TableCell>
 												<TableCell align='right'>{row.Hospital}</TableCell>
-												<TableCell align='right'>{row.Specialization}</TableCell>
+												<TableCell align='right'>
+													{row.Specialization}
+												</TableCell>
 												<TableCell align='right'>{row.Notes}</TableCell>
 											</TableRow>
 										);
