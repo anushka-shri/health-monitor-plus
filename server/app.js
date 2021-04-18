@@ -7,6 +7,7 @@ const prescriptionRoute = require('./Router/prescriptionRoute');
 const doctorRoute = require('./Router/doctorRoute');
 const labReportRoute = require('./Router/labReportRoute');
 const eventsRoute = require('./Router/eventsRoute');
+const path = require('path');
 // const brain = require('brain.js');
 // const data = require('./Machine Learning/data.json');
 
@@ -14,7 +15,11 @@ const eventsRoute = require('./Router/eventsRoute');
 
 const app = express();
 
-
+app.use(cors({
+  origin:["http://localhost:3000"],
+  credentials:true,
+}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
@@ -54,10 +59,7 @@ app.use(cookieParser());
 //   next();
 // });
 
-app.use(cors({
-  origin:["http://localhost:3000"],
-  credentials:true,
-}));
+
 
 
 
@@ -66,6 +68,7 @@ app.use(cors({
 
 
 //Mounting our new routers to app on a specified route
+
 app.use("/api/v1/users",userRouter);
 app.use("/api/v1/monitor",monitorRoute);
 app.use("/api/v1/prescription",prescriptionRoute);

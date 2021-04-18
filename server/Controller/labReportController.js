@@ -45,7 +45,7 @@ exports.uploadImages = upload.array('LabReport',10);
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .withMetadata()
-        .toFile(`public/images/reports/${reportFilename}`);
+        .toFile(`public/${reportFilename}`);
 
       req.body.reports.push(reportFilename);
       
