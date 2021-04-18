@@ -1,37 +1,51 @@
-.Prescription_card{
-    width:25vw;
+.card {
+	width: 35vw;
+	margin-right: 0vw;
+	margin-bottom: 7vh;
 	/* background-color: rgb(255, 255, 255) !important; */
-	transform: translate(8%, 30%);
+	transform: translate(8%, 40%);
 	position: relative;
-	box-shadow:  0px 3px 15px 0px #0000007a  !important;
-	border-radius:10px;
-	
+	box-shadow: 0px 3px 15px 0px #0000007a !important;
+	border-radius: 10px;
 }
-/* 
-.pres_cards_cont{
-margin-left:25vw;
-/* transform: translate(0%, -150%); */
-/* display: flex; */
 
-
-
-
-
-.card-header{
+.prescription_added_heading {
+	transform: translate(100%, 160%);
+	font-size: 2rem;
+	color: black;
+	font-weight: bold;
 	background: #feada6;
-	background: linear-gradient(
-		to bottom,
-		#feada6 0%,
-		 #f5efef 100% );
-	height:10vh;
+	background: linear-gradient(to bottom, #ffffff 0%, #fac3bf 100%);
+	width: 25vw;
+	box-shadow: 0px 3px 15px 0px #c99a9a !important;
+	border-radius: 5px;
 }
 
-.card-header-title{
-color: rgb(0, 0, 0) !important;
+.pres_cards_cont {
+	margin-left: 19vw;
+	columns: 2 auto;
+	padding: 0vw;
 }
 
-.download_icon_card{
+.render_pres_card {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.card-header {
+	background: #feada6;
+	background: linear-gradient(to bottom, #feada6 0%, #f5efef 100%);
+	height: 10vh;
+}
+
+.card-header-title {
+	color: rgb(0, 0, 0) !important;
+}
+
+.download_icon_card {
 	margin-left: 0.5vw;
-	font-size:1.5rem;
+	font-size: 1.5rem;
 	/* font-style: upper; */
 }
