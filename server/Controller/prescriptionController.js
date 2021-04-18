@@ -2,6 +2,7 @@ const multer = require('multer');
 const sharp = require('sharp');
 const Doctor = require('../Model/Doctor');
 const Prescription = require('./../Model/prescription');
+var fs = require('fs');
 
 const catchError = require('./../utils/catchError');
 const AppError = require('./../utils/appError');
@@ -35,7 +36,7 @@ exports.uploadImages = upload.array('Prescription',10);
 
   await Promise.all(
     req.files.map(async (file, i) => {
-      const prescriptionFilename = `prescription-${Date.now()}-${
+      const prescriptionFilename = `prescription-${req.user._id}-${Date.now()}-${
         i + 1
       }.jpeg`;
 
@@ -44,7 +45,7 @@ exports.uploadImages = upload.array('Prescription',10);
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .withMetadata()
-        .toFile(`public/images/prescriptions/${prescriptionFilename}`);
+        .toFile(`public/${prescriptionFilename}`);
 
       req.body.prescriptions.push(prescriptionFilename);
       
@@ -90,3 +91,6 @@ exports.getUserPrescriptions = catchError(async(req,res,next) => {
    });
  
  })
+
+
+ 
