@@ -40,6 +40,7 @@ const AllRoutes = () => {
 					<>
 						<Particles />
 						<Sidebar />
+						
 						<Route exact path='/'>
 							<Dashboard />
 						</Route>
