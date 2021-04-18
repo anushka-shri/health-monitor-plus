@@ -22,37 +22,42 @@ function Prescriptions() {
 		getPrescription();
 	}, []);
 
-	return prescriptions.map((prescription, i) => (
-		<div class='card Prescription_card' key={i}>
-			<header class='card-header'>
-				<p class='card-header-title'>Title: {prescription.Title}</p>
-			</header>
-			<div class='card-content'>
-				<div class='content'>
-					<b>Notes:</b> {prescription.Notes}
-					<br />
-					<time datetime='2016-1-1'>
-						<b>Date:  </b>
-						{prescription.DateOfRec}
-					</time>
+	return (
+		<div className="pres_cards_cont">
+			{prescriptions.map((prescription, i) => (
+				<div class='card Prescription_card' key={i}>
+					<header class='card-header'>
+						<p class='card-header-title'>Title: {prescription.Title}</p>
+					</header>
+					<div class='card-content'>
+						<div class='content'>
+							<b>Notes:</b> {prescription.Notes}
+							<br />
+							<time datetime='2016-1-1'>
+								<b>Date: </b>
+								{prescription.DateOfRec}
+							</time>
+						</div>
+					</div>
+					<footer class='card-footer'>
+						<a href='#' class='card-footer-item'>
+							Download
+						<BiIcons.BiDownload className='download_icon_card' />
+						</a>
+						<a href='#' class='card-footer-item'>
+							Edit
+						<BiIcons.BiEdit className='download_icon_card' />
+						</a>
+						<a href='#' class='card-footer-item'>
+							Delete
+						<MdIcons.MdDeleteSweep className='download_icon_card' />
+						</a>
+					</footer>
 				</div>
-			</div>
-			<footer class='card-footer'>
-				<a href='#' class='card-footer-item'>
-					Download
-					<BiIcons.BiDownload className='download_icon_card' />
-				</a>
-				<a href='#' class='card-footer-item'>
-					Edit
-					<BiIcons.BiEdit className='download_icon_card' />
-				</a>
-				<a href='#' class='card-footer-item'>
-					Delete
-					<MdIcons.MdDeleteSweep className='download_icon_card' />
-				</a>
-			</footer>
+			))}
 		</div>
-	));
+	);
+			
 }
 
 export default Prescriptions;
