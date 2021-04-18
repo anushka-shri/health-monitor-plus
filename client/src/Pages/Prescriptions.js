@@ -58,7 +58,7 @@ const Prescriptions = () => {
 			<div className='pres_cards_cont'>
 				<h1 className='prescription_added_heading'>Prescriptions Added</h1>
 				{prescriptions.map((prescription, i) => (
-					<div class='card' key={i}>
+					<div class='added_p_card' key={i}>
 						<header class='card-header'>
 							<p class='card-header-title'>Title: {prescription.Title}</p>
 						</header>
