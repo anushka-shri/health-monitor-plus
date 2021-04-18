@@ -14,7 +14,7 @@ const Chat = (props) => {
 		};
 
 		axios
-			.post('YOUR_API_URL', data)
+			.post('http://localhost:3005/api/v1/dialogFlow/textQuery', data)
 			.then((response) => {
 				const responseData = {
 					text:
