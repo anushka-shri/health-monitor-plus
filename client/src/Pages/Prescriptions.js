@@ -63,13 +63,26 @@ const Prescriptions = () => {
 							<p class='card-header-title'>Title: {prescription.Title}</p>
 						</header>
 						<div class='card-content'>
-							<div class='content'>
-								<b>Notes:</b> {prescription.Notes}
-								<br />
-								<time datetime='2016-1-1'>
-									<b>Date: </b>
-									{prescription.DateOfRec}
-								</time>
+							<div class='content-flex'>
+								<div>
+									<span className='card_notes_datesh'>
+										Notes:{prescription.Notes}
+									</span>
+
+									<br />
+									<span className='card_notes_datesh'>
+										Date:{prescription.DateOfRec.split('T')[0]}
+									</span>
+									<br />
+									<span className='card_notes_datesh'>
+										Doctor:{prescription.Doctor.Name}
+									</span>
+									<br />
+									<span className='card_notes_datesh'>
+										Hospital:{prescription.Doctor.Hospital}
+									</span>
+								</div>
+
 								<div className='render_pres_card '>
 									{renderImages(prescription.Prescription)}
 								</div>

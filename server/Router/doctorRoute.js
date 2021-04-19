@@ -7,6 +7,11 @@ const router = express.Router();
 
 router.post('/addNew', doctorController.createDoc);
 //router.get('./getDoctors',authenticationController.protect ,doctorController.getAllDoc);
-router.get('/getUserDoctor',doctorController.getUserDoc);
+router.get('/getUserDoctor', doctorController.getUserDoc);
+router.get(
+	'/getcounts',
+	authenticationController.protect,
+	doctorController.getCounts,
+);
 router.post('/deleteDoctors',doctorController.deleteDoctor);
 module.exports = router;
