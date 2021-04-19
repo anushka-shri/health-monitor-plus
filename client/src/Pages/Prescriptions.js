@@ -70,7 +70,7 @@ const Prescriptions = () => {
 									<b>Date: </b>
 									{prescription.DateOfRec}
 								</time>
-								<div className='render_pres_card '>
+								<div>
 									{renderImages(prescription.Prescription)}
 								</div>
 							</div>

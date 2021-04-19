@@ -1,6 +1,8 @@
 const Doctor = require('./../Model/Doctor');
 const catchError = require('./../utils/catchError');
 const AppError = require('./../utils/appError');
+const Prescription = require('./../Model/prescription');
+const labReports = require('./../Model/labReports');
 
 
 exports.getAllDoc = catchError(async(req,res,next) => {
@@ -56,5 +58,31 @@ exports.deleteDoctor = async(req,res,next) => {
   await Doctor.remove( { Name : { $in :req.body.deleteDoctor}});
   res.status(200).json({
     status: 'success',
+  });
+}
+
+
+
+
+
+
+exports.getCounts = async(req,res,next) => {
+  
+  const docs = await Doctor.find();
+  const docCount = docs.length;
+  console.log(docCount);
+  const prescriptions = await Prescription.find();
+  const preCount = prescriptions.length;
+
+  const lab = await labReports.find();
+  const labCount = lab.length;
+  
+  res.status(200).json({
+    status: 'success',
+    data: {
+      docCount,
+      preCount,
+      labCount
+    }
   });
 }

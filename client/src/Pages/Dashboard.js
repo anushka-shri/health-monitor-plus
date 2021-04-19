@@ -18,10 +18,10 @@ function Dashboard() {
 	return (
 		<div className='Dashboard_container'>
 			<h2 className='Dashboard_heading'>
-				<Fade right>DashBoard</Fade>
+				<Fade right>Dash Board</Fade>
 			</h2>
 
-			<Chat />
+			
 			<Fade top>
 				<Cards />
 			</Fade>
@@ -42,7 +42,7 @@ function Dashboard() {
 			<Fade bottom>
 				<PieChart />
 			</Fade>
-
+			<Chat />
 			<div>
 				<ScrollUpButton />
 			</div>

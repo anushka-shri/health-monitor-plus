@@ -1,24 +1,28 @@
 .PRES {
 	height: 20vh;
-	width: 15vw;
+	width: 18vw;
 	margin-left: 27vw;
 	margin-top: 25vh;
+	box-shadow: 0px 3px 15px 0px #0000007a !important;
 }
 
 .DOC {
 	height: 20vh;
-	width: 15vw;
+	width: 18vw;
 	margin-left: 0vw;
 	margin-top: 25vh;
+	box-shadow: 0px 3px 15px 0px #0000007a !important;
 }
 
-.ANOTHER{
+.ANOTHER {
 	height: 20vh;
-	width: 15vw;
+	width: 18vw;
 	margin-left: 0vw;
 	margin-top: 25vh;
 	margin-right: 5vw;
+	box-shadow: 0px 3px 15px 0px #0000007a !important;
 }
+
 .cards {
 	display: flex;
 	justify-content: space-between;
