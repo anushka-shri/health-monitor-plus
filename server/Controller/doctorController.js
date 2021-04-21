@@ -60,29 +60,22 @@ exports.deleteDoctor = async(req,res,next) => {
     status: 'success',
   });
 }
+exports.getCounts = async (req, res, next) => {
+	const docs = await Doctor.find();
+	const docCount = docs.length;
+	console.log(docCount);
+	const prescriptions = await Prescription.find();
+	const preCount = prescriptions.length;
 
+	const lab = await labReports.find();
+	const labCount = lab.length;
 
-
-
-
-
-exports.getCounts = async(req,res,next) => {
-  
-  const docs = await Doctor.find();
-  const docCount = docs.length;
-  console.log(docCount);
-  const prescriptions = await Prescription.find();
-  const preCount = prescriptions.length;
-
-  const lab = await labReports.find();
-  const labCount = lab.length;
-  
-  res.status(200).json({
-    status: 'success',
-    data: {
-      docCount,
-      preCount,
-      labCount
-    }
-  });
-}
+	res.status(200).json({
+		status: 'success',
+		data: {
+			docCount,
+			preCount,
+			labCount,
+		},
+	});
+};

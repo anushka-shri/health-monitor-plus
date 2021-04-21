@@ -17,8 +17,7 @@ const presiptionSchema = new mongoose.Schema({
     },
     Notes: {
         type: String,
-        minlength: 1,
-        maxlength: 30,
+        
         
     },
     DateOfRec : {

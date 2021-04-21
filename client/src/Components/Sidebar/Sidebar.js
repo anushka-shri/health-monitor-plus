@@ -27,6 +27,7 @@ function Sidebar() {
 			<div className='Navbar_container'>
 				{isLoggedIn === true && (
 					<>
+					<Link to='/profile'>
 						<Button
 							
 							variant='outlined'
@@ -34,6 +35,7 @@ function Sidebar() {
 							color='secondary'>
 							Profile
 						</Button>
+						</Link>
 						<Link to='/login'>
 							<Button
 								// onClick={logOut}

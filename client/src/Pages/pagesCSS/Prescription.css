@@ -1,5 +1,5 @@
 .added_p_card {
-	width: 35vw;
+	width: 65vw;
 	margin-right: 0vw;
 	margin-bottom: 7vh;
 	background-color: rgb(255, 255, 255) !important;
@@ -23,15 +23,26 @@
 
 .pres_cards_cont {
 	margin-left: 19vw;
-	columns: 2 auto;
+	/* columns: 2 auto; */
 	padding: 0vw;
 }
 
+.content-flex{
+	display: flex;
+}
+
 .render_pres_card {
+	margin-left: 18vw;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	width: 100%;
+}
+
+.card_notes_datesh{
+	display:flex;
+	font-size:1.4rem !important;
+	font-weight:bold;
 }
 
 .card-header {
@@ -41,7 +52,7 @@
 }
 
 .card-header-title {
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 	color: rgb(0, 0, 0) !important;
 }
 
@@ -49,4 +60,8 @@
 	margin-left: 0.5vw;
 	font-size: 1.5rem;
 	/* font-style: upper; */
+}
+
+.card-footer-item{
+	font-size:1.2rem;
 }

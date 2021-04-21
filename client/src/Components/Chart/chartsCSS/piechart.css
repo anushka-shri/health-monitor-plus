@@ -2,6 +2,7 @@
 	height: 55vh !important;
 	width: 48vw;
 	background-color: rgb(255, 255, 255) !important;
+	 box-shadow: 0px 3px 15px 0px #0000007a !important;
 }
 
 .pie-chart-container {

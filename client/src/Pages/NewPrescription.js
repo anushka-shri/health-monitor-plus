@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -46,10 +46,8 @@ export default function NewPresciption() {
 	const [Title, setTitle] = useState('');
 	const [doctor, setDoctor] = useState('');
 	const [notes, setNote] = useState('');
-	 const [fileSelected, setFiles] = useState([]);
-	const [selectedDate, setSelectedDate] = useState(
-		new Date(),
-	);
+	const [fileSelected, setFiles] = useState([]);
+	const [selectedDate, setSelectedDate] = useState(new Date());
 
 	const handleDateChange = (date) => {
 		setSelectedDate(date);

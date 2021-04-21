@@ -7,12 +7,10 @@ import {
 	Cards,
 	PieChart,
 	BPChartE,
-	Chat
+	Chat,
 } from '../Components';
 import ScrollUpButton from 'react-scroll-up-button';
 import Fade from 'react-reveal/Fade';
-
-
 
 function Dashboard() {
 	return (
@@ -21,7 +19,6 @@ function Dashboard() {
 				<Fade right>Dash Board</Fade>
 			</h2>
 
-			
 			<Fade top>
 				<Cards />
 			</Fade>

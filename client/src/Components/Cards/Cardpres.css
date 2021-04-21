@@ -1,5 +1,5 @@
 .PRES {
-	height: 20vh;
+	height: 22vh;
 	width: 18vw;
 	margin-left: 27vw;
 	margin-top: 25vh;
@@ -7,7 +7,7 @@
 }
 
 .DOC {
-	height: 20vh;
+	height: 22vh;
 	width: 18vw;
 	margin-left: 0vw;
 	margin-top: 25vh;
@@ -15,7 +15,7 @@
 }
 
 .ANOTHER {
-	height: 20vh;
+	height: 22vh;
 	width: 18vw;
 	margin-left: 0vw;
 	margin-top: 25vh;
@@ -26,4 +26,15 @@
 .cards {
 	display: flex;
 	justify-content: space-between;
+}
+
+.card-content-dashboard {
+	margin-top: 30px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.dash_display_no {
+	font-size: 1.5rem;
+	font-weight: bold;
 }

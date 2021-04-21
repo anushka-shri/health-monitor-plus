@@ -81,24 +81,24 @@ exports.createPrescription = catchError ( async(req,res,next) => {
 });
 
 exports.getUserPrescriptions = catchError(async(req,res,next) => {
-  if(req.query){
-   const {startDate,endDate} = req.query;
-    const userPrescription = Prescription.find({
-      created_at: {
-          $gte: startDate,
-          $lt: endDate
-      }
-  })
-  res.status(200).json({
-    status: 'success',
-    requestTime: req.requestTime,
-    data: userPrescription,
+  // if(req.query){
+  //  const {startDate,endDate} = req.query;
+  //   const userPrescription = Prescription.find({
+  //     created_at: {
+  //         $gte: startDate,
+  //         $lt: endDate
+  //     }
+  // })
+  // res.status(200).json({
+  //   status: 'success',
+  //   requestTime: req.requestTime,
+  //   data: userPrescription,
     
-  });
+  // });
 
-  }
+  //}
   
-  else{
+  
   const userPrescription = await Prescription.find();
   res.status(200).json({
      status: 'success',
@@ -106,8 +106,15 @@ exports.getUserPrescriptions = catchError(async(req,res,next) => {
      data: userPrescription,
      
    });
-  }
+  
  })
+ exports.deletePres = async(req,res,next) => {
+  console.log(req.body);
+  await Prescription.remove( { Title : { $in :req.body.deletePres}});
+  res.status(200).json({
+    status: 'success',
+  });
+}
 
 
  

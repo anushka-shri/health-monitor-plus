@@ -12,5 +12,6 @@ prescriptionController.resizeImages,
 prescriptionController.createPrescription,
 );
 router.get('/getUserPrescription',prescriptionController.getUserPrescriptions);
+router.post('/deletePres',prescriptionController.deletePres);
 
 module.exports = router;

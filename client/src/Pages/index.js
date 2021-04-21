@@ -10,6 +10,7 @@ import Error from "./Error";
 import Medications from "./Medications";
 import Scheduler from "./Scheduler";
 import LabReports from "./LabReports";
+import FixedMenuLayout from "./UserProfile";
 
 
 export {
@@ -25,5 +26,6 @@ export {
   Vaccinations,
   Medications,
   LabReports,
+  FixedMenuLayout
   
 };
