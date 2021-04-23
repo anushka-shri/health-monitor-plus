@@ -167,7 +167,9 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import axios from 'axios';
 import './pagesCSS/Prescription2.css';
 import * as BiIcons from 'react-icons/bi';
- import * as MdIcons from 'react-icons/md';
+import * as MdIcons from 'react-icons/md';
+import { Button,Form } from 'semantic-ui-react'
+
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -327,7 +329,24 @@ const EnhancedTableToolbar = (props) => {
 		
 		deletePres(selected);
 	};
-
+   const handleFilter = (event) => {
+	return <div>
+	<Form>
+    <Form.Field>
+      <label>First Name</label>
+      <input placeholder='First Name' />
+    </Form.Field>
+    <Form.Field>
+      <label>Last Name</label>
+      <input placeholder='Last Name' />
+    </Form.Field>
+    <Form.Field>
+      
+    </Form.Field>
+    <Button type='submit'>Submit</Button>
+  </Form>
+  </div>
+   }
 
 
 	const classes = useToolbarStyles();
@@ -365,7 +384,7 @@ const EnhancedTableToolbar = (props) => {
 			) : (
 				<Tooltip title='Filter list'>
 				    
-					<IconButton aria-label='filter list'>
+					<IconButton aria-label='filter list' onClick={(event) => handleFilter(event)} >
 						<FilterListIcon />
 					</IconButton>
 				</Tooltip>
