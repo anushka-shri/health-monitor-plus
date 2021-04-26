@@ -369,7 +369,7 @@ export default function EnhancedTable() {
 										console.log(row);
 										const isItemSelected = isSelected(row.DoctorName);
 										const labelId = `enhanced-table-checkbox-${index}`;
-
+  
 										return (
 											<TableRow
 												hover

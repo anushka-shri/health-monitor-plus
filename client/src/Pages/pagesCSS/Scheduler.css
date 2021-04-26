@@ -2,14 +2,14 @@
 	width: 68vw !important;
 	margin-left: 25vw !important;
 	margin-right: 4vw !important;
-	height: 110vh !important;
+	height: 120vh !important;
 	transform: translate(1%, 10%) !important;
 	margin-bottom: 1vh !important;
 	/* color: #fff !important; */
 }
 
 .meds_container {
-	height: 120vh !important;
+	height: 140vh !important;
 	background: rgb(144, 70, 194) !important;
 	background: linear-gradient(
 		to bottom,

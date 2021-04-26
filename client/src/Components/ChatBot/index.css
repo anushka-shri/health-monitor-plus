@@ -3,7 +3,7 @@ h1, p {
 }
 
 .chatSection {
-  margin: auto;
+  /* margin: auto; */
   width: 40%;
   background: white;
   height: 80vh;
@@ -21,7 +21,7 @@ h1, p {
   font-size: 30px;
   font-family: 'Fira Code';
   text-align: center;
-  margin: 30px;
+  /* margin: 30px; */
 }
 
 .botContainer {
@@ -50,13 +50,13 @@ h1, p {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 7px;
+  /* margin-top: 7px; */
 }
 
 .messagesSection {
   min-height: 70vh;
   max-height: 70vh;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   overflow-y: auto;
 }
 
