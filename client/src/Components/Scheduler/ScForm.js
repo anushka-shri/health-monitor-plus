@@ -301,9 +301,9 @@ function ScForm() {
 											variant='contained'
 											color='secondary'
 											className={classes.submit}>
-											<Link to='AE_btn' spy={true} smooth={true}>
+											
 												Add Event
-											</Link>
+										
 										</Button>
 									</ThemeProvider>
 								</Grid>

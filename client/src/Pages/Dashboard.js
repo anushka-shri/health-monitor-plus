@@ -16,7 +16,7 @@ function Dashboard() {
 	return (
 		<div className='Dashboard_container'>
 			<h2 className='Dashboard_heading'>
-				<Fade right>Dash Board</Fade>
+				<Fade right>DashBoard</Fade>
 			</h2>
 
 			<Fade top>

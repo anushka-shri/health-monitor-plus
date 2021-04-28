@@ -40,8 +40,8 @@ function CardPres() {
 						/>
 					</p>
 					<p>
-						Doctors Added:-
-						<br />
+						<h1 className='card_dash_head'>Doctors Added</h1>
+						
 						<h1 className='dash_display_no'>{doc}</h1>
 						<Link to='/doctors'>
 							<Button
@@ -66,8 +66,8 @@ function CardPres() {
 						/>
 					</p>
 					<p>
-						Prescriptions Added
-						<br />
+						<h1 className='card_dash_head'>Prescriptions Added</h1>
+						
 						<h1 className='dash_display_no'>{pres}</h1>
 						<Link to='/prescriptions'>
 							<Button
@@ -91,8 +91,8 @@ function CardPres() {
 						/>
 					</p>
 					<p>
-						Lab Reports Added
-						<br />
+						<h1 className='card_dash_head'> Lab Reports Added </h1>
+
 						<h1 className='dash_display_no'>{report}</h1>
 						<Link to='/lab-reports'>
 							<Button
