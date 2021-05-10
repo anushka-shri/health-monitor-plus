@@ -8,6 +8,7 @@ const doctorRoute = require('./Router/doctorRoute');
 const labReportRoute = require('./Router/labReportRoute');
 const eventsRoute = require('./Router/eventsRoute');
 const dialogRoute = require('./Router/dialogRouter');
+const medicineRoute = require('./Router/medicineRouter');
 const path = require('path');
 
 
@@ -45,6 +46,8 @@ app.use("/api/v1/doctors",doctorRoute);
 app.use("/api/v1/lapReports",labReportRoute);
 app.use("/api/v1/events",eventsRoute);
 app.use("/api/v1/dialogFlow",dialogRoute);
+app.use("/api/v1/medicine",medicineRoute);
+
 
 
 
