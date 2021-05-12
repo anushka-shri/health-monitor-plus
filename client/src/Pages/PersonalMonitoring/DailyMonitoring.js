@@ -11,7 +11,6 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Container from '@material-ui/core/Container';
-import Particles from '../../Components/Particles/Particles';
 import { TimePicker } from '@material-ui/pickers';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
@@ -25,7 +24,7 @@ import '../pagesCSS/DailyMonitoring.css';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
-		marginTop: theme.spacing(2),
+		marginTop: theme.spacing(3),
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
@@ -52,7 +51,6 @@ function DailyMonitoring() {
 	const [pulseOxygen, setPulseOxygen] = useState('');
 	const [sugar, setSugar] = useState('');
 	const [selectedDate, setSelectedDate] = useState(new Date());
-	
 
 	const handleChange = (e) => {
 		setValue(e.target.value);
@@ -61,7 +59,6 @@ function DailyMonitoring() {
 	const handleDateChange = (date) => {
 		setSelectedDate(date);
 	};
-	
 
 	const bpHandler = async (e) => {
 		e.preventDefault();
@@ -72,9 +69,8 @@ function DailyMonitoring() {
 					Systolic: systolic,
 					Diastolic: diastolic,
 					Pulse: pulse,
-					DateOfRec:selectedDate,
-					Time:value,
-					
+					DateOfRec: selectedDate,
+					Time: value,
 				},
 			);
 
@@ -110,7 +106,7 @@ function DailyMonitoring() {
 				{
 					Type: value,
 					Result: sugar,
-					DateOfRec:selectedDate,
+					DateOfRec: selectedDate,
 				},
 			);
 
@@ -124,13 +120,9 @@ function DailyMonitoring() {
 
 	return (
 		<>
-			<Particles />
 			<div className='DM_container'>
 				<Container component='main' maxWidth='xs' className='root'>
 					<CssBaseline />
-					<Typography component='h1' variant='h'>
-						Daily Monitoring
-					</Typography>
 					<div className={classes.paper}>
 						<form className={classes.form} Validate>
 							<Typography component='h1' variant='h6'>
@@ -200,7 +192,6 @@ function DailyMonitoring() {
 											<TimePicker
 												autoOk
 												label='Add Time'
-												
 												value={selectedDate}
 												onChange={handleDateChange}
 											/>
@@ -239,161 +230,180 @@ function DailyMonitoring() {
 										Add BP
 									</Button>
 								</Grid>
+							</Grid>
+						</form>
+					</div>
+				</Container>
+			</div>
 
+			<div className='DM2_container'>
+				<Container component='main' maxWidth='xs' className='root'>
+					<CssBaseline />
+					<div className={classes.paper}>
+						<form className={classes.form} Validate>
+							<Grid item xs={12} sm={12}>
+								<Typography component='h1' variant='h6'>
+									Add Oxygen Saturation
+								</Typography>
+							</Grid>
+							<br />
+							<Grid item xs={12} sm={10}>
+								<TextField
+									autoComplete='oxygen'
+									name='oxygen'
+									variant='outlined'
+									required
+									fullWidth
+									id='oxygen'
+									label='Add Oxygen Levels'
+									autoFocus
+									value={result}
+									onChange={(e) => setResult(e.target.value)}
+								/>
+							</Grid>
+
+							<MuiPickersUtilsProvider utils={DateFnsUtils}>
 								<Grid item xs={12} sm={12}>
-									<Typography component='h1' variant='h6'>
-										Add Oxygen Saturation
-									</Typography>
-								</Grid>
-								<Grid item xs={12} sm={6}>
-									<TextField
-										autoComplete='oxygen'
-										name='oxygen'
-										variant='outlined'
-										required
-										fullWidth
-										id='oxygen'
-										label='Add Oxygen Levels'
-										autoFocus
-										value={result}
-										onChange={(e) => setResult(e.target.value)}
-									/>
-								</Grid>
-
-								<Grid item xs={12} sm={6}>
-									<TextField
-										id='outlined-number'
-										label='Pulse'
-										type='number'
-										InputLabelProps={{
-											shrink: true,
+									<KeyboardDatePicker
+										disableToolbar
+										variant='inline'
+										format='dd/MM/yyyy'
+										margin='normal'
+										id='date-picker-inline'
+										label='Add Date'
+										value={selectedDate}
+										onChange={handleDateChange}
+										KeyboardButtonProps={{
+											'aria-label': 'change date',
 										}}
-										variant='outlined'
-										value={pulseOxygen}
-										onChange={(e) => setPulseOxygen(e.target.value)}
 									/>
 								</Grid>
-
-								<MuiPickersUtilsProvider utils={DateFnsUtils}>
-									<Grid item xs={12} sm={6}>
-										<KeyboardDatePicker
-											disableToolbar
-											variant='inline'
-											format='dd/MM/yyyy'
-											margin='normal'
-											id='date-picker-inline'
-											label='Add Date'
+								<Grid item xs={12} sm={12}>
+									<Fragment>
+										<TimePicker
+											autoOk
+											label='Add Time'
 											value={selectedDate}
 											onChange={handleDateChange}
-											KeyboardButtonProps={{
-												'aria-label': 'change date',
-											}}
 										/>
-									</Grid>
-									<Grid item xs={12} sm={6}>
-										<Fragment>
-											<TimePicker
-												autoOk
-												label='Add Time'
-												value={selectedDate}
-												onChange={handleDateChange}
-											/>
-										</Fragment>
-									</Grid>
-								</MuiPickersUtilsProvider>
+									</Fragment>
+								</Grid>
+							</MuiPickersUtilsProvider>
+							{/* <Grid item xs={12} sm={10}>
+								<TextField
+									id='outlined-number'
+									label='Pulse'
+									type='number'
+									InputLabelProps={{
+										shrink: true,
+									}}
+									variant='outlined'
+									value={pulseOxygen}
+									onChange={(e) => setPulseOxygen(e.target.value)}
+								/>
+							</Grid> */}
 
-								<Grid item xs={12} sm={12}>
-									<Button
-										onClick={oxygenHandler}
-										className='centeralign'
-										variant='contained'
-										color='primary'>
-										Add Oxygen
-									</Button>
-								</Grid>
-								<Grid item xs={12} sm={12}>
-									<Typography component='h1' variant='h6'>
-										Add Sugar
-									</Typography>
-								</Grid>
+							<Grid item xs={12} sm={12}>
+								<Button
+									onClick={oxygenHandler}
+									className='centeralign'
+									variant='contained'
+									color='primary'>
+									Add Oxygen
+								</Button>
+							</Grid>
+						</form>
+					</div>
+				</Container>
+			</div>
+
+			<div className='DM3_container'>
+				<Container component='main' maxWidth='xs' className='root'>
+					<CssBaseline />
+					<div className={classes.paper}>
+						<form className={classes.form} Validate>
+							<Grid item xs={12} sm={12}>
+								<Typography component='h1' variant='h6'>
+									Add Sugar
+								</Typography>
+							</Grid>
+							<Grid item xs={12} sm={6} className='dm3_addsugar_tfield'>
+								<TextField
+									autoComplete='Sugar'
+									name='Sugar'
+									variant='outlined'
+									required
+									fullWidth
+									id='Sugar'
+									label='Add Sugar'
+									autoFocus
+									value={sugar}
+									onChange={(e) => setSugar(e.target.value)}
+								/>
+							</Grid>
+
+							<Grid item xs={12} sm={6}>
+								<FormControl component='fieldset'>
+									<FormLabel component='legend'>Sugar Type</FormLabel>
+									<RadioGroup
+										aria-label='fasting'
+										name='fasting'
+										value={value}
+										onChange={handleChange}>
+										<FormControlLabel
+											value='fasting'
+											control={<Radio />}
+											label='Fasting'
+										/>
+										<FormControlLabel
+											value='Postprandial'
+											control={<Radio />}
+											label='Postprandial'
+										/>
+										<FormControlLabel
+											value='Random'
+											control={<Radio />}
+											label='Random'
+										/>
+									</RadioGroup>
+								</FormControl>
+							</Grid>
+
+							<MuiPickersUtilsProvider utils={DateFnsUtils}>
 								<Grid item xs={12} sm={6}>
-									<TextField
-										autoComplete='Sugar'
-										name='Sugar'
-										variant='outlined'
-										required
-										fullWidth
-										id='Sugar'
-										label='Add Sugar'
-										autoFocus
-										value={sugar}
-										onChange={(e) => setSugar(e.target.value)}
+									<KeyboardDatePicker
+										disableToolbar
+										variant='inline'
+										format='dd/MM/yyyy'
+										margin='normal'
+										id='date-picker-inline'
+										label='Add Date'
+										value={selectedDate}
+										onChange={handleDateChange}
+										KeyboardButtonProps={{
+											'aria-label': 'change date',
+										}}
 									/>
 								</Grid>
-
 								<Grid item xs={12} sm={6}>
-									<FormControl component='fieldset'>
-										<FormLabel component='legend'>Sugar Type</FormLabel>
-										<RadioGroup
-											aria-label='fasting'
-											name='fasting'
-											value={value}
-											onChange={handleChange}>
-											<FormControlLabel
-												value='fasting'
-												control={<Radio />}
-												label='Fasting'
-											/>
-											<FormControlLabel
-												value='Postprandial'
-												control={<Radio />}
-												label='Postprandial'
-											/>
-											<FormControlLabel
-												value='Random'
-												control={<Radio />}
-												label='Random'
-											/>
-										</RadioGroup>
-									</FormControl>
-								</Grid>
-
-								<MuiPickersUtilsProvider utils={DateFnsUtils}>
-									<Grid item xs={12} sm={6}>
-										<KeyboardDatePicker
-											disableToolbar
-											variant='inline'
-											format='dd/MM/yyyy'
-											margin='normal'
-											id='date-picker-inline'
-											label='Add Date'
+									<Fragment>
+										<TimePicker
+											autoOk
+											label='Add Time'
 											value={selectedDate}
 											onChange={handleDateChange}
-											KeyboardButtonProps={{
-												'aria-label': 'change date',
-											}}
 										/>
-									</Grid>
-									<Grid item xs={12} sm={6}>
-										<Fragment>
-											<TimePicker
-												autoOk
-												label='Add Time'
-												value={selectedDate}
-												onChange={handleDateChange}
-											/>
-										</Fragment>
-									</Grid>
-								</MuiPickersUtilsProvider>
-								<Grid item xs={12} sm={4} md={6}>
-									<Button
-										onClick={sugarHandler}
-										className='centeralign'
-										variant='contained'
-										color='primary'>
-										Add Sugar
-									</Button>
+									</Fragment>
 								</Grid>
+							</MuiPickersUtilsProvider>
+							<Grid item xs={12} sm={4} md={6}>
+								<Button
+									onClick={sugarHandler}
+									className='centeralign'
+									variant='contained'
+									color='primary'>
+									Add Sugar
+								</Button>
 							</Grid>
 						</form>
 					</div>

@@ -10,10 +10,13 @@
 
 .meds_container {
 	height: 140vh !important;
-	background: rgb(144, 70, 194) !important;
+	background-color: #eec0c6;
+	background-image: linear-gradient(260deg, #583b86 0%, #b36b69 74%);
+
+	/* background: rgb(144, 70, 194) !important;
 	background: linear-gradient(
 		to bottom,
 		rgb(150, 80, 196) 0%,
 		rgb(252, 190, 103) 150%
-	) !important; 
-} 
+	) !important;  */
+}
