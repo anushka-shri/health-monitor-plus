@@ -13,6 +13,7 @@
 
 .Meds_cards_cont {
 	columns: 20vw 2;
+	margin-bottom: 3vh !important;
 	margin-right: 0vw !important;
-	transform: translate(19%, 25%);
+	transform: translate(19%, 20%);
 }

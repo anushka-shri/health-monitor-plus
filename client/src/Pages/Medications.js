@@ -13,6 +13,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import ScrollUpButton from 'react-scroll-up-button';
+import Fade from 'react-reveal/Fade';
 
 const useStyles = makeStyles({
 	root: {
@@ -87,37 +89,39 @@ export default function Medications() {
 			<div className='Meds_cards_cont'>
 				{similar.map((med, id) => {
 					return (
-						<Grid item xs={6} className='Meds_cards_cont'>
-							<Card className={classes.root} key={id}>
-								<CardActionArea>
-									<CardContent>
-										<Typography gutterBottom variant='h5' component='h2'>
-											{med.Drug_Name}
-										</Typography>
-										<Typography
-											variant='body2'
-											color='textSecondary'
-											component='p'>
-											{med.Reason}
-										</Typography>
-										<Typography
-											variant='body2'
-											color='textSecondary'
-											component='p'>
-											{med.Description}
-										</Typography>
-									</CardContent>
-								</CardActionArea>
-								<CardActions>
-									<Button size='small' color='primary'>
-										ADD
-									</Button>
-									<Button size='small' color='primary'>
-										REMOVE
-									</Button>
-								</CardActions>
-							</Card>
-						</Grid>
+						<Fade bottom>
+							<Grid item xs={6} className='Meds_cards_cont'>
+								<Card className={classes.root} key={id}>
+									<CardActionArea>
+										<CardContent>
+											<Typography gutterBottom variant='h5' component='h2'>
+												{med.Drug_Name}
+											</Typography>
+											<Typography
+												variant='body2'
+												color='textSecondary'
+												component='p'>
+												{med.Reason}
+											</Typography>
+											<Typography
+												variant='body2'
+												color='textSecondary'
+												component='p'>
+												{med.Description}
+											</Typography>
+										</CardContent>
+									</CardActionArea>
+									<CardActions>
+										<Button size='small' color='primary'>
+											ADD
+										</Button>
+										<Button size='small' color='primary'>
+											REMOVE
+										</Button>
+									</CardActions>
+								</Card>
+							</Grid>
+						</Fade>
 					);
 				})}
 			</div>
