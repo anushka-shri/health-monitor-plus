@@ -24,8 +24,7 @@ import axios from 'axios';
 import './pagesCSS/Prescription2.css';
 import * as BiIcons from 'react-icons/bi';
 import * as MdIcons from 'react-icons/md';
-import { Button,Form } from 'semantic-ui-react'
-
+import { Button, Form } from 'semantic-ui-react';
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -82,7 +81,7 @@ const headCells = [
 		id: 'Notes',
 		numeric: true,
 		disablePadding: false,
-		label: 'Notes'
+		label: 'Notes',
 	},
 	{
 		id: 'Prescriptions',
@@ -94,7 +93,7 @@ const headCells = [
 		id: 'Actions',
 		numeric: true,
 		disablePadding: false,
-		label: 'Actions'
+		label: 'Actions',
 	},
 ];
 
@@ -178,16 +177,12 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 
 const EnhancedTableToolbar = (props) => {
-   
-	
 	const deletePres = async (deletePres) => {
-		
-
 		try {
 			const res = await axios.post(
 				'http://localhost:3005/api/v1/prescription/deletePres',
 				{
-					deletePres
+					deletePres,
 				},
 			);
 
@@ -200,33 +195,30 @@ const EnhancedTableToolbar = (props) => {
 		} catch {}
 	};
 
-
 	const handleDeleteClick = (event, selected) => {
-		
 		deletePres(selected);
 	};
-   const handleFilter = (event) => {
-	return <div>
-	<Form>
-    <Form.Field>
-      <label>First Name</label>
-      <input placeholder='First Name' />
-    </Form.Field>
-    <Form.Field>
-      <label>Last Name</label>
-      <input placeholder='Last Name' />
-    </Form.Field>
-    <Form.Field>
-      
-    </Form.Field>
-    <Button type='submit'>Submit</Button>
-  </Form>
-  </div>
-   }
-
+	const handleFilter = (event) => {
+		return (
+			<div>
+				<Form>
+					<Form.Field>
+						<label>First Name</label>
+						<input placeholder='First Name' />
+					</Form.Field>
+					<Form.Field>
+						<label>Last Name</label>
+						<input placeholder='Last Name' />
+					</Form.Field>
+					<Form.Field></Form.Field>
+					<Button type='submit'>Submit</Button>
+				</Form>
+			</div>
+		);
+	};
 
 	const classes = useToolbarStyles();
-	const { numSelected , selected} = props;
+	const { numSelected, selected } = props;
 
 	return (
 		<Toolbar
@@ -246,21 +238,22 @@ const EnhancedTableToolbar = (props) => {
 					className={classes.title}
 					variant='h6'
 					id='tableTitle'
-					component='div'>
-					
-				</Typography>
+					component='div'></Typography>
 			)}
 
 			{numSelected > 0 ? (
 				<Tooltip title='Delete'>
-					<IconButton aria-label='delete' onClick={(event) => handleDeleteClick(event,selected)}>
+					<IconButton
+						aria-label='delete'
+						onClick={(event) => handleDeleteClick(event, selected)}>
 						<DeleteIcon />
 					</IconButton>
 				</Tooltip>
 			) : (
 				<Tooltip title='Filter list'>
-				    
-					<IconButton aria-label='filter list' onClick={(event) => handleFilter(event)} >
+					<IconButton
+						aria-label='filter list'
+						onClick={(event) => handleFilter(event)}>
 						<FilterListIcon />
 					</IconButton>
 				</Tooltip>
@@ -323,14 +316,13 @@ export default function EnhancedTable() {
 	useEffect(() => {
 		getPrescription();
 	}, []);
-	
 
 	var rows = prescriptions.map((element) => ({
 		Title: element.Title,
 		Date: element.DateOfRec.split('T')[0],
 		DoctorName: element.Doctor.Name,
 		Notes: element.Notes,
-		prescriptions:element.Prescription
+		prescriptions: element.Prescription,
 	}));
 	console.log(rows);
 
@@ -350,9 +342,8 @@ export default function EnhancedTable() {
 	};
 
 	const handleClick = (event, name) => {
-		
 		const selectedIndex = selected.indexOf(name);
-		
+
 		let newSelected = [];
 
 		if (selectedIndex === -1) {
@@ -367,7 +358,7 @@ export default function EnhancedTable() {
 				selected.slice(selectedIndex + 1),
 			);
 		}
-        
+
 		setSelected(newSelected);
 	};
 
@@ -383,37 +374,37 @@ export default function EnhancedTable() {
 	const handleChangeDense = (event) => {
 		setDense(event.target.checked);
 	};
-    
+
 	const handleDownloadClick = (event, p) => {
-				p.map((item) => {
-					var URL = `http://localhost:3005/${item}`;
-		
-					axios({
-						url: URL,
-						method: 'GET',
-						responseType: 'blob',
-					}).then((response) => {
-						const downloadUrl = window.URL.createObjectURL(
-							new Blob([response.data]),
-						);
-						const link = document.createElement('a');
-						link.href = downloadUrl;
-						link.setAttribute('download', 'prescription.png'); //any other extension
-						document.body.appendChild(link);
-						link.click();
-					});
-				});
-			};
+		p.map((item) => {
+			var URL = `http://localhost:3005/${item}`;
+
+			axios({
+				url: URL,
+				method: 'GET',
+				responseType: 'blob',
+			}).then((response) => {
+				const downloadUrl = window.URL.createObjectURL(
+					new Blob([response.data]),
+				);
+				const link = document.createElement('a');
+				link.href = downloadUrl;
+				link.setAttribute('download', 'prescription.png'); //any other extension
+				document.body.appendChild(link);
+				link.click();
+			});
+		});
+	};
 	const renderImages = (p) => {
-				return p.map((item) => (
-					<img
-						src={`http://localhost:3005/${item}`}
-						alt='Girl in a jacket'
-						width='100px'
-						height='100px'
-					/>
-				));
-			};
+		return p.map((item) => (
+			<img
+				src={`http://localhost:3005/${item}`}
+				alt='Girl in a jacket'
+				width='100px'
+				height='100px'
+			/>
+		));
+	};
 	const isSelected = (name) => selected.indexOf(name) !== -1;
 
 	const emptyRows =
@@ -422,110 +413,105 @@ export default function EnhancedTable() {
 	return (
 		<div>
 			<h1 className='prescription_added_heading'>Prescriptions Added</h1>
-		
-		<div className='Prescription2_container'>
-			<div className={classes.root}>
-				<Paper className={classes.paper}>
-					<EnhancedTableToolbar numSelected={selected.length} selected={selected} />
-					<TableContainer>
-						<Table
-							className={classes.table}
-							aria-labelledby='tableTitle'
-							size={dense ? 'small' : 'medium'}
-							aria-label='enhanced table'>
-							<EnhancedTableHead
-								classes={classes}
-								numSelected={selected.length}
-								order={order}
-								orderBy={orderBy}
-								onSelectAllClick={handleSelectAllClick}
-								onRequestSort={handleRequestSort}
-								rowCount={rows.length}
-							/>
-							<TableBody>
-								{stableSort(rows, getComparator(order, orderBy))
-									.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-									.map((row, index) => {
-										
-										const isItemSelected = isSelected(row.Title);
-										const labelId = `enhanced-table-checkbox-${index}`;
 
-										return (
-											<TableRow
-												hover
-												onClick={(event) => handleClick(event, row.Title)}
-												role='checkbox'
-												aria-checked={isItemSelected}
-												tabIndex={-1}
-												key={row.Title}
-												selected={isItemSelected}>
-												<TableCell padding='checkbox'>
-													<Checkbox
-														checked={isItemSelected}
-														inputProps={{ 'aria-labelledby': labelId }}
-													/>
-												</TableCell>
-												<TableCell
-													component='th'
-													id={labelId}
-													scope='row'
-													padding='none'>
-													{}
-												</TableCell>
-												<TableCell align='right'>{row.Title}</TableCell>
-												<TableCell align='right'>{row.DoctorName}</TableCell>
-												<TableCell align='right'>
-													{row.Date}
-												</TableCell>
-												<TableCell align='right'>{row.Notes}</TableCell>
-												<TableCell align='right'>
-												{renderImages(row.prescriptions)}
-												</TableCell>
-												<TableCell align='right'>
-												<a
-								onClick={(event) =>
-									handleDownloadClick(event, row.prescriptions)
-								}
-								href='#'
-								class='card-footer-item'>
-								<b>Download</b>
-								<div>
-								
-								<BiIcons.BiDownload className='download_icon_card' />
-								</div>
-								
-							</a>
-							
-							
-							
-												</TableCell>
-											</TableRow>
-										);
-									})}
-								{emptyRows > 0 && (
-									<TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-										<TableCell colSpan={6} />
-									</TableRow>
-								)}
-							</TableBody>
-						</Table>
-					</TableContainer>
-					<TablePagination
-						rowsPerPageOptions={[5, 10, 25]}
-						component='div'
-						count={rows.length}
-						rowsPerPage={rowsPerPage}
-						page={page}
-						onChangePage={handleChangePage}
-						onChangeRowsPerPage={handleChangeRowsPerPage}
+			<div className='Prescription2_container'>
+				<div className={classes.root}>
+					<Paper className={classes.paper}>
+						<EnhancedTableToolbar
+							numSelected={selected.length}
+							selected={selected}
+						/>
+						<TableContainer>
+							<Table
+								className={classes.table}
+								aria-labelledby='tableTitle'
+								size={dense ? 'small' : 'medium'}
+								aria-label='enhanced table'>
+								<EnhancedTableHead
+									classes={classes}
+									numSelected={selected.length}
+									order={order}
+									orderBy={orderBy}
+									onSelectAllClick={handleSelectAllClick}
+									onRequestSort={handleRequestSort}
+									rowCount={rows.length}
+								/>
+								<TableBody>
+									{stableSort(rows, getComparator(order, orderBy))
+										.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+										.map((row, index) => {
+											const isItemSelected = isSelected(row.Title);
+											const labelId = `enhanced-table-checkbox-${index}`;
+
+											return (
+												<TableRow
+													hover
+													onClick={(event) => handleClick(event, row.Title)}
+													role='checkbox'
+													aria-checked={isItemSelected}
+													tabIndex={-1}
+													key={row.Title}
+													selected={isItemSelected}>
+													<TableCell padding='checkbox'>
+														<Checkbox
+															checked={isItemSelected}
+															inputProps={{ 'aria-labelledby': labelId }}
+														/>
+													</TableCell>
+													<TableCell
+														component='th'
+														id={labelId}
+														scope='row'
+														padding='none'>
+														{}
+													</TableCell>
+													<TableCell align='right'>{row.Title}</TableCell>
+													<TableCell align='right'>{row.DoctorName}</TableCell>
+													<TableCell align='right'>{row.Date}</TableCell>
+													<TableCell align='right'>{row.Notes}</TableCell>
+													<TableCell align='right'>
+														{renderImages(row.prescriptions)}
+													</TableCell>
+													<TableCell align='right'>
+														<a
+															onClick={(event) =>
+																handleDownloadClick(event, row.prescriptions)
+															}
+															href='#'
+															class='card-footer-item'>
+															<b>Download</b>
+															<div>
+																<BiIcons.BiDownload className='download_icon_card' />
+															</div>
+														</a>
+													</TableCell>
+												</TableRow>
+											);
+										})}
+									{emptyRows > 0 && (
+										<TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
+											<TableCell colSpan={6} />
+										</TableRow>
+									)}
+								</TableBody>
+							</Table>
+						</TableContainer>
+						<TablePagination
+							rowsPerPageOptions={[5, 10, 25]}
+							component='div'
+							count={rows.length}
+							rowsPerPage={rowsPerPage}
+							page={page}
+							onChangePage={handleChangePage}
+							onChangeRowsPerPage={handleChangeRowsPerPage}
+						/>
+					</Paper>
+					<FormControlLabel
+						control={<Switch checked={dense} onChange={handleChangeDense} />}
+						label='Dense padding'
 					/>
-				</Paper>
-				<FormControlLabel
-					control={<Switch checked={dense} onChange={handleChangeDense} />}
-					label='Dense padding'
-				/>
+				</div>
 			</div>
-		</div>
 		</div>
 	);
 }

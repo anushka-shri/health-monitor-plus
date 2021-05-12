@@ -159,11 +159,6 @@ export default function NewPresciption() {
 									<InputLabel id='demo-simple-select-label'>Doctors</InputLabel>
 									<Select value='Add Doctor'>{renderDoctors()}</Select>
 								</Grid>
-								{/*<Grid item xs={12}>
-									<Button variant='contained' color='primary' sm={6}>
-										Add Doctor +
-									</Button>
-								</Grid> */}
 
 								<Grid item xs={12}>
 									<label htmlFor='contained-button-file'>
