@@ -1,102 +1,152 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { Component } from 'react';
+import axios from "axios/index";
+//import { withRouter } from 'react-router-dom';
 
-import './index.css';
-import Messages from './Messages';
+//import Cookies from 'universal-cookie';
+import { v4 as uuid } from 'uuid';
 
-const Chat = (props) => {
-	const [responses, setResponses] = useState([]);
-	const [currentMessage, setCurrentMessage] = useState('');
+import Message from './Message';
+// import Card from './Card';
+// import QuickReplies from './QuickReplies';
 
-	const handleMessageSubmit = (message) => {
-		const data = {
-			message,
-		};
+const cookies = new Cookies();
 
-		axios
-			.post('http://localhost:3005/api/v1/dialogFlow/textQuery', data)
-			.then((response) => {
-				const responseData = {
-					text:
-						response.data['message']['fulfillmentText'] != ''
-							? response.data['message']['fulfillmentText']
-							: "Sorry, I can't get it. Can you please repeat once?",
-					isBot: true,
-				};
+class Chatbot extends Component {
+    messagesEnd;
+    talkInput;
 
-				setResponses((responses) => [...responses, responseData]);
-			})
-			.catch((error) => {
-				console.log('Error: ', error);
-			});
-	};
+    constructor(props) {
+        super(props);
+        // This binding is necessary to make `this` work in the callback
+        this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
+        this._handleQuickReplyPayload = this._handleQuickReplyPayload.bind(this);
 
-	const handleMessageChange = (event) => {
-		setCurrentMessage(event.target.value);
-	};
+        this.hide = this.hide.bind(this);
+        this.show = this.show.bind(this);
+        this.state = {
+            messages: [],
+			showBot: true,
+            
+        };
+        
+    }
 
-	const handleSubmit = (event) => {
-		const message = {
-			text: currentMessage,
-			isBot: false,
-		};
-		if (event.key == 'Enter') {
-			setResponses((responses) => [...responses, message]);
-			handleMessageSubmit(message.text);
-			setCurrentMessage('');
-		}
-	};
+    async df_text_query(text) {
+        let says = {
+            speaks: 'user',
+            msg: {
+                text : {
+                    text: text
+                }
+            }
+        }
+        this.setState({ messages: [...this.state.messages, says]});
+        const request = {
+            queryInput: {
+                text: {
+                    text: text,
+                    languageCode: 'en-US',
+                },
+            }
+        };
+        
+    };
 
-	return (
-		<div className='chatSection'>
-			<div className='botContainer'>
-				<div className='messagesContainer'>
-					<Messages messages={responses} />
-				</div>
 
-				{/*The input section is 👇*/}
-				<div className='inputSection'>
-					<input
-						type='text'
-						value={currentMessage}
-						onChange={handleMessageChange}
-						onKeyDown={handleSubmit}
-						placeholder='Say something...'
-						className='messageInputField'
-					/>
-					<div onTap={handleSubmit}>
-						<svg
-							style={{ marginRight: '10px' }}
-							id='Capa_1'
-							enableBackground='new 0 0 512.004 512.004'
-							height='25'
-							viewBox='0 0 512.004 512.004'
-							width='25'
-							xmlns='http://www.w3.org/2000/svg'>
-							<g>
-								<path
-									d='m511.35 52.881-122 400c-3.044 9.919-14.974 13.828-23.29 7.67-7.717-5.727-203.749-151.217-214.37-159.1l-142.1-54.96c-5.79-2.24-9.6-7.81-9.59-14.02.01-6.21 3.85-11.77 9.65-13.98l482-184c5.824-2.232 12.488-.626 16.67 4.17 3.37 3.87 4.55 9.24 3.03 14.22z'
-									fill='#94dfda'
-								/>
-								<path
-									d='m511.35 52.881-122 400c-3.044 9.919-14.974 13.828-23.29 7.67l-190.05-141.05 332.31-280.84c3.37 3.87 4.55 9.24 3.03 14.22z'
-									fill='#61a7c5'
-								/>
-								<path
-									d='m507.89 58.821-271.49 286.4-63 125.03c-3.16 6.246-10.188 9.453-16.87 7.84-6.76-1.6-11.53-7.64-11.53-14.59v-175.3c0-4.86 2.35-9.41 6.31-12.23l337-239.69c6.29-4.48 14.95-3.45 20.01 2.38 5.07 5.83 4.88 14.56-.43 20.16z'
-									fill='#eef4ff'
-								/>
-								<path
-									d='m507.89 58.821-271.49 286.4-63 125.03c-3.16 6.246-10.188 9.453-16.87 7.84-6.76-1.6-11.53-7.64-11.53-14.59l31.01-144 332.31-280.84c5.07 5.83 4.88 14.56-.43 20.16z'
-									fill='#d9e6fc'
-								/>
-							</g>
-						</svg>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
-};
 
-export default Chat;
+    async df_event_query(event) {
+
+        const request = {
+            queryInput: {
+                event: {
+                    name: event,
+                    languageCode: 'en-US',
+                },
+            }
+        };
+
+        
+
+    };
+
+
+    async componentDidMount() {
+        this.df_event_query('Welcome');
+
+        
+    }
+
+    componentDidUpdate() {
+        this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+        if ( this.talkInput ) {
+            this.talkInput.focus();
+        }
+    }
+
+    show(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.setState({showBot: true});
+    }
+
+    hide(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.setState({showBot: true});
+    }
+
+    
+    _handleInputKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.df_text_query(e.target.value);
+            e.target.value = '';
+        }
+    }
+
+    render() {
+        if (this.state.showBot) {
+            return (
+                <div style={{ minHeight: 500, maxHeight: 470, width:400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgray'}}>
+                    <nav>
+                        <div className="nav-wrapper">
+                            <a href="/" className="brand-logo">ChatBot</a>
+                            <ul id="nav-mobile" className="right hide-on-med-and-down">
+                                <li><a href="/" onClick={this.hide}>Close</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div id="chatbot"  style={{ minHeight: 388, maxHeight: 388, width:'100%', overflow: 'auto'}}>
+
+                        {this.renderMessages(this.state.messages)}
+                        <div ref={(el) => { this.messagesEnd = el; }}
+                             style={{ float:"left", clear: "both" }}>
+                        </div>
+                    </div>
+                    <div className=" col s12" >
+                        <input style={{margin: 0, paddingLeft: '1%', paddingRight: '1%', width: '98%'}} ref={(input) => { this.talkInput = input; }} placeholder="type a message:"  onKeyPress={this._handleInputKeyPress} id="user_says" type="text" />
+                    </div>
+
+                </div>
+            );
+        } else {
+            return (
+                <div style={{ minHeight: 40, maxHeight: 500, width:400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgray'}}>
+                    <nav>
+                        <div className="nav-wrapper">
+                            <a href="/" className="brand-logo">ChatBot</a>
+                            <ul id="nav-mobile" className="right hide-on-med-and-down">
+                                <li><a href="/" onClick={this.show}>Show</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div ref={(el) => { this.messagesEnd = el; }}
+                         style={{ float:"left", clear: "both" }}>
+                    </div>
+                </div>
+            );
+        }
+    }
+}
+
+export default withRouter(Chatbot);

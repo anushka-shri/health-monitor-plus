@@ -17,3 +17,12 @@
 	margin-right: 0vw !important;
 	transform: translate(19%, 20%);
 }
+
+.similar {
+	height: 15vh;
+	width: 30vw;
+	margin-top: 40vh;
+	margin-left: 30vw;
+	margin-right: 10vw;
+	position: absolute;
+}

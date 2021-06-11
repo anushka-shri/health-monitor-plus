@@ -16,6 +16,8 @@ import Typography from '@material-ui/core/Typography';
 import ScrollUpButton from 'react-scroll-up-button';
 import Fade from 'react-reveal/Fade';
 
+
+
 const useStyles = makeStyles({
 	root: {
 		maxWidth: 345,
@@ -67,7 +69,7 @@ export default function Medications() {
 		//setDrugName(value);
 		getMedicine(value);
 	};
-
+    
 	return (
 		<div>
 			<div className='Meds_search_cont' style={{ width: 400 }}>
@@ -86,6 +88,7 @@ export default function Medications() {
 					)}
 				/>
 			</div>
+			
 			<div className='Meds_cards_cont'>
 				{similar.map((med, id) => {
 					return (
