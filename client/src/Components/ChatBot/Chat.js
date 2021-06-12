@@ -3,7 +3,7 @@ import axios from "axios";
 import { withRouter } from 'react-router-dom';
 import Message from './Message';
 import Card from './Card';
-
+import QuickReplies from "./QuickReplies";
 
 class Chatbot extends Component {
 	messagesEnd;
@@ -12,6 +12,7 @@ class Chatbot extends Component {
         super(props);
     
 	this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
+	this.handleQuickReplyPayload = this.handleQuickReplyPayload.bind(this);
 	this.hide = this.hide.bind(this);
     this.show = this.show.bind(this);
      this.state = {
@@ -77,8 +78,26 @@ class Chatbot extends Component {
     hide(event) {
         event.preventDefault();
         event.stopPropagation();
-        this.setState({showBot: true});
+        this.setState({showBot: false});
     }
+    
+	handleQuickReplyPayload(event, payload, text) {
+		event.preventDefault();
+		event.stopPropagation();
+	
+		switch (payload) {
+		  case "recommend_yes":
+			this.df_event_query("SHOW_RECOMMENDATIONS");
+			break;
+		  case "training_masterclass":
+			this.df_event_query("MASTERCLASS");
+			break;
+		  default:
+			this.df_text_query(text);
+			break;
+		}
+	  }
+	
 
 	renderCards(cards) {
         return cards.map((card, i) => <Card key={i} payload={card}/>);
@@ -107,7 +126,26 @@ class Chatbot extends Component {
                     </div>
                 </div>
             </div>
-        }
+        }else if (
+			message.msg &&
+			message.msg.payload &&
+			message.msg.payload.fields &&
+			message.msg.payload.fields.quick_replies
+		  ) {
+			return (
+			  <QuickReplies
+				text={
+				  message.msg.payload.fields.text
+					? message.msg.payload.fields.text
+					: null
+				}
+				key={i}
+				replyClick={this.handleQuickReplyPayload}
+				speaks={message.speaks}
+				payload={message.msg.payload.fields.quick_replies.listValue.values}
+			  />
+			);
+		  }
 	}
 
 
