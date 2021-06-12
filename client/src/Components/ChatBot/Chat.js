@@ -5,36 +5,36 @@ import Message from './Message';
 import Card from './Card';
 import './chatapp.css';
 
+import QuickReplies from "./QuickReplies";
 
 class Chatbot extends Component {
 	messagesEnd;
 	talkInput;
-	constructor(props) {
-		super(props);
+    constructor(props) {
+        super(props);
+    
+	this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
+	this.handleQuickReplyPayload = this.handleQuickReplyPayload.bind(this);
+	this.hide = this.hide.bind(this);
+    this.show = this.show.bind(this);
+     this.state = {
+            messages: [],
+			showBot: false
+        };
+        
+    }
 
-		this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
-		this.hide = this.hide.bind(this);
-		this.show = this.show.bind(this);
-		this.state = {
-			messages: [],
-			showBot: false,
-		};
-	}
-
-	async df_text_query(text) {
-		let says = {
-			speaks: 'user',
-			msg: {
-				text: {
-					text: text,
-				},
-			},
-		};
-		this.setState({ messages: [...this.state.messages, says] });
-		const res = await axios.post(
-			'http://localhost:3005/api/v1/dialogFlow/textQuery',
-			{ text },
-		);
+    async df_text_query(text) {
+        let says = {
+            speaks: 'user',
+            msg: {
+                text : {
+                    text: text
+                }
+            }
+        }
+        this.setState({ messages: [...this.state.messages, says]});
+		const res =  await axios.post('http://localhost:3005/api/v1/dialogFlow/textQuery',{text});
 		for (let msg of res.data.fulfillmentMessages) {
 			says = {
 				speaks: 'bot',
@@ -75,53 +75,77 @@ class Chatbot extends Component {
 		this.setState({ showBot: true });
 	}
 
-	hide(event) {
+    hide(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.setState({showBot: false});
+    }
+    
+	handleQuickReplyPayload(event, payload, text) {
 		event.preventDefault();
 		event.stopPropagation();
-		this.setState({ showBot: false });
-	}
+	
+		switch (payload) {
+		  case "recommend_yes":
+			this.df_event_query("SHOW_RECOMMENDATIONS");
+			break;
+		  case "training_masterclass":
+			this.df_event_query("MASTERCLASS");
+			break;
+		  default:
+			this.df_text_query(text);
+			break;
+		}
+	  }
+	
 
 	renderCards(cards) {
-		return cards.map((card, i) => <Card key={i} payload={card} />);
-	}
+        return cards.map((card, i) => <Card key={i} payload={card}/>);
+    }
 
-	renderOneMessage(message, i) {
-		if (message.msg && message.msg.text && message.msg.text.text) {
-			return (
-				<Message key={i} speaks={message.speaks} text={message.msg.text.text} />
-			);
-		} else if (
+    renderOneMessage(message, i) {
+
+        if (message.msg && message.msg.text && message.msg.text.text) {
+            return <Message key={i} speaks={message.speaks} text={message.msg.text.text}/>;
+
+        } else if (message.msg
+            && message.msg.payload
+            && message.msg.payload.cards) { //message.msg.payload.fields.cards.listValue.values
+
+            return <div key={i}>
+                <div className="card-panel grey lighten-5 z-depth-1">
+                    <div style={{overflow: 'hidden'}}>
+                        <div className="col s2">
+                            <a href="/" className="btn-floating btn-large waves-effect waves-light ">{message.speaks}</a>
+                        </div>
+                        <div style={{ overflow: 'auto', overflowY: 'scroll'}}>
+                            <div style={{ height: 300, width:message.msg.payload.cards.length * 270}}>
+                                {this.renderCards(message.msg.payload.cards)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }else if (
 			message.msg &&
 			message.msg.payload &&
-			message.msg.payload.cards
-		) {
-			//message.msg.payload.fields.cards.listValue.values
-
+			message.msg.payload.fields &&
+			message.msg.payload.fields.quick_replies
+		  ) {
 			return (
-				<div key={i}>
-					<div className='card-panel grey lighten-5 z-depth-1'>
-						<div style={{ overflow: 'hidden' }}>
-							<div className='col s2'>
-								<a
-									href='/'
-									className='btn-floating btn-large waves-effect waves-light red'>
-									{message.speaks}
-								</a>
-							</div>
-							<div style={{ overflow: 'auto', overflowY: 'scroll' }}>
-								<div
-									style={{
-										height: 300,
-										width: message.msg.payload.cards.length * 270,
-									}}>
-									{this.renderCards(message.msg.payload.cards)}
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			  <QuickReplies
+				text={
+				  message.msg.payload.fields.text
+					? message.msg.payload.fields.text
+					: null
+				}
+				key={i}
+				replyClick={this.handleQuickReplyPayload}
+				speaks={message.speaks}
+				payload={message.msg.payload.fields.quick_replies.listValue.values}
+			  />
 			);
-		}
+		  }
 	}
 
 	renderMessages(returnedMessages) {
@@ -150,17 +174,19 @@ class Chatbot extends Component {
 						backgroundColor: 'rgb(191,193,194)',
 						maxHeight: 470,
 						width: 400,
-                        position: 'fixed',
+						position: 'fixed',
 						bottom: 0,
 						right: 0,
 						border: '1px solid lightgray',
 					}}>
 					<nav>
-						<div className='nav-wrapper'>
-							<a href='/' className='brand-logo'>
-								Chat Assistant
+						<div className='nav-wrapper purple lighten-1'>
+							<a href='/' className='brand-logo '>
+								Chatbot
 							</a>
-							<ul id='nav-mobile' className='right hide-on-med-and-down'>
+							<ul
+								id='nav-mobile'
+								className='right hide-on-med-and-down '>
 								<li>
 									<a href='/' onClick={this.hide}>
 										Close
@@ -219,9 +245,9 @@ class Chatbot extends Component {
 						border: '1px solid lightgray',
 					}}>
 					<nav>
-						<div className='nav-wrapper .chatbot_css_fix'>
+						<div className='nav-wrapper purple lighten-1 .chatbot_css_fix'>
 							<a href='/' className='brand-logo'>
-								Chat Assistant
+								Chatbot
 							</a>
 							<ul id='nav-mobile' className='right hide-on-med-and-down'>
 								<li>

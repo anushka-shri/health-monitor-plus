@@ -13,9 +13,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import ScrollUpButton from 'react-scroll-up-button';
 import Fade from 'react-reveal/Fade';
-
 
 
 const useStyles = makeStyles({
@@ -72,6 +70,7 @@ export default function Medications() {
     
 	return (
 		<div>
+		
 			<div className='Meds_search_cont' style={{ width: 400 }}>
 				<Autocomplete
 					id='free-solo-demo'
