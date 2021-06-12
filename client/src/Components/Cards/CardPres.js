@@ -61,8 +61,8 @@ function CardPres() {
 						<img
 							src='https://cdn.iconscout.com/icon/free/png-256/prescription-1901763-1607962.png'
 							alt='Girl in a jacket'
-							width='70px'
-							height='50px'
+							width='65px'
+							height='45px'
 						/>
 					</p>
 					<p>
@@ -86,7 +86,7 @@ function CardPres() {
 						<img
 							src='https://cdn.iconscout.com/icon/premium/png-512-thumb/lab-report-1957908-1651840.png'
 							alt='Girl in a jacket'
-							width='70px'
+							width='65px'
 							height='50px'
 						/>
 					</p>

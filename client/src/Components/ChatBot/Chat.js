@@ -3,6 +3,8 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import Message from './Message';
 import Card from './Card';
+import './chatapp.css';
+
 
 class Chatbot extends Component {
 	messagesEnd;
@@ -97,7 +99,7 @@ class Chatbot extends Component {
 
 			return (
 				<div key={i}>
-					<div className='card-panel grey lighten-5 z-depth-100'>
+					<div className='card-panel grey lighten-5 z-depth-1'>
 						<div style={{ overflow: 'hidden' }}>
 							<div className='col s2'>
 								<a
@@ -148,7 +150,7 @@ class Chatbot extends Component {
 						backgroundColor: 'rgb(191,193,194)',
 						maxHeight: 470,
 						width: 400,
-						position: 'fixed',
+                        position: 'fixed',
 						bottom: 0,
 						right: 0,
 						border: '1px solid lightgray',
@@ -156,7 +158,7 @@ class Chatbot extends Component {
 					<nav>
 						<div className='nav-wrapper'>
 							<a href='/' className='brand-logo'>
-								ChatBot
+								Chat Assistant
 							</a>
 							<ul id='nav-mobile' className='right hide-on-med-and-down'>
 								<li>
@@ -211,15 +213,15 @@ class Chatbot extends Component {
 						minHeight: 40,
 						maxHeight: 500,
 						width: 400,
-						position: 'absolute',
+						position: 'fixed',
 						bottom: 0,
 						right: 0,
 						border: '1px solid lightgray',
 					}}>
 					<nav>
-						<div className='nav-wrapper'>
+						<div className='nav-wrapper .chatbot_css_fix'>
 							<a href='/' className='brand-logo'>
-								ChatBot
+								Chat Assistant
 							</a>
 							<ul id='nav-mobile' className='right hide-on-med-and-down'>
 								<li>

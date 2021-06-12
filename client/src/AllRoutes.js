@@ -19,6 +19,10 @@ import {
 	
 } from './Pages/index.js';
 
+import {
+	Chat
+} from './Components';
+
 import { LoginPage, RegisterPage } from './authPages';
 
 const AllRoutes = () => {
@@ -41,7 +45,7 @@ const AllRoutes = () => {
 					<>
 						<Particles />
 						<Sidebar />
-						
+						<Chat />
 						<Route exact path='/'>
 							<Dashboard />
 						</Route>

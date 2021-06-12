@@ -15,9 +15,9 @@ import Fade from 'react-reveal/Fade';
 function Dashboard() {
 	return (
 		<div className='Dashboard_container'>
-			<h2 className='Dashboard_heading'>
+			{/* <h2 className='Dashboard_heading'>
 				<Fade right>DashBoard</Fade>
-			</h2>
+			</h2> */}
 
 			<Fade top>
 				<Cards />
@@ -39,6 +39,7 @@ function Dashboard() {
 			<Fade bottom>
 				<PieChart />
 			</Fade>
+			
 			<Chat />
 			<div>
 				<ScrollUpButton />
