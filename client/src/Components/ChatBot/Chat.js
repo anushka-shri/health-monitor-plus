@@ -1,31 +1,21 @@
 import React, { Component } from 'react';
-import axios from 'axios/index';
-//import { withRouter } from 'react-router-dom';
-
-//import Cookies from 'universal-cookie';
-import { v4 as uuid } from 'uuid';
-
+import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import Message from './Message';
-// import Card from './Card';
-// import QuickReplies from './QuickReplies';
-
-const cookies = new Cookies();
+import Card from './Card';
 
 class Chatbot extends Component {
 	messagesEnd;
 	talkInput;
-
 	constructor(props) {
 		super(props);
-		// This binding is necessary to make `this` work in the callback
-		this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
-		this._handleQuickReplyPayload = this._handleQuickReplyPayload.bind(this);
 
+		this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
 		this.hide = this.hide.bind(this);
 		this.show = this.show.bind(this);
 		this.state = {
 			messages: [],
-			showBot: true,
+			showBot: false,
 		};
 	}
 
@@ -39,25 +29,31 @@ class Chatbot extends Component {
 			},
 		};
 		this.setState({ messages: [...this.state.messages, says] });
-		const request = {
-			queryInput: {
-				text: {
-					text: text,
-					languageCode: 'en-US',
-				},
-			},
-		};
+		const res = await axios.post(
+			'http://localhost:3005/api/v1/dialogFlow/textQuery',
+			{ text },
+		);
+		for (let msg of res.data.fulfillmentMessages) {
+			says = {
+				speaks: 'bot',
+				msg: msg,
+			};
+			this.setState({ messages: [...this.state.messages, says] });
+		}
 	}
 
 	async df_event_query(event) {
-		const request = {
-			queryInput: {
-				event: {
-					name: event,
-					languageCode: 'en-US',
-				},
-			},
-		};
+		const res = await axios.post(
+			'http://localhost:3005/api/v1/dialogFlow/eventQuery',
+			{ event },
+		);
+		for (let msg of res.data.fulfillmentMessages) {
+			let says = {
+				speaks: 'bot',
+				msg: msg,
+			};
+			this.setState({ messages: [...this.state.messages, says] });
+		}
 	}
 
 	async componentDidMount() {
@@ -80,19 +76,56 @@ class Chatbot extends Component {
 	hide(event) {
 		event.preventDefault();
 		event.stopPropagation();
-		this.setState({ showBot: true });
+		this.setState({ showBot: false });
 	}
 
-	renderMessages(stateMessages) {
-		if (stateMessages) {
-			return stateMessages.map((message, i) => {
-				return (
-					<Messages
-						key={i}
-						speaks={message.speaks}
-						text={message.msg.text.text}
-					/>
-				);
+	renderCards(cards) {
+		return cards.map((card, i) => <Card key={i} payload={card} />);
+	}
+
+	renderOneMessage(message, i) {
+		if (message.msg && message.msg.text && message.msg.text.text) {
+			return (
+				<Message key={i} speaks={message.speaks} text={message.msg.text.text} />
+			);
+		} else if (
+			message.msg &&
+			message.msg.payload &&
+			message.msg.payload.cards
+		) {
+			//message.msg.payload.fields.cards.listValue.values
+
+			return (
+				<div key={i}>
+					<div className='card-panel grey lighten-5 z-depth-100'>
+						<div style={{ overflow: 'hidden' }}>
+							<div className='col s2'>
+								<a
+									href='/'
+									className='btn-floating btn-large waves-effect waves-light red'>
+									{message.speaks}
+								</a>
+							</div>
+							<div style={{ overflow: 'auto', overflowY: 'scroll' }}>
+								<div
+									style={{
+										height: 300,
+										width: message.msg.payload.cards.length * 270,
+									}}>
+									{this.renderCards(message.msg.payload.cards)}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			);
+		}
+	}
+
+	renderMessages(returnedMessages) {
+		if (returnedMessages) {
+			return returnedMessages.map((message, i) => {
+				return this.renderOneMessage(message, i);
 			});
 		} else {
 			return null;
@@ -112,9 +145,10 @@ class Chatbot extends Component {
 				<div
 					style={{
 						minHeight: 500,
+						backgroundColor: 'rgb(191,193,194)',
 						maxHeight: 470,
 						width: 400,
-						position: 'absolute',
+						position: 'fixed',
 						bottom: 0,
 						right: 0,
 						border: '1px solid lightgray',
@@ -155,12 +189,14 @@ class Chatbot extends Component {
 								margin: 0,
 								paddingLeft: '1%',
 								paddingRight: '1%',
-								width: '98%',
+								width: '100%',
+								color: 'white',
+								backgroundColor: 'rgb(105,105,105)',
 							}}
 							ref={(input) => {
 								this.talkInput = input;
 							}}
-							placeholder='type a message:'
+							placeholder='Enter message here:'
 							onKeyPress={this._handleInputKeyPress}
 							id='user_says'
 							type='text'

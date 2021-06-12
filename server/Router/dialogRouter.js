@@ -6,7 +6,7 @@ const  dialogController = require('./../Controller/dialogController');
 
 const router = express.Router();
 
-router.post('/textQuery', dialogController.textQuery);
+router.post('/textQuery', authenticationController.protect,dialogController.textQuery);
 router.post('/eventQuery', authenticationController.protect,dialogController.eventQuery);
 
 
