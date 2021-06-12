@@ -1,32 +1,22 @@
 import React, { Component } from 'react';
-import axios from "axios/index";
-//import { withRouter } from 'react-router-dom';
-
-//import Cookies from 'universal-cookie';
-import { v4 as uuid } from 'uuid';
-
+import axios from "axios";
+import { withRouter } from 'react-router-dom';
 import Message from './Message';
-// import Card from './Card';
-// import QuickReplies from './QuickReplies';
+import Card from './Card';
 
-const cookies = new Cookies();
 
 class Chatbot extends Component {
-    messagesEnd;
-    talkInput;
-
+	messagesEnd;
+	talkInput;
     constructor(props) {
         super(props);
-        // This binding is necessary to make `this` work in the callback
-        this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
-        this._handleQuickReplyPayload = this._handleQuickReplyPayload.bind(this);
-
-        this.hide = this.hide.bind(this);
-        this.show = this.show.bind(this);
-        this.state = {
+    
+	this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
+	this.hide = this.hide.bind(this);
+    this.show = this.show.bind(this);
+     this.state = {
             messages: [],
 			showBot: true,
-            
         };
         
     }
@@ -41,14 +31,14 @@ class Chatbot extends Component {
             }
         }
         this.setState({ messages: [...this.state.messages, says]});
-        const request = {
-            queryInput: {
-                text: {
-                    text: text,
-                    languageCode: 'en-US',
-                },
-            }
-        };
+		const res =  await axios.post('http://localhost:3005/api/v1/dialogFlow/textQuery',{text});
+		for (let msg of res.data.fulfillmentMessages) {
+			says = {
+				speaks: 'bot',
+				msg: msg
+			}
+			this.setState({ messages: [...this.state.messages, says]});
+		}
         
     };
 
@@ -56,34 +46,29 @@ class Chatbot extends Component {
 
     async df_event_query(event) {
 
-        const request = {
-            queryInput: {
-                event: {
-                    name: event,
-                    languageCode: 'en-US',
-                },
-            }
-        };
-
-        
+        const res =  await axios.post('http://localhost:3005/api/v1/dialogFlow/eventQuery',{event});
+		for (let msg of res.data.fulfillmentMessages) {
+			let says = {
+				speaks: 'bot',
+				msg: msg
+			}
+			this.setState({ messages: [...this.state.messages, says]});
+		}
 
     };
 
-
-    async componentDidMount() {
+	async componentDidMount() {
         this.df_event_query('Welcome');
+	}
 
-        
-    }
-
-    componentDidUpdate() {
+	componentDidUpdate() {
         this.messagesEnd.scrollIntoView({ behavior: "smooth" });
         if ( this.talkInput ) {
             this.talkInput.focus();
         }
     }
-
-    show(event) {
+    
+	show(event) {
         event.preventDefault();
         event.stopPropagation();
         this.setState({showBot: true});
@@ -95,13 +80,54 @@ class Chatbot extends Component {
         this.setState({showBot: true});
     }
 
+	renderCards(cards) {
+        return cards.map((card, i) => <Card key={i} payload={card}/>);
+    }
+
+    renderOneMessage(message, i) {
+
+        if (message.msg && message.msg.text && message.msg.text.text) {
+            return <Message key={i} speaks={message.speaks} text={message.msg.text.text}/>;
+
+        } else if (message.msg
+            && message.msg.payload
+            && message.msg.payload.cards) { //message.msg.payload.fields.cards.listValue.values
+
+            return <div key={i}>
+                <div className="card-panel grey lighten-5 z-depth-1">
+                    <div style={{overflow: 'hidden'}}>
+                        <div className="col s2">
+                            <a href="/" className="btn-floating btn-large waves-effect waves-light red">{message.speaks}</a>
+                        </div>
+                        <div style={{ overflow: 'auto', overflowY: 'scroll'}}>
+                            <div style={{ height: 300, width:message.msg.payload.cards.length * 270}}>
+                                {this.renderCards(message.msg.payload.cards)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+	}
+
+
+    renderMessages(returnedMessages) {
+        if (returnedMessages) {
+            return returnedMessages.map((message, i) => {
+                    return this.renderOneMessage(message, i);
+                }
+            )
+        } else {
+            return null;
+        }
+    }
     
-    _handleInputKeyPress(e) {
+	_handleInputKeyPress(e) {
         if (e.key === 'Enter') {
             this.df_text_query(e.target.value);
             e.target.value = '';
         }
-    }
+    } 
 
     render() {
         if (this.state.showBot) {

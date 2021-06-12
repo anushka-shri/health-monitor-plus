@@ -21,6 +21,7 @@
     "date-fns": "^2.19.0",
     "devextreme-query-mongodb": "^2.0.13",
     "material-ui-icons": "^1.0.0-beta.36",
+    "materialize-css": "^1.0.0",
     "node-sass": "^5.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -39,6 +40,8 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
     "styled-components": "^5.2.1",
+    "universal-cookie": "^4.0.4",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.0"
   },
   "scripts": {
