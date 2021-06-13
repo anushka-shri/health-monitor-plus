@@ -2,7 +2,7 @@
 	height: 25vh !important;
 	width: 18vw !important;
 	margin-left: 24vw !important;
-	margin-top: 25vh !important;
+	margin-top: 30vh !important;
 	box-shadow: 0px 3px 15px 0px #0000007a !important;
 }
 
@@ -10,7 +10,7 @@
 	height: 25vh !important;
 	width: 18vw !important;
 	margin-left: 0vw !important;
-	margin-top: 25vh !important;
+	margin-top: 30vh !important;
 	box-shadow: 0px 3px 15px 0px #0000007a !important;
 }
 
@@ -18,12 +18,35 @@
 	height: 25vh !important;
 	width: 18vw !important;
 	margin-left: 0vw !important;
-	margin-top: 25vh !important;
+	margin-top: 30vh !important;
 	margin-right: 5vw !important;
 	box-shadow: 0px 3px 15px 0px #0000007a !important;
 }
 
-.cards {
+.Row2First{
+	height: 25vh !important;
+	width: 18vw !important;
+	margin-left: 20vw !important;
+	margin-top: 5vh !important;
+	/* margin-right: 5vw !important; */
+	box-shadow: 0px 3px 15px 0px #0000007a !important;
+}
+
+.Row2Second{
+	height: 25vh !important;
+	width: 18vw !important;
+	margin-left: 5vw !important;
+	margin-top: 5vh !important;
+	margin-bottom: 5vh;
+	box-shadow: 0px 3px 15px 0px #0000007a !important;
+}
+
+.cardsRow1 {
+	display: flex !important;
+	justify-content: space-evenly !important;
+}
+
+.cardsRow2 {
 	display: flex !important;
 	justify-content: space-evenly !important;
 }
