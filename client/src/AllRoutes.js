@@ -14,6 +14,8 @@ import {
 	FamilyHistory,
 	Medications,
 	LabReports,
+	ViewLab,
+	MyMeds
 	
 } from './Pages/index.js';
 
@@ -68,7 +70,13 @@ const AllRoutes = () => {
 							<Medications />
 						</Route>
 						<Route exact path='/lab-reports'>
+							<MyMeds />
+						</Route>
+						<Route exact path='/new-labreps'>
 							<LabReports />
+						</Route>
+						<Route exact path='/lab-reports'>
+							<ViewLab />
 						</Route>
 						<Route exact path='/'>
 							<Dashboard />

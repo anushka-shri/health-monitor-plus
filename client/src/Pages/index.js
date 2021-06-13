@@ -8,6 +8,8 @@ import NewPrescription from './NewPrescription';
 import Medications from './Medications';
 import Scheduler from './Scheduler';
 import LabReports from './LabReports';
+import ViewLab from './ViewLabRep';
+import MyMeds from './MyMedicines';
 
 export {
 	Dashboard,
@@ -20,4 +22,6 @@ export {
 	FamilyHistory,
 	Medications,
 	LabReports,
+	ViewLab,
+	MyMeds
 };

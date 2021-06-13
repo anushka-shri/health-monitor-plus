@@ -67,8 +67,21 @@ import * as BiIcons from 'react-icons/bi';
 		},
 		{
 			title: 'Lab Reports',
-			path: '/lab-reports',
 			icon: <BiIcons.BiTestTube />,
+			iconClosed: <AiIcons.AiOutlinePlus />,
+			iconOpened: <AiIcons.AiOutlineMinus />,
+			subNav: [
+				{
+					title: 'View Lab Reports',
+					path: '/lab-reports',
+					icon: <AiIcons.AiOutlineRight />,
+				},
+				{
+					title: 'New Lab Reports',
+					path: '/new-labreps',
+					icon: <AiIcons.AiOutlineRight />,
+				},
+			],
 		},
 		{
 			title: 'Doctors',
