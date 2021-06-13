@@ -72,13 +72,13 @@ import * as BiIcons from 'react-icons/bi';
 			iconOpened: <AiIcons.AiOutlineMinus />,
 			subNav: [
 				{
-					title: 'View Lab Reports',
-					path: '/lab-reports',
+					title: 'New Lab Reports',
+					path: '/new-labreps',
 					icon: <AiIcons.AiOutlineRight />,
 				},
 				{
-					title: 'New Lab Reports',
-					path: '/new-labreps',
+					title: 'View Added Reports',
+					path: '/lab-reports',
 					icon: <AiIcons.AiOutlineRight />,
 				},
 			],
