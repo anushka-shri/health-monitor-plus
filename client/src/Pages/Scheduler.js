@@ -3,12 +3,10 @@ import React from 'react';
 import axios from 'axios';
 import Paper from '@material-ui/core/Paper';
 import './pagesCSS/Scheduler.css';
-
 import { AddButton, ScForm } from './../Components';
 import {
 	ViewState,
 	EditingState,
-	IntegratedEditing,
 } from '@devexpress/dx-react-scheduler';
 import {
 	Scheduler,
@@ -23,7 +21,7 @@ import {
 	ConfirmationDialog,
 	AllDayPanel,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { getHours } from 'date-fns';
+
 const getEvents = async () => {
 	try {
 		const res = await axios.get('http://localhost:3005/api/v1/events/getEvent');
@@ -52,7 +50,7 @@ const getEvents = async () => {
 				recurrenceAppointments.push(element);
 			});
 		}
-		//setEvents(res.data.data);
+		
 	} catch {}
 };
 getEvents();

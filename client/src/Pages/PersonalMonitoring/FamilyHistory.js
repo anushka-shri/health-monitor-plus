@@ -6,8 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Particles from '../../Components/Particles/Particles2.js';
-// import axios from 'axios';
+import Particles from '../../Components/Particles/Particles.js';
 import '../pagesCSS/FamilyHistory.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,33 +33,6 @@ function NewMembers() {
 	const [name, setName] = useState('');
 	const [relation, setRelation] = useState('');
 	const [description, setDescription] = useState('');
-
-	// const newRealativeHandler = async (e) => {
-	// 	e.preventDefault();
-	// 	console.log(doctor);
-	// 	try {
-	// 		const res = await axios.post(
-	// 			'http://localhost:3005/api/v1/doctors/addNew',
-	// 			{
-	// 				doctor,
-	// 				hospital,
-	// 				Relation,
-	// 				notes,
-	// 			},
-	// 		);
-
-	// 		if (res.data.status === 'success') {
-	// 			window.alert('Doctor added!');
-	// 		} else if (res.data.status === 'failed') {
-	// 			window.alert('Same name doctor already exists!');
-	// 			setDoctor('');
-	// 			setHospital('');
-	// 			setSpecialization('');
-	// 			setNotes('');
-	// 		}
-	// 	} catch {}
-	// };
-
 	const classes = useStyles();
 
 	return (

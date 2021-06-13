@@ -1,7 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
-// import { Button, Card, Image } from 'semantic-ui-react';
 import { Autocomplete } from '@material-ui/lab';
 import './pagesCSS/Medications.css';
 import axios from 'axios';

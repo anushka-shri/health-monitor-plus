@@ -14,7 +14,6 @@ import {
 	FamilyHistory,
 	Medications,
 	LabReports,
-	FixedMenuLayout
 	
 } from './Pages/index.js';
 
@@ -70,9 +69,6 @@ const AllRoutes = () => {
 						</Route>
 						<Route exact path='/lab-reports'>
 							<LabReports />
-						</Route>
-						<Route exact path='/profile'>
-							<FixedMenuLayout />
 						</Route>
 						<Route exact path='/'>
 							<Dashboard />
