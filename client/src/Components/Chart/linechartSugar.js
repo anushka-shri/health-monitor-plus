@@ -12,8 +12,6 @@ import {
 import { Animation } from '@devexpress/dx-react-chart';
 import axios from 'axios';
 
-
-
 function sugarChart() {
 	const [sugar, setSugar] = useState([]);
 
@@ -44,7 +42,7 @@ function sugarChart() {
 		return dates;
 	};
 	const pastDays = timeFrom(7);
-	console.log(pastDays)
+	console.log(pastDays);
 
 	const pastDates = [];
 	const pastDatesRecords = [];
@@ -116,29 +114,25 @@ function sugarChart() {
 			pastDatesRecords[i].date.day = pastDatesRecords[i].date.day.split('0')[1];
 		}
 		if (pastDatesRecords[i].date.month.startsWith('0')) {
-			pastDatesRecords[i].date.month = pastDatesRecords[i].date.month.split(
-				'0',
-			)[1];
+			pastDatesRecords[i].date.month =
+				pastDatesRecords[i].date.month.split('0')[1];
 		}
-
 	});
 
-	console.log(pastDatesRecords)
+	console.log(pastDatesRecords);
 	const finalDate = [];
 	pastDatesRecords.map((el, i) => {
-		const found = pastDates.find(function(Element) {
+		const found = pastDates.find(function (Element) {
 			return (
 				Element.day === pastDatesRecords[i].date.day &&
 				Element.month === pastDatesRecords[i].date.month &&
 				Element.year === pastDatesRecords[i].date.year
 			);
-			
 		});
 		console.log(found);
 		if (found !== undefined) {
 			finalDate.push(pastDatesRecords[i]);
 		}
-		
 	});
 
 	console.log(finalDate);

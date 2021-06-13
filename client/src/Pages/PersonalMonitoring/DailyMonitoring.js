@@ -289,7 +289,7 @@ function DailyMonitoring() {
 									</Fragment>
 								</Grid>
 							</MuiPickersUtilsProvider>
-							{/* <Grid item xs={12} sm={10}>
+							<Grid item xs={12} sm={10}>
 								<TextField
 									id='outlined-number'
 									label='Pulse'
@@ -301,7 +301,7 @@ function DailyMonitoring() {
 									value={pulseOxygen}
 									onChange={(e) => setPulseOxygen(e.target.value)}
 								/>
-							</Grid> */}
+							</Grid>
 
 							<Grid item xs={12} sm={12}>
 								<Button

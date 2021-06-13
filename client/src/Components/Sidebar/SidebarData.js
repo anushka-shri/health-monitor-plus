@@ -9,79 +9,83 @@ import * as BiIcons from 'react-icons/bi';
 
 
  export const SidebarData = [
- 	{
- 		title: 'Dashboard',
- 		path: '/',
- 		icon: <RiIcons.RiDashboardLine />,
- 	},
-	 {
-		title: 'Events',
-		path: '/events',
-		icon: <FcIcons.FcCalendar />,
-	},
- 	{
- 		title: 'Medications',
- 		path: '/medications',
- 		icon: <GiIcons.GiMedicines />,
- 	},
- 	{
- 		title: 'Personal Monitoring',
- 		icon: <BiIcons.BiTachometer />,
- 		iconClosed: <AiIcons.AiOutlinePlus />,
- 		iconOpened: <AiIcons.AiOutlineMinus />,
- 		subNav: [
- 			{
- 				title: 'Daily Monitoring',
- 				path: '/daily-monitoring',
- 				icon: <AiIcons.AiOutlineRight />,
- 			},
- 			{
- 				title: 'Family History',
- 				path: '/family-history',
- 				icon: <AiIcons.AiOutlineRight />,
- 			},
- 		],
- 	},
- 	{
- 		title: 'Prescriptions',
- 		icon: <FaIcons.FaPrescriptionBottleAlt />,
- 		iconClosed: <AiIcons.AiOutlinePlus />,
- 		iconOpened: <AiIcons.AiOutlineMinus />,
- 		subNav: [
- 			{
- 				title: 'New Prescription',
- 				path: '/new-prescription',
- 				icon: <AiIcons.AiOutlineRight />,
- 			},
- 			{
- 				title: 'Prescriptions',
- 				path: '/prescriptions',
- 				icon: <AiIcons.AiOutlineRight />,
- 			},
- 		],
- 	},
- 	{
- 		title: 'Lab Reports',
- 		path: '/lab-reports',
- 		icon: <BiIcons.BiTestTube />,
- 	},
-    {
- 		title: 'Doctors',
- 		icon: <FaIcons.FaUserNurse />,
- 		iconClosed: <AiIcons.AiOutlinePlus />,
- 		iconOpened: <AiIcons.AiOutlineMinus />,
- 		subNav: [
- 			{
- 				title: 'All Doctors',
- 				path: '/doctors',
- 				icon: <AiIcons.AiOutlineRight />,
- 			},
- 			{
- 				title: 'Add Doctors',
- 				path: '/new-doctors',
- 				icon: <AiIcons.AiOutlineRight />,
- 			},
- 		],
- 	},
-	
- ]
+		{
+			title: 'Dashboard',
+			path: '/',
+			icon: <RiIcons.RiDashboardLine />,
+		},
+		{
+			title: 'Events',
+			path: '/events',
+			icon: <FcIcons.FcCalendar />,
+		},
+		{
+			title: 'My Medicines',
+			path: '/mymeds',
+			icon: <FaIcons.FaCommentMedical />,
+		},
+		{
+			title: 'Medications',
+			path: '/medications',
+			icon: <GiIcons.GiMedicines />,
+		},
+		{
+			title: 'Personal Monitoring',
+			icon: <BiIcons.BiTachometer />,
+			iconClosed: <AiIcons.AiOutlinePlus />,
+			iconOpened: <AiIcons.AiOutlineMinus />,
+			subNav: [
+				{
+					title: 'Daily Monitoring',
+					path: '/daily-monitoring',
+					icon: <AiIcons.AiOutlineRight />,
+				},
+				{
+					title: 'Family History',
+					path: '/family-history',
+					icon: <AiIcons.AiOutlineRight />,
+				},
+			],
+		},
+		{
+			title: 'Prescriptions',
+			icon: <FaIcons.FaPrescriptionBottleAlt />,
+			iconClosed: <AiIcons.AiOutlinePlus />,
+			iconOpened: <AiIcons.AiOutlineMinus />,
+			subNav: [
+				{
+					title: 'New Prescription',
+					path: '/new-prescription',
+					icon: <AiIcons.AiOutlineRight />,
+				},
+				{
+					title: 'Prescriptions',
+					path: '/prescriptions',
+					icon: <AiIcons.AiOutlineRight />,
+				},
+			],
+		},
+		{
+			title: 'Lab Reports',
+			path: '/lab-reports',
+			icon: <BiIcons.BiTestTube />,
+		},
+		{
+			title: 'Doctors',
+			icon: <FaIcons.FaUserNurse />,
+			iconClosed: <AiIcons.AiOutlinePlus />,
+			iconOpened: <AiIcons.AiOutlineMinus />,
+			subNav: [
+				{
+					title: 'All Doctors',
+					path: '/doctors',
+					icon: <AiIcons.AiOutlineRight />,
+				},
+				{
+					title: 'Add Doctors',
+					path: '/new-doctors',
+					icon: <AiIcons.AiOutlineRight />,
+				},
+			],
+		},
+ ];

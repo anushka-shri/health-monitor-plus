@@ -160,25 +160,13 @@ finalDate.map((el, i) => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
 return(
 	<div className='line_containerBPE'>
 		<Paper className='linechartBPE'>
 			<Chart className='linechartBPE' data={data}>
 				<ArgumentAxis />
 				<ValueAxis />
-
-				<Legend />
+                <Legend />
 				<Animation />
 				<LineSeries
 					valueField='value'

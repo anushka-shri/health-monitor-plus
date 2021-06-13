@@ -22,7 +22,7 @@ import {
 import { LoginPage, RegisterPage } from './authPages';
 
 const AllRoutes = () => {
-	const { isLoggedIn, getLoggedIn } = useGlobalContext();
+	const { isLoggedIn} = useGlobalContext();
 	return (
 		<Router>
 			<Switch>

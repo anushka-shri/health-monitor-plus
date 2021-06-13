@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useGlobalContext } from '../Context/AppContext';
 import img from '../images/3.jpeg';
-import './Login.css';
+
 
 function Copyright() {
 	return (
@@ -34,23 +34,19 @@ const useStyles = makeStyles((theme) => ({
 	},
 	image: {
 		width: '80vw',
-
-		backgroundImage: 'url(' + img + ')',
+        backgroundImage: 'url(' + img + ')',
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: 'cover',
 		backgroundPosition: 'left',
-		// borderTop: '10px solid rgb(131,58,180)',
-		// borderBottom: '23px solid rgb(137, 100, 172)',
 		borderLeft: '1px solid rgb(0,0,0)',
 	
 	},
 	paper: {
-		// background: 'black',
+
 		width: '33vw',
 		height: '100vh',
 		margin: theme.spacing(0, 0),
 		display: 'flex',
-		// marginLeft: '5vw',
 		flexDirection: 'column',
 		alignItems: 'center',
 		background:

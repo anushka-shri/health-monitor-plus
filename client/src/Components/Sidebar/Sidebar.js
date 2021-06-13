@@ -17,7 +17,6 @@ function Sidebar() {
 					<>
 						<Link to='/login'>
 							<Button
-								// onClick={logOut}
 								variant='outlined'
 								className='icon_text'
 								color='secondary'

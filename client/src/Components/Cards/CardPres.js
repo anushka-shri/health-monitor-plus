@@ -3,7 +3,6 @@ import './Cardpres.css';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import * as FaIcons from 'react-icons/fa';
 function CardPres() {
 	const [doc, setDoc] = useState(null);
 	const [pres, setPres] = useState(null);
