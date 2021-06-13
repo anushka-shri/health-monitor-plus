@@ -1,32 +1,32 @@
 .Prescription2_container {
-    width: 68vw;
-    background-color: rgb(226, 173, 190) !important;
-    margin-left: 19vw;
-    transform: translate(8%, 20%);
-    position: relative;
-    box-shadow: 0px 3px 15px 0px #0000007a !important;
-    border-radius: 10px;
+	width: 68vw;
+	background-color: rgb(226, 173, 190) !important;
+	margin-left: 19vw;
+	transform: translate(8%, 20%);
+	position: relative;
+	box-shadow: 0px 3px 15px 0px #0000007a !important;
+	border-radius: 10px;
 }
 
 .download_icon_card {
-    font-size: 1.5rem;
-    margin-left: 2vw;
+	font-size: 1.5rem;
+	margin-left: 2vw;
 }
 
 .card-footer-item {
-    font-size: 1rem;
+	font-size: 1rem;
 }
 
 .prescription_added_heading {
-    transform: translate(100%, 160%);
-    font-size: 2rem;
-    color: black;
-    font-weight: bold;
-    background: #feada6;
-    background: linear-gradient(to bottom, #ffffff 0%, #fac3bf 100%);
-    width: 25vw;
-    box-shadow: 0px 3px 15px 0px #c99a9a !important;
-    border-radius: 5px;
-    margin-left: 22vw;
-    text-align: center;
+	transform: translate(100%, 160%);
+	font-size: 2rem;
+	color: black;
+	font-weight: bold;
+	background: #feada6;
+	background: linear-gradient(to bottom, #ffffff 0%, #fac3bf 100%);
+	width: 25vw;
+	box-shadow: 0px 3px 15px 0px #c99a9a !important;
+	border-radius: 5px;
+	margin-left: 22vw;
+	text-align: center;
 }

@@ -16,12 +16,12 @@
 
 .DM2_container {
 	/* transform: translate(90%, 30%); */
-	height: 55vh;
+	height: 70vh;
 	width: 45vw;
 	background-color: rgba(255, 255, 255, 0.884) !important;
 	border: 2px solid rgb(255, 255, 255);
 	margin-bottom: 10vh !important;
-	margin-top: 105vh;
+	margin-top: 115vh;
 	margin-left: 35vw;
 	margin-right: 10vw;
 	position: absolute;
@@ -32,12 +32,12 @@
 
 .DM3_container {
 	/* transform: translate(90%, 30%); */
-	height: 75vh;
+	height: 85vh;
 	width: 45vw;
 	background-color: rgba(255, 255, 255, 0.884) !important;
 	border: 2px solid rgb(255, 255, 255);
 	margin-bottom: 10vh !important;
-	margin-top: 175vh;
+	margin-top: 200vh;
 	margin-left: 35vw;
 	margin-right: 10vw;
 	position: absolute;
