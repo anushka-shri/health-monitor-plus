@@ -1,7 +1,6 @@
 import React from 'react';
 import './pagesCSS/Dashboard.css';
 import {
-	BarGraph,
 	LineChartBP,
 	LineChartSugar,
 	Cards,
@@ -12,12 +11,9 @@ import {
 import ScrollUpButton from 'react-scroll-up-button';
 import Fade from 'react-reveal/Fade';
 
-
 function Dashboard() {
 	return (
 		<div className='Dashboard_container'>
-
-
 			<Fade top>
 				<Cards />
 			</Fade>
@@ -33,12 +29,9 @@ function Dashboard() {
 				<BPChartE />
 			</Fade>
 			<Fade bottom>
-				<BarGraph />
-			</Fade>
-			<Fade bottom>
 				<PieChart />
 			</Fade>
-			
+
 			<Chat />
 			<div>
 				<ScrollUpButton />

@@ -1,5 +1,4 @@
 import Sidebar from './Sidebar/Sidebar';
-import BarGraph from './Chart/BarGraph';
 import LineChartBP from './Chart/linechartBP';
 import BPChartE from './Chart/BPchart2';
 import LineChartSugar from './Chart/linechartSugar';
@@ -11,7 +10,6 @@ import Chat from './ChatBot/ChatApp.js';
 
 export {
 	Sidebar,
-	BarGraph,
 	BPChartE,
 	LineChartBP,
 	LineChartSugar,
