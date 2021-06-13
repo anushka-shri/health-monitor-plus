@@ -14,13 +14,14 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Fade from 'react-reveal/Fade';
 
+// Image card code
+
+import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles({
 	root: {
 		maxWidth: 345,
 		marginBottom: 20,
-		// backgroundColor: '#d9e4f5',
-		// backgroundImage: 'linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%)',
 		backgroundColor: '#f3e6e8',
 		backgroundImage: 'linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%)',
 		boxShadow: '0px 3px 15px 0px #0000007a',
@@ -63,13 +64,12 @@ export default function Medications() {
 		} catch {}
 	};
 	const handleChange = (value) => {
-		//setDrugName(value);
+		setDrug(value);
 		getMedicine(value);
 	};
-    
+
 	return (
 		<div>
-		
 			<div className='Meds_search_cont' style={{ width: 400 }}>
 				<Autocomplete
 					id='free-solo-demo'
@@ -86,8 +86,59 @@ export default function Medications() {
 					)}
 				/>
 			</div>
-			
+
+			{drug && (
+				<>
+					<div className='searched_card_cont'>
+						<Card className={classes.root}>
+							<Typography gutterBottom variant='h5' component='h2' centeralign>
+								SEARCHED MEDICINE
+							</Typography>
+							<CardActionArea>
+								<CardMedia
+									component='img'
+									alt='medicine'
+									height='20'
+									image='https://tse4.mm.bing.net/th?id=OIP.DRRUCsJqgW54fLF2iULzYQHaF5&pid=Api'
+									title='medicine'
+								/>
+								<CardContent>
+									<Typography gutterBottom variant='h5' component='h2'>
+										{drug.Drug_Name}
+									</Typography>
+									<Typography
+										variant='body2'
+										color='textSecondary'
+										component='p'>
+										{drug.Reason}
+									</Typography>
+									<Typography
+										variant='body2'
+										color='textSecondary'
+										component='p'>
+										{drug.Description}
+									</Typography>
+								</CardContent>
+							</CardActionArea>
+							<CardActions>
+								<Button size='small' color='primary'>
+									ADD
+								</Button>
+							</CardActions>
+						</Card>
+					</div>
+				</>
+			)}
+
 			<div className='Meds_cards_cont'>
+				<Typography
+					gutterBottom
+					variant='h5'
+					component='h2'
+					className='similar_heading'
+					centeralign>
+					Similar Results
+				</Typography>
 				{similar.map((med, id) => {
 					return (
 						<Fade bottom>
@@ -115,9 +166,6 @@ export default function Medications() {
 									<CardActions>
 										<Button size='small' color='primary'>
 											ADD
-										</Button>
-										<Button size='small' color='primary'>
-											REMOVE
 										</Button>
 									</CardActions>
 								</Card>
