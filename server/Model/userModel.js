@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const Medicine = require('./Medicine');
 
 
 
@@ -45,6 +46,12 @@ const userSchema = new mongoose.Schema({
       message: 'Password confirmation wrong!',
     },
   },
+  myMedicines:[
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Medicine',
+      },
+    ]
   
   
 });
@@ -68,7 +75,12 @@ userSchema.methods.correctPassword = async function (
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
 };
-
+userSchema.pre(/^find/,function (next) {
+  this.populate({
+    path: 'myMedicines',
+  });
+  next();
+});
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

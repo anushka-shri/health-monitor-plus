@@ -67,6 +67,18 @@ export default function Medications() {
 		setDrug(value);
 		getMedicine(value);
 	};
+	const handleClick = async (event, med) => {
+		try {
+			const id = med._id;
+			const res = await axios.patch(
+				'http://localhost:3005/api/v1/medicine/addmedicine',
+				{id},
+			);
+
+			
+		} catch {}
+	};
+	
 
 	return (
 		<div>
@@ -164,7 +176,10 @@ export default function Medications() {
 										</CardContent>
 									</CardActionArea>
 									<CardActions>
-										<Button size='small' color='primary'>
+										<Button 
+										onClick={(event) => handleClick(event,med )}
+										size='small' 
+										color='primary'>
 											ADD
 										</Button>
 									</CardActions>
@@ -175,5 +190,7 @@ export default function Medications() {
 				})}
 			</div>
 		</div>
-	);
+	)
 }
+					
+
