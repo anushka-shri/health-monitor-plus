@@ -9,40 +9,20 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { TimePicker } from '@material-ui/pickers';
-import { Link } from 'react-scroll';
 import 'date-fns';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-
 import Select from '@material-ui/core/Select';
-
 import DateFnsUtils from '@date-io/date-fns';
 import {
 	MuiPickersUtilsProvider,
 	KeyboardDatePicker,
 } from '@material-ui/pickers';
-
-// import axios from 'axios';
 import './ScForm.css';
-import { ValueAxis } from '@devexpress/dx-react-chart-material-ui';
-
-
-
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import FormGroup from '@material-ui/core/FormGroup';
-
-
 
 const theme = createMuiTheme({
 	palette: {
@@ -89,9 +69,6 @@ function ScForm() {
 	const [freq, setRepeat] = useState(null);
 	const [count, setCount] = useState(null);
 	const [checked, setAllDay] = useState(false);
-		
-	
-	//const [value,setRepeat] = useState('');
 
 	const newEvent = async (e) => {
 		e.preventDefault();
@@ -108,8 +85,7 @@ function ScForm() {
 					endTime,
 					freq,
 					count,
-					checked
-					
+					checked,
 				},
 			);
 
@@ -122,10 +98,10 @@ function ScForm() {
 	};
 	const handleChange = (e) => {
 		setRepeat(e.target.innerText);
-	}
+	};
 	const handleChangeAllDay = (event) => {
 		setAllDay({ ...checked, [event.target.name]: event.target.checked });
-	  };
+	};
 	const handleDateChangeStart = (date) => {
 		setStartDate(date);
 	};
@@ -220,30 +196,17 @@ function ScForm() {
 								</MuiPickersUtilsProvider>
 
 								<Grid item xs={8}>
-									{/* <FormControl component='fieldset'>
-										<FormLabel component='legend'>
-											Add Event all day ?
-										</FormLabel>
-										<RadioGroup
-											row
-											aria-label='position'
-											name='position'
-											defaultValue='top'
-											
-											>
-											<FormControlLabel
-												value={allDay}
-											    onClick = {handleChangeAllDay}
-												control={<Radio color='primary' />}
-												label='ALL DAY'
-											/>
-										</RadioGroup>
-									</FormControl> */}
 									<FormGroup row>
-      									<FormControlLabel
-        									control={<Checkbox checked={checked.checkedA} onChange={handleChangeAllDay} name="checkedA" />}
-        									label="All Day"
-      									/>
+										<FormControlLabel
+											control={
+												<Checkbox
+													checked={checked.checkedA}
+													onChange={handleChangeAllDay}
+													name='checkedA'
+												/>
+											}
+											label='All Day'
+										/>
 									</FormGroup>
 								</Grid>
 
@@ -254,13 +217,19 @@ function ScForm() {
 										</InputLabel>
 										<Select
 											labelId='demo-simple-select-filled-label'
-											id='demo-simple-select-filled'
-											
-										>
-											<MenuItem onClick={handleChange} value={freq}>DAILY</MenuItem>
-											<MenuItem onClick={handleChange} value={freq}>WEEKLY</MenuItem>
-											<MenuItem onClick={handleChange} value={freq}>MONTHLY</MenuItem>
-											<MenuItem onClick={handleChange} value={freq}>YEARLY</MenuItem>
+											id='demo-simple-select-filled'>
+											<MenuItem onClick={handleChange} value={freq}>
+												DAILY
+											</MenuItem>
+											<MenuItem onClick={handleChange} value={freq}>
+												WEEKLY
+											</MenuItem>
+											<MenuItem onClick={handleChange} value={freq}>
+												MONTHLY
+											</MenuItem>
+											<MenuItem onClick={handleChange} value={freq}>
+												YEARLY
+											</MenuItem>
 										</Select>
 									</FormControl>
 								</Grid>
@@ -301,9 +270,7 @@ function ScForm() {
 											variant='contained'
 											color='secondary'
 											className={classes.submit}>
-											
-												Add Event
-										
+											Add Event
 										</Button>
 									</ThemeProvider>
 								</Grid>

@@ -40,13 +40,9 @@ const AllRoutes = () => {
 
 				{isLoggedIn === true && (
 					<>
-						
 						<Particles />
 						<Sidebar />
 
-						<Route exact path='/'>
-							<Dashboard />
-						</Route>
 						<Route exact path='/events'>
 							<Scheduler />
 						</Route>
@@ -77,6 +73,9 @@ const AllRoutes = () => {
 						</Route>
 						<Route exact path='/profile'>
 							<FixedMenuLayout />
+						</Route>
+						<Route exact path='/'>
+							<Dashboard />
 						</Route>
 					</>
 				)}

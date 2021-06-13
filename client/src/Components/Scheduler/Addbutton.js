@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-scroll';
 import * as RiIcons from 'react-icons/ri';
 
-
 const useStyles = makeStyles((theme) => ({
 	button: {
 		margin: theme.spacing(1),
@@ -15,7 +14,7 @@ export default function Addbutton() {
 	const classes = useStyles();
 
 	return (
-		<div id="AE_btn">
+		<div id='AE_btn'>
 			<Button
 				variant='contained'
 				color='default'
@@ -28,4 +27,3 @@ export default function Addbutton() {
 		</div>
 	);
 }
-

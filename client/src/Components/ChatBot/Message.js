@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Message = (props) => {
     return (
 			<div className='col s12 m8 offset-m2 l6 offset-l3'>

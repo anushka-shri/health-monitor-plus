@@ -12,12 +12,11 @@ import {
 import ScrollUpButton from 'react-scroll-up-button';
 import Fade from 'react-reveal/Fade';
 
+
 function Dashboard() {
 	return (
 		<div className='Dashboard_container'>
-			{/* <h2 className='Dashboard_heading'>
-				<Fade right>DashBoard</Fade>
-			</h2> */}
+
 
 			<Fade top>
 				<Cards />
