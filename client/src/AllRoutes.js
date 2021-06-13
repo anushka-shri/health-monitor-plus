@@ -69,7 +69,7 @@ const AllRoutes = () => {
 						<Route exact path='/medications'>
 							<Medications />
 						</Route>
-						<Route exact path='/lab-reports'>
+						<Route exact path='/mymeds'>
 							<MyMeds />
 						</Route>
 						<Route exact path='/new-labreps'>
