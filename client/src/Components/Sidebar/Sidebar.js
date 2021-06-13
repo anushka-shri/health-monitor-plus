@@ -1,41 +1,20 @@
 import React, { useContext } from 'react';
 import './Sidebar.css';
 import Button from '@material-ui/core/Button';
-// import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import Submenu from './Submenu';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 import Logo from '../../images/Applogo.png';
 import { useGlobalContext } from '../../Context/AppContext';
 
-
 function Sidebar() {
-	const { isLoggedIn,  LogOut } = useGlobalContext();
-
-	// const history = useHistory();
-
-	// async function logOut() {
-
-	// 	await axios.get('http://localhost:3005/api/v1/logout');
-	// 	await getLoggedIn();
-	// 	history.push('/');
-	// }
+	const { isLoggedIn, LogOut } = useGlobalContext();
 
 	return (
 		<>
 			<div className='Navbar_container'>
 				{isLoggedIn === true && (
 					<>
-					<Link to='/profile'>
-						<Button
-							
-							variant='outlined'
-							className='icon_text'
-							color='secondary'>
-							Profile
-						</Button>
-						</Link>
 						<Link to='/login'>
 							<Button
 								// onClick={logOut}
