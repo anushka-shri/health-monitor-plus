@@ -23,7 +23,6 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import axios from 'axios';
 import './pagesCSS/Prescription2.css';
 import * as BiIcons from 'react-icons/bi';
-import * as MdIcons from 'react-icons/md';
 import { Button, Form } from 'semantic-ui-react';
 
 function descendingComparator(a, b, orderBy) {
