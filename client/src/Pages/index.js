@@ -1,7 +1,6 @@
 import Dashboard from "./Dashboard.js";
 import DailyMonitoring from "./PersonalMonitoring/DailyMonitoring";
 import FamilyHistory from "./PersonalMonitoring/FamilyHistory";
-import Vaccinations from "./PersonalMonitoring/Vaccinations";
 import Doctors from "./Doctors";
 import NewDoctors from "./NewDoctors";
 import Prescriptions from "./Prescriptions";
@@ -23,7 +22,6 @@ export {
   Error,
   DailyMonitoring,
   FamilyHistory,
-  Vaccinations,
   Medications,
   LabReports,
   FixedMenuLayout

@@ -12,7 +12,6 @@ import {
 	Prescriptions,
 	DailyMonitoring,
 	FamilyHistory,
-	Vaccinations,
 	Medications,
 	LabReports,
 	FixedMenuLayout
@@ -69,10 +68,6 @@ const AllRoutes = () => {
 						</Route>
 						<Route exact path='/family-history'>
 							<FamilyHistory />
-						</Route>
-
-						<Route exact path='/vaccinations'>
-							<Vaccinations />
 						</Route>
 						<Route exact path='/medications'>
 							<Medications />

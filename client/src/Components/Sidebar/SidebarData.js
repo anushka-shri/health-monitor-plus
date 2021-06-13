@@ -36,11 +36,6 @@ import * as BiIcons from 'react-icons/bi';
  				icon: <AiIcons.AiOutlineRight />,
  			},
  			{
- 				title: 'Vaccinations',
- 				path: '/vaccinations',
- 				icon: <AiIcons.AiOutlineRight />,
- 			},
- 			{
  				title: 'Family History',
  				path: '/family-history',
  				icon: <AiIcons.AiOutlineRight />,

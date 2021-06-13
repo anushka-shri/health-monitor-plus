@@ -41,13 +41,7 @@ const getEvents = async () => {
 				var sSeconds = new Date(element.startTime).getSeconds();
 				var eSeconds = new Date(element.endTime).getSeconds();
 				
-				// var sDate = new Date(element.startDate).getDate();
-				// var eDate = new Date(element.startDate).getDate();
-				// var sMonth = new Date(element.startDate).getMonth();
-				// var eMonth = new Date(element.startDate).getMonth();
-				// var sYear = new Date(element.startDate).getFullYear();
-				// var eYear = new Date(element.startDate).getFullYear();
-				
+
 				var startDate = new Date(element.startDate);
 				element.startDate = startDate.setHours(sHour,sMinute,sSeconds);
 				var endDate = new Date(element.endDate);

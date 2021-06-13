@@ -13,7 +13,7 @@ import HotelIcon from '@material-ui/icons/Hotel';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { Chat } from './../Components';
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -28,8 +28,6 @@ export default () => {
   const classes = useStyles();
 
   return (
-    <>
-    <Chat />
     <Timeline align="alternate">
       <TimelineItem>
         <TimelineOppositeContent>
@@ -105,7 +103,7 @@ export default () => {
         </TimelineContent>
       </TimelineItem>
       </Timeline>
-      </>
+  
   );
 }
 
