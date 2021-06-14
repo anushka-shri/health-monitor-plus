@@ -133,7 +133,7 @@ export default function Medications() {
 								</CardContent>
 							</CardActionArea>
 							<CardActions>
-								<Button size='small' color='primary'>
+								<Button size='small' color='primary' onClick={handleClick}>
 									ADD
 								</Button>
 							</CardActions>
